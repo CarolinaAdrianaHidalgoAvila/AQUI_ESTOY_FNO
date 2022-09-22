@@ -93,7 +93,7 @@ function NewUserForm(props) {
 
     return ( 
         <div>
-            <Button onClick={handleOpen}>Registar Usuario</Button>
+            <Button sx={{marginLeft:1, background:'rgba(9,121,115,1)'}} variant='contained' onClick={handleOpen}>Create User</Button>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
