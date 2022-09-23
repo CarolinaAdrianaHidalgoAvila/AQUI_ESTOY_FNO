@@ -3,12 +3,18 @@ import {useState} from 'react'
 import PetsIcon from '@mui/icons-material/Pets';
 import { AppBar, Grid, Typography, Toolbar, Tabs , Tab, Box, Button ,useTheme , useMediaQuery} from '@mui/material';
 import DrawerComp from './DrawerComp';
+import NewUserForm from './NewUserForm';
 
 
 function Navbar({links}) {
   const theme = useTheme();
   
   const isMatch = useMediaQuery(theme.breakpoints.down('md'));
+
+  function handleClickUser(){
+    console.log("Button clicked")
+    window.location.href = "/user";
+  }
 
   const [value, setValue] = useState();
   return (
@@ -23,12 +29,10 @@ function Navbar({links}) {
           </Grid>
           <Grid sx={{ marginLeft: 4 }} item xs ={6} >
               <Box >
-                <Button sx={{marginLeft:'auto', background: 'rgba(9,121,115,1)'}} variant='contained'>
+                <Button sx={{marginLeft:'auto', background: 'rgba(9,121,115,1)'}} variant='contained' onClick={handleClickUser}>
                   User
                 </Button>
-                <Button  sx={{marginLeft:1, background:'rgba(9,121,115,1)'}} variant='contained'>
-                  Create User
-                </Button>
+                <NewUserForm />
               </Box>
           </Grid>
           <DrawerComp links={links}/>
@@ -64,12 +68,10 @@ function Navbar({links}) {
             <Grid  xs ={1} />
             <Grid  sx={{ marginLeft: 8 }} item xs ={3} >
               <Box display= 'flex'>
-                <Button sx={{marginLeft:'auto', background: 'rgba(9,121,115,1)'}} variant='contained'>
+                <Button sx={{marginLeft:'auto', background: 'rgba(9,121,115,1)'}} variant='contained' onClick={handleClickUser}>
                   User
                 </Button>
-                <Button  sx={{marginLeft:1, background:'rgba(9,121,115,1)'}} variant='contained'>
-                  Create User
-                </Button>
+                <NewUserForm />
               </Box>
             </Grid>
 

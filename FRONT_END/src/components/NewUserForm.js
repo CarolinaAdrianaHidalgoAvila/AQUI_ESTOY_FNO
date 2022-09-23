@@ -59,19 +59,15 @@ function NewUserForm(props) {
         } else { 
             setPasswordValidation(false);
         }
-
-        setOpen(false);
-
-        /*
         var user = {
             firstName: firstName,
             lastName: lastName,
+            phone: telephone,
             eMail: eMail,
             address: address,
-            password: password
         }
 
-        fetch("URL_HERE", {
+        fetch("http://localhost:5500/Users", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +76,7 @@ function NewUserForm(props) {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log("Success:", data);S
+            console.log("Success:", data);
         })
         .catch((error) => {
             console.log("Error:", error);
@@ -88,12 +84,12 @@ function NewUserForm(props) {
         .finally(() => {
             setOpen(false);
         })
-        */
+        setOpen(false);
     }
 
     return ( 
         <div>
-            <Button onClick={handleOpen}>Registar Usuario</Button>
+            <Button sx={{marginLeft:1, background:'rgba(9,121,115,1)'}} variant='contained' onClick={handleOpen}>Create User</Button>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -111,7 +107,7 @@ function NewUserForm(props) {
                             </div>
                             <div className='row justify-content-center'>
                                 <TextField id="form-user-email" label="E-Mail" variant="outlined" margin='normal' onChange={(e) => {setEMail(e.target.value)}} required error={eMailValidation} />
-                                <TextField id="form-user-cellphone" label="Telefono" variant="outlined" type="number" margin='normal' onChange={(e) => {setTelephone(e.target.value)}} />
+                                <TextField id="form-user-cellphone" label="Telefono" variant="outlined" type="number" margin='normal' required onChange={(e) => {setTelephone(e.target.value)}} />
                                 <TextField id="form-user-direction" label="Direccion" variant="outlined" margin='normal' onChange={(e) => {setAddress(e.target.value)}} />
                                 <TextField id="form-user-password" label="Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setPassword(e.target.value)}} required error={passwordValidation} />
                                 <TextField id="form-user-confirm-password" label="Confirmar Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setConfirmPassword(e.target.value)}} required error={passwordValidation}/>
