@@ -11,6 +11,8 @@ namespace AQUI_ESTOY.Data
             this.CreateMap<UserEntity, UserModel>()
                 //.ForMember( des => des.Phone, opt => opt.MapFrom(src => src.Phone + "#" + src.Name ))
                 .ReverseMap();
+            this.CreateMap<PetEntity, PetModel>()
+               .ReverseMap();
 
         }
     }

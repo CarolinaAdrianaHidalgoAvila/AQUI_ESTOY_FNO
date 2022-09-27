@@ -8,5 +8,8 @@ namespace AquiEstoy_MongoDB.Data.Repository
         Task<IEnumerable<UserEntity>> GetAllUsersAsync();
         Task<UserEntity> GetUserAsync(string userId);
         Task<bool> SaveChangesAsync();
+
+        //PETS
+        Task<IEnumerable<PetEntity>> GetAllPetsAsync();
     }
 }

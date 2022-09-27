@@ -9,6 +9,7 @@ namespace AquiEstoy_MongoDB.Data.Repository
     {
         internal MongoDBRepository _repository = new MongoDBRepository();
         private IMongoCollection<UserEntity> userCollection;
+        private IMongoCollection<PetEntity> petCollection;
 
         public UserCollection()
         {
@@ -29,7 +30,11 @@ namespace AquiEstoy_MongoDB.Data.Repository
             var result = await userCollection.FindAsync(x => true).Result.ToListAsync();
             return result;
         }
-
+        public async Task<IEnumerable<PetEntity>> GetAllPetsAsync()
+        {
+            var result = await petCollection.FindAsync(x => true).Result.ToListAsync();
+            return result;
+        }
         public async Task<bool> SaveChangesAsync()
         {
             //try
