@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CAROLINA\\8_SEMESTRE\\TALLER_SIS\\AquiEstoy MongoDB\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj": {}
+    "C:\\Users\\Win10Pro\\Desktop\\Rene\\Proyecto Aqui Estoy\\AQUI_ESTOY_FNO\\BACK_END\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj": {}
   },
   "projects": {
-    "E:\\CAROLINA\\8_SEMESTRE\\TALLER_SIS\\AquiEstoy MongoDB\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj": {
+    "C:\\Users\\Win10Pro\\Desktop\\Rene\\Proyecto Aqui Estoy\\AQUI_ESTOY_FNO\\BACK_END\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CAROLINA\\8_SEMESTRE\\TALLER_SIS\\AquiEstoy MongoDB\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj",
+        "projectUniqueName": "C:\\Users\\Win10Pro\\Desktop\\Rene\\Proyecto Aqui Estoy\\AQUI_ESTOY_FNO\\BACK_END\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj",
         "projectName": "AquiEstoy MongoDB",
-        "projectPath": "E:\\CAROLINA\\8_SEMESTRE\\TALLER_SIS\\AquiEstoy MongoDB\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj",
-        "packagesPath": "C:\\Users\\MiPC\\.nuget\\packages\\",
-        "outputPath": "E:\\CAROLINA\\8_SEMESTRE\\TALLER_SIS\\AquiEstoy MongoDB\\AquiEstoy MongoDB\\obj\\",
+        "projectPath": "C:\\Users\\Win10Pro\\Desktop\\Rene\\Proyecto Aqui Estoy\\AQUI_ESTOY_FNO\\BACK_END\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj",
+        "packagesPath": "C:\\Users\\Win10Pro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Win10Pro\\Desktop\\Rene\\Proyecto Aqui Estoy\\AQUI_ESTOY_FNO\\BACK_END\\AquiEstoy MongoDB\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MiPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Win10Pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
