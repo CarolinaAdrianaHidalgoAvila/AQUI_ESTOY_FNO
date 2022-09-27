@@ -3,17 +3,15 @@ using AquiEstoy_MongoDB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(MyAllowSpecificOrigins,
+    options.AddDefaultPolicy(
                           policy =>
                           {
-                              policy.WithOrigins("http://example.com",
-                                                  "http://www.contoso.com")
-                                                  .AllowAnyHeader()
-                                                  .AllowAnyMethod();
+                              policy.WithOrigins("http://localhost/");
+                                                 
                           });
 });
 
@@ -44,7 +42,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors();
 
 app.UseAuthorization();
 
