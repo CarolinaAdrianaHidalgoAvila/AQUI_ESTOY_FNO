@@ -9,19 +9,19 @@ namespace AquiEstoy_MongoDB.Controllers
     [Route("users/{userId:int}/[controller]")]
     public class PetsController : ControllerBase
     {
-        private IPetsService _petService;
+        private IPetService _petService;
 
-        public PetsController(IPetsService petService)
+        public PetsController(IPetService petService)
         {
             _petService = petService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PetModel>>> GetPets(int userId)
+        public async Task<ActionResult<IEnumerable<PetModel>>> GetPets(string userId)
         {
             try
             {
-                return Ok(await _petService.GetPetsAsync(userId));
+                return Ok(await _petService.GetAllPetsAsync(userId));
             }
             catch (NotFoundOperationException ex)
             {

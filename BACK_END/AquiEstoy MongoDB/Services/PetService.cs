@@ -1,5 +1,6 @@
 ﻿using AquiEstoy_MongoDB.Data.Entities;
 using AquiEstoy_MongoDB.Data.Repository;
+using AquiEstoy_MongoDB.Exceptions;
 using AquiEstoy_MongoDB.Models;
 using AutoMapper;
 
@@ -15,13 +16,21 @@ namespace AquiEstoy_MongoDB.Services
                 _mapper = mapper;
             }
 
-            public async Task<IEnumerable<PetModel>> GetAllPetsAsync()
+            public async Task<IEnumerable<PetModel>> GetAllPetsAsync(string UserId)
             {
-                var petsEntityList = await _userCollection.GetAllPetsAsync();
-                var petsModelList = _mapper.Map<IEnumerable<PetModel>>(petsEntityList);
-                return petsModelList;
+            await validateUser(UserId);
+            var pets = await _userCollection.GetUserAsync(UserId);
+            return _mapper.Map<IEnumerable<PetModel>>(pets);
+        }
+        private async Task validateUser(string userId)
+        {
+            var user = await _userCollection.GetUserAsync(userId); 
+            if (user == null)
+            {
+                throw new NotFoundOperationException($"the company id:{userId}, does not exist");
             }
+        }
 
-        
+
     }
 }

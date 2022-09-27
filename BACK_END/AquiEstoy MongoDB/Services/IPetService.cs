@@ -4,6 +4,6 @@ namespace AquiEstoy_MongoDB.Services
 {
     public interface IPetService
     {
-        Task<IEnumerable<PetModel>> GetAllPetsAsync();
+        Task<IEnumerable<PetModel>> GetAllPetsAsync(string UserId);
     }
 }
