@@ -10,7 +10,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
                           policy =>
                           {
-                              policy.WithOrigins("http://localhost/");
+                              policy.WithOrigins("http://localhost");
                                                  
                           });
 });
