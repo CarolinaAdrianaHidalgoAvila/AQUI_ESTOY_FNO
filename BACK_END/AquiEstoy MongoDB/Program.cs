@@ -22,6 +22,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddTransient<IUserCollection, UserCollection>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IPetService, PetService>();
 
 
 builder.Services.AddEndpointsApiExplorer();

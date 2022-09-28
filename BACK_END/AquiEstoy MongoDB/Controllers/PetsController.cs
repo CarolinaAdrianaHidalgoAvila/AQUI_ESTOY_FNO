@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AquiEstoy_MongoDB.Controllers
 {
-    [Route("users/{userId:int}/[controller]")]
+    [Route("api/users/{userId}/pets")]
     public class PetsController : ControllerBase
     {
         private IPetService _petService;
@@ -14,6 +14,23 @@ namespace AquiEstoy_MongoDB.Controllers
         public PetsController(IPetService petService)
         {
             _petService = petService;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<PetModel>> PostPetAsync([FromBody] PetModel pet)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var newPet = await _petService.CreatePetAsync(pet);
+                return Created($"/users/{newPet.UserID}/{newPet.Id}", newPet);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
         }
 
         [HttpGet]

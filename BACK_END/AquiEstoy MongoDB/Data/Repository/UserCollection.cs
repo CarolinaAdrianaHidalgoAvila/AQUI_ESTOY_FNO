@@ -14,7 +14,10 @@ namespace AquiEstoy_MongoDB.Data.Repository
         public UserCollection()
         {
             userCollection = _repository.db.GetCollection<UserEntity>("Users");
+            petCollection = _repository.db.GetCollection<PetEntity>("Pets");
         }
+
+        //USERS COLLECTION
         public async void CreateUser(UserEntity user)
         {
             await userCollection.InsertOneAsync(user);
@@ -30,24 +33,17 @@ namespace AquiEstoy_MongoDB.Data.Repository
             var result = await userCollection.FindAsync(x => true).Result.ToListAsync();
             return result;
         }
-        public async Task<IEnumerable<PetEntity>> GetAllPetsAsync()
+
+
+        //PETS COLLECTION
+        public async Task<IEnumerable<PetEntity>> GetAllPetsAsync(string userId)
         {
-            var result = await petCollection.FindAsync(x => true).Result.ToListAsync();
+            var result = await petCollection.FindAsync(x => x.UserID == userId).Result.ToListAsync();
             return result;
         }
-        public async Task<bool> SaveChangesAsync()
+        public async void CreatePet(PetEntity pet)//ya contiene el id de usuario al que pertenece
         {
-            //try
-            //{
-            //    var result = await userCollection.
-            //    return result > 0 ? true : false;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            return true;
+            await petCollection.InsertOneAsync(pet);
         }
     }
 }

@@ -7,14 +7,14 @@ namespace AquiEstoy_MongoDB.Models
 {
     public class PetModel
     {
-        public ObjectId IdPet { get; set; }
+        public ObjectId Id { get; set; }
 
         public string? NamePet { get; set; }
-        public DateOnly? BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }//Revisar fechas
 
         public string? Gender { get; set; }
         public bool? HasNecklace { get; set; }
         public string? Specie { get; set; }
-        public UserEntity? UserID { get; set; }
+        public string? UserID { get; set; }
     }
 }

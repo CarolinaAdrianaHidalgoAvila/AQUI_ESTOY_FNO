@@ -12,7 +12,7 @@ namespace AQUI_ESTOY.Data
                 //.ForMember( des => des.Phone, opt => opt.MapFrom(src => src.Phone + "#" + src.Name ))
                 .ReverseMap();
             this.CreateMap<PetEntity, PetModel>()
-               .ReverseMap();
+                .ReverseMap();
 
         }
     }

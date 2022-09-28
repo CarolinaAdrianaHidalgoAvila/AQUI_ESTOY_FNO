@@ -1,5 +1,6 @@
 ﻿using AquiEstoy_MongoDB.Data.Entities;
 using AquiEstoy_MongoDB.Data.Repository;
+using AquiEstoy_MongoDB.Exceptions;
 using AquiEstoy_MongoDB.Models;
 using AutoMapper;
 
@@ -19,12 +20,8 @@ namespace AquiEstoy_MongoDB.Services
         {
             var userEntity = _mapper.Map<UserEntity>(user);
             _userCollection.CreateUser(userEntity);
-            var result = await _userCollection.SaveChangesAsync();
-            if (result)
-            {
-                return _mapper.Map<UserModel>(userEntity);
-            }
-            throw new Exception("Database Error");
+            var userModel = _mapper.Map<UserModel>(userEntity);
+            return userModel;
         }
 
         public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
@@ -37,11 +34,10 @@ namespace AquiEstoy_MongoDB.Services
         public async Task<UserModel> GetUserAsync(string userId)
         {
             var user = await _userCollection.GetUserAsync(userId);
-
-            //if (user == null) Cuando se implementen errores**********
-            //{
-            //    throw new NotFoundElementException($"The player with id:{playerId} does not exists.");
-            //}
+            if (user == null)
+            {
+                throw new NotFoundOperationException($"The user id: {userId}, does not exist.");
+            }
             var userModel = _mapper.Map<UserModel>(user);
             return userModel;
         }

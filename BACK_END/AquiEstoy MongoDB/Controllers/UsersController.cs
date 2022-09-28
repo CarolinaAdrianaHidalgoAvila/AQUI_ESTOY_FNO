@@ -1,11 +1,12 @@
-﻿using AquiEstoy_MongoDB.Models;
+﻿using AquiEstoy_MongoDB.Exceptions;
+using AquiEstoy_MongoDB.Models;
 using AquiEstoy_MongoDB.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AquiEstoy_MongoDB.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/users")]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
@@ -24,7 +25,7 @@ namespace AquiEstoy_MongoDB.Controllers
                     return BadRequest(ModelState);
 
                 var newUser = await _userService.CreateUserAsync(user);
-                return Created($"/api/users/{newUser.Id}", newUser);
+                return Created($"/users/{newUser.Id}", newUser);
             }
             catch (Exception)
             {
@@ -49,15 +50,19 @@ namespace AquiEstoy_MongoDB.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsersAsync()
         {
-            //try
-            //{
+            try
+            {
                 var allUsers = await _userService.GetAllUsersAsync();
                 return Ok(allUsers);
-            //}
-            //catch (Exception)
-            //{
-            //    return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
-            //}
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Something happend: {ex.Message}");
+            }
         }
     }
 }
