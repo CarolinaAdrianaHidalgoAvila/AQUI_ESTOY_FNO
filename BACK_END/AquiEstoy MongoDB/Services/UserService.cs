@@ -8,37 +8,37 @@ namespace AquiEstoy_MongoDB.Services
 {
     public class UserService:IUserService
     {
-        private IUserCollection _userCollection;
+        private IAquiEstoyCollection _aquiEstoyCollection;
         private IMapper _mapper;
-        public UserService(IUserCollection userCollection, IMapper mapper)
+        public UserService(IAquiEstoyCollection aquiEstoyCollection, IMapper mapper)
         {
-            _userCollection = userCollection;
+            _aquiEstoyCollection = aquiEstoyCollection;
             _mapper = mapper;
         }
 
-        public async Task<UserModel> CreateUserAsync(UserModel user)
+        public async Task<UserModel> CreateUserAsync(UserModel userModel)
         {
-            var userEntity = _mapper.Map<UserEntity>(user);
-            _userCollection.CreateUser(userEntity);
-            var userModel = _mapper.Map<UserModel>(userEntity);
-            return userModel;
+            var userEntity = _mapper.Map<UserEntity>(userModel);
+            _aquiEstoyCollection.CreateUser(userEntity);
+            var newUserModel = _mapper.Map<UserModel>(userEntity);
+            return newUserModel;
         }
 
         public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
         {
-            var usersEntityList = await _userCollection.GetAllUsersAsync();
+            var usersEntityList = await _aquiEstoyCollection.GetAllUsersAsync();
             var usersModelList = _mapper.Map<IEnumerable<UserModel>>(usersEntityList);
             return usersModelList;
         }
 
         public async Task<UserModel> GetUserAsync(string userId)
         {
-            var user = await _userCollection.GetUserAsync(userId);
-            if (user == null)
+            var userEntity = await _aquiEstoyCollection.GetUserAsync(userId);
+            if (userEntity == null)
             {
                 throw new NotFoundOperationException($"The user id: {userId}, does not exist.");
             }
-            var userModel = _mapper.Map<UserModel>(user);
+            var userModel = _mapper.Map<UserModel>(userEntity);
             return userModel;
         }
     }

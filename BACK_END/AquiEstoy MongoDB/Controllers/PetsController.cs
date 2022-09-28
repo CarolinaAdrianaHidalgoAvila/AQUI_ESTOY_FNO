@@ -17,14 +17,14 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<PetModel>> PostPetAsync([FromBody] PetModel pet)
+        public async Task<ActionResult<PetModel>> PostPetAsync([FromBody] PetModel pet, string userId)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var newPet = await _petService.CreatePetAsync(pet);
+                var newPet = await _petService.CreatePetAsync(pet, userId);
                 return Created($"/users/{newPet.UserID}/{newPet.Id}", newPet);
             }
             catch (Exception)

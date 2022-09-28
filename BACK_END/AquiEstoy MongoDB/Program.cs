@@ -20,7 +20,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 
-builder.Services.AddTransient<IUserCollection, UserCollection>();
+builder.Services.AddTransient<IAquiEstoyCollection, AquiEstoyCollection>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IPetService, PetService>();
 
