@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bd7559fa-3699-4e1a-937d-179cf8109c82",
+		"_postman_id": "0e69bd9c-3022-4214-8c19-564132811318",
 		"name": "AQUI ESTOY",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,52 +9,13 @@
 			"name": "USERS",
 			"item": [
 				{
-					"name": "GET ALL USERS",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5500/Users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5500",
-							"path": [
-								"Users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET USER",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5500/Users/6323dc191f08c1dfb3eb093c",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5500",
-							"path": [
-								"Users",
-								"6323dc191f08c1dfb3eb093c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "POST USER",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Xavi\",\r\n    \"lastName\": \"Hernández\",\r\n    \"phone\": \"7919547\",\r\n    \"email\": \"xavi6@hotmail.com\",\r\n    \"address\": \"Zona Oeste\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Sergio\",\r\n    \"lastName\": \"Busquets\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"busi@gmai.com\",\r\n    \"address\": \"Cercado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -62,14 +23,114 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5500/Users",
+							"raw": "http://localhost:5500/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5500",
 							"path": [
-								"Users"
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE USER BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/63227f9ca2f22b65f6585b30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"63227f9ca2f22b65f6585b30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL USERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PETS",
+			"item": [
+				{
+					"name": "GET ALL PETS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/63227f9ca2f22b65f6585b30/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"63227f9ca2f22b65f6585b30",
+								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST PET",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namePet\":\"Messi\",\r\n    \"gender\":\"M\",\r\n    \"hasNecklace\":true,\r\n    \"specie\":\"Perro\",\r\n    \"userID\":\"63227f9ca2f22b65f6585b30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5500/api/users/63227f9ca2f22b65f6585b30/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"63227f9ca2f22b65f6585b30",
+								"pets"
 							]
 						}
 					},
