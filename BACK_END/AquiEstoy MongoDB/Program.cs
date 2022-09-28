@@ -1,18 +1,15 @@
 using AquiEstoy_MongoDB.Data.Repository;
 using AquiEstoy_MongoDB.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 
-builder.Services.AddCors(options =>
+//CORS
+builder.Services.AddCors(c =>
 {
-    options.AddDefaultPolicy(
-                          policy =>
-                          {
-                              policy.WithOrigins("http://localhost");
-                                                 
-                          });
+    c.AddPolicy("AllowOrigin", options => { options.AllowAnyOrigin(); options.AllowAnyMethod(); options.AllowAnyHeader(); });
 });
 
 
@@ -42,7 +39,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+app.UseCors(options => { options.AllowAnyOrigin(); options.AllowAnyMethod(); options.AllowAnyHeader(); });
 
 app.UseAuthorization();
 
