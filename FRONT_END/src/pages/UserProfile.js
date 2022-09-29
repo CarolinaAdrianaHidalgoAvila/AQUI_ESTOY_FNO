@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import { Avatar, CircularProgress } from '@mui/material';
 import NavTab from '../components/NavTab';
 import NewPetForm from "../components/NewPetForm"
+import ShowPets from "../components/ShowPets"
 
 function UserProfile(props) {
     const { ...rest } = props;
@@ -11,7 +12,7 @@ function UserProfile(props) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5500/Users/6323dc191f08c1dfb3eb093c")
+        fetch("http://localhost:5500/api/users/63227f9ca2f22b65f6585b30")
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -55,6 +56,7 @@ function UserProfile(props) {
                     {(value === 1) && <p>Aqui las Mascotas</p>}
                 </div>
                 <NewPetForm />
+                <ShowPets />
             </div> 
         </>
      );
