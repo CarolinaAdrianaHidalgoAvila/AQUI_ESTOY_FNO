@@ -8,7 +8,7 @@ namespace AquiEstoy_MongoDB.Data.Entities
         {
             [Key]
             [BsonId]
-            public ObjectId IdPet { get; set; }
+            public ObjectId Id { get; set; }
 
             [BsonElement("namePet")]
             [JsonPropertyName("namePet")]
@@ -16,7 +16,7 @@ namespace AquiEstoy_MongoDB.Data.Entities
 
             [BsonElement("birthDate")]
             [JsonPropertyName("birthDate")]
-            public DateOnly? BirthDate { get; set; }
+            public DateTime BirthDate { get; set; }//Revisar fechas
 
             [BsonElement("gender")]
             [JsonPropertyName("gender")]
@@ -26,13 +26,13 @@ namespace AquiEstoy_MongoDB.Data.Entities
             [JsonPropertyName("hasNecklace")]
             public bool? HasNecklace { get; set; }
 
-            [BsonElement("species")]
-            [JsonPropertyName("species")]
+            [BsonElement("specie")]
+            [JsonPropertyName("specie")]
             public string? Specie { get; set; }
 
             [BsonElement("userID")]
             [JsonPropertyName("userID")]
-            public UserEntity? UserID { get; set; }
+            public string? UserID { get; set; }
     }
     
 

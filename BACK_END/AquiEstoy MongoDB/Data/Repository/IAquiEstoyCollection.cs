@@ -2,14 +2,14 @@
 
 namespace AquiEstoy_MongoDB.Data.Repository
 {
-    public interface IUserCollection
+    public interface IAquiEstoyCollection
     {
-        void CreateUser(UserEntity user);
+        void CreateUser(UserEntity userEntity);
         Task<IEnumerable<UserEntity>> GetAllUsersAsync();
         Task<UserEntity> GetUserAsync(string userId);
-        Task<bool> SaveChangesAsync();
 
         //PETS
-        Task<IEnumerable<PetEntity>> GetAllPetsAsync();
+        Task<IEnumerable<PetEntity>> GetAllPetsAsync(string userId);
+        void CreatePet(PetEntity petEntity, string userId);
     }
 }
