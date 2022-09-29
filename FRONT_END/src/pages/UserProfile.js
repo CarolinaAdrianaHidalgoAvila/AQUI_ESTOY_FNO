@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import { Avatar, CircularProgress } from '@mui/material';
 import NavTab from '../components/NavTab';
 import NewPetForm from "../components/NewPetForm"
+import ShowPets from "../components/ShowPets"
 
 function UserProfile(props) {
     const { ...rest } = props;
@@ -56,6 +57,7 @@ function UserProfile(props) {
                 </div>
                 <NewPetForm />
             </div> 
+            <ShowPets/>
         </>
      );
 }
