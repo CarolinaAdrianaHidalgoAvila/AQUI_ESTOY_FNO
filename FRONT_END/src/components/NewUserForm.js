@@ -67,7 +67,7 @@ function NewUserForm(props) {
             address: address,
         }
 
-        fetch("http://localhost:5500/Users", {
+        fetch("http://localhost:5500/api/users", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

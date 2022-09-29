@@ -13,16 +13,16 @@ function NewUserForm(props) {
     const [name, setName] = useState("");
     const [age, setAge] = useState(0);
     const [specie, setSpecie] = useState("");
-    const [description, setDescription] = useState("");
+    const [gender, setGender] = useState("");
     const [hasQr, setHasQr] = useState("false");
 
     useEffect(() => {
         console.log(name);
         console.log(age);
         console.log(specie);
-        console.log(description);
+        console.log(gender);
         console.log(hasQr);
-    }, [name, age, specie, description, hasQr])
+    }, [name, age, specie, gender, hasQr])
   
     const style = {
         position: 'absolute',
@@ -38,14 +38,13 @@ function NewUserForm(props) {
     function handleCreateUserSubmit(event){
         event.preventDefault();
         var pet = {
-            name: name,
-            age: age,
-            specie: specie,
-            description: description,
-            hasQr: hasQr
+            namePet: name,
+            gender: gender,
+            hasNecklace:(hasQr == "true") ? true : false,
+            specie: specie
         }
 
-        fetch("http://localhost:5500/Pets", {
+        fetch("http://localhost:5500/api/users/63227f9ca2f22b65f6585b30/pets", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -86,7 +85,11 @@ function NewUserForm(props) {
                                 <Autocomplete id="form-pet-spiece" disablePortal variant="outlined" margin='normal' options={species} inputValue={specie} onInputChange={(event, newSpecie) => {setSpecie(newSpecie)}} renderInput={
                                     (params) => <TextField {...params} label="Especie" required />
                                 } />
-                                <TextField id="form-pet-description" label="Descripcion" variant="outlined" margin='normal' rows={6} required multiline onChange={(e) => {setDescription(e.target.value)}} />
+                                <FormLabel id="form-gender-radio-button">Genero: </FormLabel>
+                                <RadioGroup row aria-labelledby="dform-gender-radio-button" name="form-gender-radio-button" margin='normal' required onChange={(e) => {setGender(e.target.value)}} >
+                                    <FormControlLabel value="M" control={<Radio />} label="Macho" />
+                                    <FormControlLabel value="H" control={<Radio />} label="Hembra" />
+                                </RadioGroup>
                                 <FormLabel id="form-hasQr-radio-button">¿Tiene un collar QR?</FormLabel>
                                 <RadioGroup row aria-labelledby="dform-hasQr-radio-button" name="form-hasQr-radio-button" margin='normal' required onChange={(e) => {setHasQr(e.target.value)}} >
                                     <FormControlLabel value="true" control={<Radio />} label="Si" />

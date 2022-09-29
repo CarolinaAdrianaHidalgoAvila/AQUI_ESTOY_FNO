@@ -11,7 +11,7 @@ function UserProfile(props) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5500/Users/6323dc191f08c1dfb3eb093c")
+        fetch("http://localhost:5500/api/users/63227f9ca2f22b65f6585b30")
         .then(response => response.json())
         .then(data => {
             console.log(data);
