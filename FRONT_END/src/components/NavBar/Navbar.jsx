@@ -3,7 +3,7 @@ import {useState} from 'react'
 import PetsIcon from '@mui/icons-material/Pets';
 import { AppBar, Grid, Typography, Toolbar, Tabs , Tab, Box, Button ,useTheme , useMediaQuery} from '@mui/material';
 import DrawerComp from './DrawerComp';
-import NewUserForm from './NewUserForm';
+import NewUserForm from '../Form/NewUserForm';
 
 
 function Navbar({links}) {

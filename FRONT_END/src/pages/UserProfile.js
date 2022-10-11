@@ -1,36 +1,32 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { Avatar, CircularProgress } from '@mui/material';
-import NavTab from '../components/NavTab';
-import NewPetForm from "../components/NewPetForm"
-import ShowPets from "../components/ShowPets"
+
+import NavTab from '../components/NavBar/NavTab';
+import NewPetForm from "../components/Form/NewPetForm";
+import ShowPets from "../components/ListComponents/ShowPets";
+
+import useFetch from '../hooks/useFetch';
 
 function UserProfile(props) {
-    const { ...rest } = props;
 
     const [user, setUser] = useState({})
     const [value, setValue] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
+    const {get, loading} = useFetch("http://localhost:5500/api/");
 
     useEffect(() => {
-        fetch("http://localhost:5500/api/users/63227f9ca2f22b65f6585b30")
-        .then(response => response.json())
+        get("users/632280d2a2f22b65f6585b32")
         .then(data => {
             console.log(data);
             setUser(data);
         })
-        .catch(error => {
-            console.log(error)
-        })
-        .finally(() => {
-            setIsLoading(false);
-        });
+        .catch(error => console.log(error));
     }, []);
 
     function handleChangeNavTab(event, newValue) {
         setValue(newValue);
     }
 
-    if(isLoading) {
+    if(loading) {
         return (<CircularProgress />);
     }
 
@@ -53,11 +49,11 @@ function UserProfile(props) {
                 </div>
                 <div className='container'>
                     {(value === 0) && <p>Aqui las Publicaciones</p>}
-                    {(value === 1) && <p>Aqui las Mascotas</p>}
+                    {(value === 1) && <ShowPets/>}
                 </div>
                 <NewPetForm />
             </div> 
-            <ShowPets/>
+            
         </>
      );
 }

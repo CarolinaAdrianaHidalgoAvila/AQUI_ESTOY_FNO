@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import MediaCard from '../components/MediaCard'
+import Navbar from '../components/NavBar/Navbar'
+import MediaCard from '../components/MediaCard/MediaCard';
 
 function HomePage() {
   return (
