@@ -76,6 +76,10 @@ function NewUserForm(props) {
         post("users", user)
         .then(data => {
             console.log(data);
+            if(data.name !== undefined) {
+                alert(`Nueva usuario ${data.name} creada!`);
+                window.location.href = "/";
+            }
         })
         .catch(error => console.log(error));
         setOpen(false);
