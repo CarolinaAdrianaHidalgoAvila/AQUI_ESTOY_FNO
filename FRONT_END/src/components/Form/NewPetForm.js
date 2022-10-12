@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
+
+import ButtonComp from '../Button/ButtonComp';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField, Autocomplete, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 
+import useFetch from '../../hooks/useFetch';
+
 function NewUserForm(props) {
+    const { post } = useFetch("http://localhost:5500/api/");
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -43,29 +50,16 @@ function NewUserForm(props) {
             hasNecklace:(hasQr == "true") ? true : false,
             specie: specie
         }
-
-        fetch("http://localhost:5500/api/users/6335dba37c28ccc604586936/pets", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(pet)
+        post("users/6335dba37c28ccc604586936/pets", pet)
+        .then(data => {
+            console.log(data);
         })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Success:", data);
-        })
-        .catch((error) => {
-            console.log("Error:", error);
-        })
-        .finally(() => {
-            setOpen(false);
-        })
+        .catch(error => console.log(error));
     }
 
     return ( 
         <div>
-            <Button sx={{marginLeft:1, background:'rgba(9,121,115,1)'}} variant='contained' onClick={handleOpen}>Crear Mascota</Button>
+            <ButtonComp  onClick={handleOpen}>Crear Mascota</ButtonComp>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">

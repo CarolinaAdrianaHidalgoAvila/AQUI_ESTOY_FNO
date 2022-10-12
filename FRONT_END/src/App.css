@@ -5,3 +5,13 @@
 .spinner {
   animation: rotator 1.4s linear infinite;
 }
+
+.userPage{
+  padding-left: 30px;
+  padding-top: 90px;
+}
+
+.infoUser {
+  display: flex;
+  flex-direction: row;
+}

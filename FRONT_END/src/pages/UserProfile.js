@@ -43,8 +43,8 @@ function UserProfile(props) {
 
     return (
         <>
-            <div id='user-profile' className='container m-2'>
-                <div className='row align-items-start my-4'>
+            <div id='user-profile' className='userPage'>
+                <div className='infoUser'>
                     <div className='col col-sm-4'>
                         <Avatar alt={user.firstName} src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" sx={{ width: 250, height: 250 }}> {user.full_name} </Avatar>
                     </div>
@@ -55,19 +55,21 @@ function UserProfile(props) {
                         {user.address != undefined && <h5>{user.address}</h5>}
                     </div>
                 </div>
-                <div className='my-3'>
-                    <NavTab options={["Publicaciones", "Mascotas"]} onChange={handleChangeNavTab} value={value}/>
+                <div className='userBody'>
+                    <div className='my-3'>
+                        <NavTab options={["Publicaciones", "Mascotas"]} onChange={handleChangeNavTab} value={value}/>
+                    </div>
+                    <div className='container'>
+                        {(value === 0) && <p>Aqui las Publicaciones</p>}
+                        {(value === 1) && <ListCards data={pets} showKeys={{
+                            "namePet": "Nombre: ",
+                            "birthDate": "Cumpleaños: ",
+                            "gender": "Genero: ",
+                            "specie": "Especie: "
+                        }} title={""} />}
+                    </div>
+                    <NewPetForm />
                 </div>
-                <div className='container'>
-                    {(value === 0) && <p>Aqui las Publicaciones</p>}
-                    {(value === 1) && <ListCards data={pets} showKeys={{
-                        "namePet": "Nombre: ",
-                        "birthDate": "Cumpleaños: ",
-                        "gender": "Genero: ",
-                        "specie": "Especie: "
-                    }} title={"Mascotas"} />}
-                </div>
-                <NewPetForm />
             </div> 
             
         </>
