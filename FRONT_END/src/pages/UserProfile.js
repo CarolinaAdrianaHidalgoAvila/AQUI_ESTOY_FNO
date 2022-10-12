@@ -3,21 +3,32 @@ import { Avatar, CircularProgress } from '@mui/material';
 
 import NavTab from '../components/NavBar/NavTab';
 import NewPetForm from "../components/Form/NewPetForm";
-import ShowPets from "../components/ListComponents/ShowPets";
+import ShowPets from "../components/ListCard/ShowPets";
+import ListCards from '../components/ListCard/ListCards';
 
 import useFetch from '../hooks/useFetch';
 
 function UserProfile(props) {
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
+    const [pets, setPets] = useState([]);
     const [value, setValue] = useState(0);
     const {get, loading} = useFetch("http://localhost:5500/api/");
 
     useEffect(() => {
-        get("users/632280d2a2f22b65f6585b32")
+        //Get user information
+        get("users/6335dba37c28ccc604586936")
         .then(data => {
             console.log(data);
             setUser(data);
+        })
+        .catch(error => console.log(error));
+
+        //Get pets from user
+        get("users/6335dba37c28ccc604586936/pets")
+        .then(data => {
+            console.log(data);
+            setPets(data);
         })
         .catch(error => console.log(error));
     }, []);
@@ -49,7 +60,12 @@ function UserProfile(props) {
                 </div>
                 <div className='container'>
                     {(value === 0) && <p>Aqui las Publicaciones</p>}
-                    {(value === 1) && <ShowPets/>}
+                    {(value === 1) && <ListCards data={pets} showKeys={{
+                        "namePet": "Nombre: ",
+                        "birthDate": "Cumpleaños: ",
+                        "gender": "Genero: ",
+                        "specie": "Especie: "
+                    }} title={"Mascotas"} />}
                 </div>
                 <NewPetForm />
             </div> 

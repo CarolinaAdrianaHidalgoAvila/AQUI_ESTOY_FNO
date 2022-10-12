@@ -11,7 +11,7 @@ export default class ShowPets extends React.Component {
   }
 
   async componentDidMount() {
-    const url = "http://localhost:5500/api/users/632280d2a2f22b65f6585b32/pets"
+    const url = "http://localhost:5500/api/users/6335dba37c28ccc604586936/pets"
     const response = await fetch(url)
     const data = await response.json()
     this.setState({pet: data})  
