@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material'
-import image from '../Images/dog.jpg'
+import image from '../../Images/dog.jpg'
 
 export default class ShowPets extends React.Component {
 
@@ -11,7 +11,7 @@ export default class ShowPets extends React.Component {
   }
 
   async componentDidMount() {
-    const url = "http://localhost:5500/api/users/63227f9ca2f22b65f6585b30/pets"
+    const url = "http://localhost:5500/api/users/6335dba37c28ccc604586936/pets"
     const response = await fetch(url)
     const data = await response.json()
     this.setState({pet: data})  

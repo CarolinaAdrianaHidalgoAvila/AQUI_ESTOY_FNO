@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 
+import useFetch from '../../hooks/useFetch';
+import ButtonComp from '../Button/ButtonComp';
+
 function NewUserForm(props) {
+    const { post } = useFetch("http://localhost:5500/api/");
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -67,29 +73,21 @@ function NewUserForm(props) {
             address: address,
         }
 
-        fetch("http://localhost:5500/api/users", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user)
+        post("users", user)
+        .then(data => {
+            console.log(data);
+            if(data.name !== undefined) {
+                alert(`Nueva usuario ${data.name} creada!`);
+                window.location.href = "/";
+            }
         })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Success:", data);
-        })
-        .catch((error) => {
-            console.log("Error:", error);
-        })
-        .finally(() => {
-            setOpen(false);
-        })
+        .catch(error => console.log(error));
         setOpen(false);
     }
 
     return ( 
         <div>
-            <Button sx={{marginLeft:1, background:'rgba(9,121,115,1)'}} variant='contained' onClick={handleOpen}>Create User</Button>
+            <ButtonComp onClick={handleOpen}>Create User</ButtonComp>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">

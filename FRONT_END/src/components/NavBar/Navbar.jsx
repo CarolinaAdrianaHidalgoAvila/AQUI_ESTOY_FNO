@@ -2,8 +2,10 @@ import React from 'react'
 import {useState} from 'react'
 import PetsIcon from '@mui/icons-material/Pets';
 import { AppBar, Grid, Typography, Toolbar, Tabs , Tab, Box, Button ,useTheme , useMediaQuery} from '@mui/material';
+
 import DrawerComp from './DrawerComp';
-import NewUserForm from './NewUserForm';
+import NewUserForm from '../Form/NewUserForm';
+import ButtonComp from '../Button/ButtonComp';
 
 
 function Navbar({links}) {
@@ -29,9 +31,9 @@ function Navbar({links}) {
           </Grid>
           <Grid sx={{ marginLeft: 4 }} item xs ={6} >
               <Box >
-                <Button sx={{marginLeft:'auto', background: 'rgba(9,121,115,1)'}} variant='contained' onClick={handleClickUser}>
+                <ButtonComp onClick={handleClickUser}>
                   User
-                </Button>
+                </ButtonComp>
                 <NewUserForm />
               </Box>
           </Grid>
@@ -68,9 +70,9 @@ function Navbar({links}) {
             <Grid  xs ={1} />
             <Grid  sx={{ marginLeft: 8 }} item xs ={3} >
               <Box display= 'flex'>
-                <Button sx={{marginLeft:'auto', background: 'rgba(9,121,115,1)'}} variant='contained' onClick={handleClickUser}>
+                <ButtonComp onClick={handleClickUser}>
                   User
-                </Button>
+                </ButtonComp>
                 <NewUserForm />
               </Box>
             </Grid>
