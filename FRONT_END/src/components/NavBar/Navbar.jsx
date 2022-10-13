@@ -1,14 +1,13 @@
 import React from 'react'
 import {useState} from 'react'
-import PetsIcon from '@mui/icons-material/Pets';
 import { AppBar, Grid, Typography, Toolbar, Tabs , Tab, Box, Button ,useTheme , useMediaQuery} from '@mui/material';
-
 import DrawerComp from './DrawerComp';
 import NewUserForm from '../Form/NewUserForm';
 import ButtonComp from '../Button/ButtonComp';
+import logo from '../../Images/logo.png';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-
-function Navbar({links}) {
+function Navbar() {
   const theme = useTheme();
   
   const isMatch = useMediaQuery(theme.breakpoints.down('md'));
@@ -18,67 +17,64 @@ function Navbar({links}) {
     window.location.href = "/user";
   }
 
+  function handleClickCreateUser(){
+    <NewUserForm/>
+  }
+
+  function handleClickHome(){
+    window.location.href = "/";
+  }
+
   const [value, setValue] = useState();
   return (
-    <AppBar sx={{backgroundImage: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,115,1) 35%, rgba(0,212,255,1) 100%);'}}>
+    <AppBar sx={{backgroundColor: '#ffc478'}}>
       <Toolbar>
         
         { isMatch ? <>
-          <Grid item xs={2}>
-            <Typography>
-              <PetsIcon/>
+          <Grid item xs={2}  >
+            <Typography sx={{cursor:'pointer'}}>
+              <img
+                    
+                    onClick={handleClickHome}
+                    height="60"
+                    width='150'
+                    src={logo}
+                    alt="aqui estoy"
+                    className="logo-img-nvar"
+              />
             </Typography>
           </Grid>
-          <Grid sx={{ marginLeft: 4 }} item xs ={6} >
-              <Box >
-                <ButtonComp onClick={handleClickUser}>
-                  User
-                </ButtonComp>
-                <NewUserForm />
-              </Box>
-          </Grid>
-          <DrawerComp links={links}/>
-
+          <DrawerComp/>
         </> 
-        : <Grid sx={{ placeItems: 'center'}} container>
+        : <Grid sx={{ placeItems: 'center', color:'#023859'}} container>
             
             <Grid item xs={1}>
-              <Typography>
-                <PetsIcon/>
-              </Typography>
-              <Typography>
-                AQUI ESTOY!
+              <Typography sx={{cursor:'pointer'}}>
+                <img
+                      onClick={handleClickHome}
+                      height="60"
+                      width='150'
+                      src={logo}
+                      alt="aqui estoy"
+                      className="logo-img-nvar"
+                />
               </Typography>
             </Grid>
             
-            <Grid item xs ={1} />
-            <Grid  item xs={5}>
-              <Tabs 
-                indicatorColor='secondary' 
-                textColor='inherit' 
-                value={value} 
-                onChange ={(e,val) => setValue(val) }
-              >
-                {links.map((link,index)=>(
-                  <Tab key={index} label={link} />
-                ))}
-                
-                
-              </Tabs>
-            </Grid>
+            
 
-            <Grid  xs ={1} />
-            <Grid  sx={{ marginLeft: 8 }} item xs ={3} >
-              <Box display= 'flex'>
-                <ButtonComp onClick={handleClickUser}>
-                  User
-                </ButtonComp>
-                <NewUserForm />
-              </Box>
+            <Grid xs={9} />
+            <NewUserForm sx={{color: '#75cfbb',cursor: 'pointer',marginLeft:10,width:150,textTransform:'none'}}/>
+            <Grid  item xs={0}>
+                <AccountCircleIcon sx={{color: '#75cfbb',cursor: 'pointer',marginLeft:5, fontSize: 50}} fontSize="large" onClick={handleClickUser} />
             </Grid>
+            
+            
+
+           
 
         </Grid>}
-        
+          
       </Toolbar>
     </AppBar>
   )

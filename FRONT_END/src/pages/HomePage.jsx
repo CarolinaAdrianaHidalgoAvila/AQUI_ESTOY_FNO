@@ -5,7 +5,7 @@ import MediaCard from '../components/MediaCard/MediaCard';
 function HomePage() {
   return (
     <>
-      <div className="homePage">
+      <div  style={{marginTop: '3em'}} className="homePage">
         <MediaCard/>
       </div>
     </>

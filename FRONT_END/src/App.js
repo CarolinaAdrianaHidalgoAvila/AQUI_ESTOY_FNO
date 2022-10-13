@@ -3,12 +3,11 @@ import Navbar from "./components/NavBar/Navbar";
 import './App.css'
 import HomePage from "./pages/HomePage";
 import UserProfile from "./pages/UserProfile";
-const linksArray = ['Pets', 'About Us' , "Contact Us"]
 
 function App() {
   return (
     <>
-      <Navbar links={linksArray}/>
+      <Navbar/>
       <BrowserRouter>
         <Routes>
           <Route path='/user' element={<UserProfile/>}></Route>
