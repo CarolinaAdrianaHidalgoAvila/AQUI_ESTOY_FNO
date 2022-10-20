@@ -37,7 +37,7 @@ function Navbar() {
                     
                     onClick={handleClickHome}
                     height="60"
-                    width='150'
+                    width='110'
                     src={logo}
                     alt="aqui estoy"
                     className="logo-img-nvar"
