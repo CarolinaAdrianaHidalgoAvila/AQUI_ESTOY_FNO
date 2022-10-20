@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import dayjs from 'dayjs';
+import 'dayjs/locale/es-mx';
 
-import { TextField, Autocomplete, FormLabel, RadioGroup, FormControlLabel, Radio, DatePicker  } from '@mui/material';
+import { TextField, Autocomplete, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
@@ -9,7 +14,7 @@ function NewPetForm(props) {
     const { post } = useFetch("http://localhost:5500/api/");
 
     const [name, setName] = useState("");
-    const [birthday, setBirthday] = useState("");
+    const [birthday, setBirthday] = useState(dayjs('2014-08-18T21:11:54'));
     const [specie, setSpecie] = useState("");
     const [gender, setGender] = useState("");
     const [hasQr, setHasQr] = useState("false");
@@ -43,32 +48,34 @@ function NewPetForm(props) {
         return false;
     }
 
-    return ( 
-        <FormModal buttonName="Nueva Mascota" formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreatePetSubmit}>
-            <div className='row justify-content-start'>
-                <div className='col'>
-                    <TextField id="form-pet-name" label="Nombre" variant="outlined" margin='normal' onChange={(e) => {setName(e.target.value)}} required />
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es-mx">  
+            <FormModal buttonName="Nueva Mascota" formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreatePetSubmit}>
+                <div className='row justify-content-start'>
+                    <div className='col'>
+                        <TextField id="form-pet-name" label="Nombre" variant="outlined" margin='normal' onChange={(e) => {setName(e.target.value)}} required />
+                    </div>
+                    <div className='col'>
+                        <DesktopDatePicker label="Cumpleaños" inputFormat="DD/MM/YYYY" value={birthday} onChange={(newValue) => {setBirthday(newValue)}}  renderInput={(params) => <TextField {...params} id="form-pet-birthday" variant="outlined" margin='normal'/>}/>
+                    </div>
                 </div>
-                <div className='col'>
-                    <TextField id="form-pet-age" label="Cumpleaños" type="number" variant="outlined" margin='normal' onChange={(e) => {setBirthday(e.target.value)}} required />
+                <div className='row justify-content-center'>
+                    <Autocomplete id="form-pet-spiece" disablePortal variant="outlined" margin='normal' options={species} inputValue={specie} onInputChange={(event, newSpecie) => {setSpecie(newSpecie)}} renderInput={
+                        (params) => <TextField {...params} label="Especie" required />
+                    } />
+                    <FormLabel id="form-gender-radio-button">Genero: </FormLabel>
+                    <RadioGroup row aria-labelledby="dform-gender-radio-button" name="form-gender-radio-button" margin='normal' required onChange={(e) => {setGender(e.target.value)}} >
+                        <FormControlLabel value="M" control={<Radio />} label="Macho" />
+                        <FormControlLabel value="H" control={<Radio />} label="Hembra" />
+                    </RadioGroup>
+                    <FormLabel id="form-hasQr-radio-button">¿Tiene un collar QR?</FormLabel>
+                    <RadioGroup row aria-labelledby="dform-hasQr-radio-button" name="form-hasQr-radio-button" margin='normal' required onChange={(e) => {setHasQr(e.target.value)}} >
+                        <FormControlLabel value="true" control={<Radio />} label="Si" />
+                        <FormControlLabel value="false" control={<Radio />} label="No" />
+                    </RadioGroup>
                 </div>
-            </div>
-            <div className='row justify-content-center'>
-                <Autocomplete id="form-pet-spiece" disablePortal variant="outlined" margin='normal' options={species} inputValue={specie} onInputChange={(event, newSpecie) => {setSpecie(newSpecie)}} renderInput={
-                    (params) => <TextField {...params} label="Especie" required />
-                } />
-                <FormLabel id="form-gender-radio-button">Genero: </FormLabel>
-                <RadioGroup row aria-labelledby="dform-gender-radio-button" name="form-gender-radio-button" margin='normal' required onChange={(e) => {setGender(e.target.value)}} >
-                    <FormControlLabel value="M" control={<Radio />} label="Macho" />
-                    <FormControlLabel value="H" control={<Radio />} label="Hembra" />
-                </RadioGroup>
-                <FormLabel id="form-hasQr-radio-button">¿Tiene un collar QR?</FormLabel>
-                <RadioGroup row aria-labelledby="dform-hasQr-radio-button" name="form-hasQr-radio-button" margin='normal' required onChange={(e) => {setHasQr(e.target.value)}} >
-                    <FormControlLabel value="true" control={<Radio />} label="Si" />
-                    <FormControlLabel value="false" control={<Radio />} label="No" />
-                </RadioGroup>
-            </div>
-        </FormModal>
+            </FormModal>
+        </LocalizationProvider>
     );
 }
 const species = [
