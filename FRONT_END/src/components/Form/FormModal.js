@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import ButtonComp from '../Button/ButtonComp';
+import { ButtonAccept } from '../Button/ButtonComp';
 
 import { Box, Typography, Modal } from '@mui/material';
 
@@ -24,19 +24,24 @@ function FormModal(props) {
     };
 
 
+    function handleCloseSubmit(event){
+        handleSubmit(event);
+        setOpen(false);
+    }
+
     return ( 
         <>
-            <ButtonComp  onClick={handleOpen}>{buttonName}</ButtonComp>
+            <ButtonAccept  onClick={handleOpen}>{buttonName}</ButtonAccept>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {fromTitle}
                     </Typography>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleCloseSubmit}>
                         <div className='container'>
                             {children}
                             <div className="pt-1 mb-4">
-                                <ButtonComp type="submit">{submitName}</ButtonComp>
+                                <ButtonAccept type="submit">{submitName}</ButtonAccept>
                             </div>
                         </div>
                     </form>

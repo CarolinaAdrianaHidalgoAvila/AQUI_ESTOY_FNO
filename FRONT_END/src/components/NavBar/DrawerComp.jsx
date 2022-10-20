@@ -3,7 +3,7 @@ import {Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText} fr
 import { useState } from 'react'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NewUserForm from '../Form/NewUserForm';
-import ButtonComp from '../Button/ButtonComp';
+import {ButtonComp} from '../Button/ButtonComp';
 const DrawerComp = () => {
     const [open, setOpen] = useState(false)
     function handleClickUser(){

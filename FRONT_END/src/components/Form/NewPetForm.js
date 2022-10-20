@@ -23,12 +23,12 @@ function NewPetForm(props) {
     }, [name, birthday, specie, gender, hasQr])
   
 
-    function handleCreateUserSubmit(event){
+    function handleCreatePetSubmit(event){
         event.preventDefault();
         var pet = {
             namePet: name,
             gender: gender,
-            hasNecklace:(hasQr == "true") ? true : false,
+            hasNecklace:(hasQr === "true") ? true : false,
             specie: specie
         }
         post("users/6335dba37c28ccc604586936/pets", pet)
@@ -43,7 +43,7 @@ function NewPetForm(props) {
     }
 
     return ( 
-        <FormModal buttonName="Nueva Mascota" formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreateUserSubmit}>
+        <FormModal buttonName="Nueva Mascota" formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreatePetSubmit}>
             <div className='row justify-content-start'>
                 <div className='col'>
                     <TextField id="form-pet-name" label="Nombre" variant="outlined" margin='normal' onChange={(e) => {setName(e.target.value)}} required />
