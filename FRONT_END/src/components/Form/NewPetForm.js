@@ -40,6 +40,7 @@ function NewPetForm(props) {
             }
         })
         .catch(error => console.log(error));
+        return false;
     }
 
     return ( 

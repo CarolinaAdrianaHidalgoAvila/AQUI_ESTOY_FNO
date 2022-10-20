@@ -3,7 +3,7 @@ import { Avatar, CircularProgress } from '@mui/material';
 
 import NavTab from '../components/NavBar/NavTab';
 import NewPetForm from "../components/Form/NewPetForm";
-import {ButtonComp} from "../components/Button/ButtonComp";
+import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
 import ListCards from '../components/ListCard/ListCards';
 
 import useFetch from '../hooks/useFetch';
@@ -75,7 +75,8 @@ function UserProfile(props) {
                             }
                         </div>
                     </div>
-                    <ButtonComp> Delete User </ButtonComp>
+                    <ButtonDanger> Borrar Usuario </ButtonDanger>
+                    <ButtonCheck> Editar Datos</ButtonCheck>
                 </div>
             </div> 
             

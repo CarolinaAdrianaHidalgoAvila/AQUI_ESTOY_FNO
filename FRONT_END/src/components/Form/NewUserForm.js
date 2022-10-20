@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { TextField } from '@mui/material';
+import { TextField, Alert } from '@mui/material';
 
 import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
@@ -30,14 +30,14 @@ function NewUserForm(props) {
         event.preventDefault();
         if(!validateEmail(eMail)){
             setEMailValidation(true);
-            return ;
+            return true;
         } else {
             setEMailValidation(false);
         }
 
-        if(password !== confirmPassword) {
+        if(password != confirmPassword) {
             setPasswordValidation(true);
-            return ;
+            return true;
         } else { 
             setPasswordValidation(false);
         }
@@ -58,6 +58,7 @@ function NewUserForm(props) {
             }
         })
         .catch(error => console.log(error));
+        return false;
     }
 
     return ( 
@@ -74,14 +75,14 @@ function NewUserForm(props) {
                     </div>
                     <div className='row justify-content-center'>
                         <TextField id="form-user-email" label="E-Mail" variant="outlined" margin='normal' onChange={(e) => {setEMail(e.target.value)}} required error={eMailValidation} />
+                        {eMailValidation && <Alert severity="error"> El e-mail introducido no es valido </Alert>}
                         <TextField id="form-user-cellphone" label="Telefono" variant="outlined" type="number" margin='normal' required onChange={(e) => {setTelephone(e.target.value)}} />
                         <TextField id="form-user-direction" label="Direccion" variant="outlined" margin='normal' onChange={(e) => {setAddress(e.target.value)}} />
                         <TextField id="form-user-password" label="Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setPassword(e.target.value)}} required error={passwordValidation} />
                         <TextField id="form-user-confirm-password" label="Confirmar Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setConfirmPassword(e.target.value)}} required error={passwordValidation}/>
-                    </div>
-                    {eMailValidation && <p style={{color: "red"}}> El e-mail introducido no es valido</p>}
-                    {passwordValidation && <p style={{color: "red"}}> Las contraseñas no coinciden</p>}
-                    </div>
+                        {passwordValidation && <Alert severity="error"> Las contraseñas no coinciden </Alert>}
+                    </div>    
+                </div>
             </FormModal>
         </div>
     );

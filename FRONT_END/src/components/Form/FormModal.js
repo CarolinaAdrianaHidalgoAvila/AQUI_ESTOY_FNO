@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { ButtonAccept } from '../Button/ButtonComp';
 
@@ -25,8 +25,8 @@ function FormModal(props) {
 
 
     function handleCloseSubmit(event){
-        handleSubmit(event);
-        setOpen(false);
+        const closeModal = handleSubmit(event);
+        setOpen(closeModal);
     }
 
     return ( 
