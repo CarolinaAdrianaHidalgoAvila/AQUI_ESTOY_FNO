@@ -50,7 +50,7 @@ function NewPetForm(props) {
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es-mx">  
-            <FormModal buttonName="Nueva Mascota" formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreatePetSubmit}>
+            <FormModal buttonName="Nueva Mascota" formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreatePetSubmit} buttonType="accept">
                 <div className='row justify-content-start'>
                     <div className='col'>
                         <TextField id="form-pet-name" label="Nombre" variant="outlined" margin='normal' onChange={(e) => {setName(e.target.value)}} required />

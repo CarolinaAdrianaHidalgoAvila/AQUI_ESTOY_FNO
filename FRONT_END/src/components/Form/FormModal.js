@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { ButtonAccept } from '../Button/ButtonComp';
+import { ButtonComp, ButtonAccept, ButtonDanger, ButtonCheck } from '../Button/ButtonComp';
 
 import { Box, Typography, Modal } from '@mui/material';
 
 
 function FormModal(props) {
-    const {children, buttonName, fromTitle, submitName, handleSubmit} = props;
+    const {children, buttonName, fromTitle, submitName, handleSubmit, buttonType} = props;
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -23,6 +23,12 @@ function FormModal(props) {
         p: 4,
     };
 
+    const buttonTypes = {
+        "normal": <ButtonComp  onClick={handleOpen}>{buttonName}</ButtonComp>,
+        "accept": <ButtonAccept  onClick={handleOpen}>{buttonName}</ButtonAccept>,
+        "danger": <ButtonDanger  onClick={handleOpen}>{buttonName}</ButtonDanger>,
+        "check": <ButtonCheck  onClick={handleOpen}>{buttonName}</ButtonCheck>,
+    }
 
     function handleCloseSubmit(event){
         const closeModal = handleSubmit(event);
@@ -31,7 +37,7 @@ function FormModal(props) {
 
     return ( 
         <>
-            <ButtonAccept  onClick={handleOpen}>{buttonName}</ButtonAccept>
+            {buttonType === undefined ? buttonTypes["normal"] : buttonTypes[buttonType]}
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">

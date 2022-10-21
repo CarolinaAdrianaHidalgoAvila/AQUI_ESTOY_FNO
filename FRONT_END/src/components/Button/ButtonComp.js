@@ -4,7 +4,7 @@ function ButtonComp(props) {
     const {children, ...rest} = props;
 
     const style = {
-        marginLeft:1, 
+        margin:1, 
         background:'#BBDFC8'
     }
     
@@ -17,7 +17,7 @@ function ButtonAccept(props) {
     const {children, ...rest} = props;
 
     const style = {
-        marginLeft:1, 
+        margin:1, 
         background:'#75CFB8'
     }
     
@@ -30,7 +30,7 @@ function ButtonDanger(props) {
     const {children, ...rest} = props;
 
     const style = {
-        marginLeft:1, 
+        margin:1, 
         background:'#fa6464'
     }
     
@@ -43,7 +43,7 @@ function ButtonCheck(props) {
     const {children, ...rest} = props;
 
     const style = {
-        marginLeft:1, 
+        margin:1, 
         background:'#5c7df7'
     }
     
