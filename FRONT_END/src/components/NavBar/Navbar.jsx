@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import { AppBar, Grid, Typography, Toolbar, Tabs , Tab, Box, Button ,useTheme , useMediaQuery} from '@mui/material';
 import DrawerComp from './DrawerComp';
-import NewUserForm from '../Form/NewUserForm';
+import {NewUserForm} from '../Form/UserForm';
 import ButtonComp from '../Button/ButtonComp';
 import logo from '../../Images/logo.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

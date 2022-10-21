@@ -3,7 +3,7 @@ import { Avatar, CircularProgress } from '@mui/material';
 
 import NavTab from '../components/NavBar/NavTab';
 import NewPetForm from "../components/Form/NewPetForm";
-import ShowPets from "../components/ListCard/ShowPets";
+import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
 import ListCards from '../components/ListCard/ListCards';
 
 import useFetch from '../hooks/useFetch';
@@ -13,7 +13,7 @@ function UserProfile(props) {
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
     const [value, setValue] = useState(0);
-    const {get, loading} = useFetch("http://localhost:5500/api/");
+    const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
 
     useEffect(() => {
         //Get user information
@@ -52,28 +52,31 @@ function UserProfile(props) {
                         <h1 className='display-4'>{`${user.firstName} ${user.lastName}`}</h1>
                         <h5>{user.emali}</h5>
                         <h5>{user.phone}</h5>
-                        {user.address != undefined && <h5>{user.address}</h5>}
+                        {user.address !== undefined && <h5>{user.address}</h5>}
                     </div>
                 </div>
                 <div className='userBody'>
-                    <div className='my-3'>
-                        <NavTab options={["Publicaciones", "Mascotas"]} onChange={handleChangeNavTab} value={value}/>
-                    </div>
-                    <div className='container'>
-                        {(value === 0) && <p>Aqui las Publicaciones</p>}
-                        {(value === 1) && 
-                        <div>
-                            <ListCards data={pets} showKeys={{
-                            "namePet": "Nombre: ",
-                            "birthDate": "Cumpleaños: ",
-                            "gender": "Genero: ",
-                            "specie": "Especie: "
-                            }} title={""} />
-                            <NewPetForm />
+                    <div className='publicationsPetsView'>
+                        <div className='my-3'>
+                            <NavTab options={["Publicaciones", "Mascotas"]} onChange={handleChangeNavTab} value={value}/>
                         </div>
-                        }
+                        <div className='container'>
+                            {(value === 0) && <p>Aqui las Publicaciones</p>}
+                            {(value === 1) && 
+                            <div>
+                                <ListCards data={pets} showKeys={{
+                                "namePet": "Nombre: ",
+                                "birthDate": "Cumpleaños: ",
+                                "gender": "Genero: ",
+                                "specie": "Especie: "
+                                }} title={""} />
+                                <NewPetForm />
+                            </div>
+                            }
+                        </div>
                     </div>
-                    
+                    <ButtonDanger> Borrar Usuario </ButtonDanger>
+                    <ButtonCheck> Editar Datos</ButtonCheck>
                 </div>
             </div> 
             

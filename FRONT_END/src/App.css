@@ -11,9 +11,13 @@ body {
   animation: rotator 1.4s linear infinite;
 }
 
-.userPage{
+.userPage {
   padding-left: 30px;
   padding-top: 90px;
+}
+
+.publicationsPetsView {
+  margin-bottom: 30px;
 }
 
 .infoUser {
