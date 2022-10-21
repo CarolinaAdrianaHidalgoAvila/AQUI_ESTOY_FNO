@@ -144,7 +144,7 @@ function EditUserForm() {
             address: address,
         }
 
-        post("users", user)
+        post("users/6335dba37c28ccc604586936", user)
         .then(data => {
             console.log(data);
             if(data.name !== undefined) {
@@ -156,7 +156,7 @@ function EditUserForm() {
         return false;
     }
 
-    
+
 
     return ( 
         <div>
