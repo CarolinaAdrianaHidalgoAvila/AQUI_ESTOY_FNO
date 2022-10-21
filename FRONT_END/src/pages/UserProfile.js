@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { Avatar, CircularProgress } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import NavTab from '../components/NavBar/NavTab';
 import NewPetForm from "../components/Form/NewPetForm";
 import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
 import ListCards from '../components/ListCard/ListCards';
+import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
+import { EditUserForm } from '../components/Form/UserForm';
 
 import useFetch from '../hooks/useFetch';
 
@@ -13,7 +16,9 @@ function UserProfile(props) {
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
     const [value, setValue] = useState(0);
-    const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
+    const {get, delete_, loading} = useFetch("http://localhost:5500/api/");
+
+    const [openConfirm, setOpenConfirm] = useState(false);
 
     useEffect(() => {
         //Get user information
@@ -35,6 +40,14 @@ function UserProfile(props) {
 
     function handleChangeNavTab(event, newValue) {
         setValue(newValue);
+    }
+
+    function handleDeleteUser(){
+        delete_("users/6335dba37c28ccc604586936")
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.log(error))
     }
 
     if(loading) {
@@ -75,8 +88,9 @@ function UserProfile(props) {
                             }
                         </div>
                     </div>
-                    <ButtonDanger> Borrar Usuario </ButtonDanger>
-                    <ButtonCheck> Editar Datos</ButtonCheck>
+                    <ButtonDanger startIcon={<DeleteIcon />} onClick={() => setOpenConfirm(true)}> Borrar Usuario </ButtonDanger>
+                    <EditUserForm />
+                    {openConfirm && <ConfirmDialog handleCancel={() => setOpenConfirm(false)} handleAccept={handleDeleteUser} dialogMessage={`¿Seguro que desea borrar el usuario de ${user.firstName} ${user.lastName} ?`}/>}
                 </div>
             </div> 
             

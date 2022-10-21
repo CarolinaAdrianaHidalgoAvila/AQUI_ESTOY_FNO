@@ -23,6 +23,7 @@ function ConfirmDialog(props) {
         <>
             <Dialog
                 open={true}
+                onClose={handleCancelClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
                 {...rest}
