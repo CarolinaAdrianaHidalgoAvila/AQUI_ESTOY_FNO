@@ -34,11 +34,12 @@ namespace AquiEstoy_MongoDB.Data.Repository
             return result;
         }
 
-        public bool UpdateUser(UserEntity userModel)
+        public async Task UpdateUser(string userId, UserEntity userEntity)
         {
-            userCollection.ReplaceOne(sub => sub.Id == userModel.Id, userModel);
-            return true;
+            userEntity.Id = userId;
+            await userCollection.ReplaceOneAsync(sub => sub.Id == userId, userEntity);
         }
+
         public async Task DeleteUserAsync(string userId)
         {
             var userPets = await GetAllPetsAsync(userId);
@@ -65,10 +66,14 @@ namespace AquiEstoy_MongoDB.Data.Repository
         {
             return await petCollection.Find(x => x.UserID == userId && x.Id == petId).FirstOrDefaultAsync();
         }
+        public async Task UpdatePetAsync(string petId, PetEntity petEntity) 
+        {
+            petEntity.Id = petId;
+            await petCollection.ReplaceOneAsync(sub => sub.Id == petId, petEntity);
+        }
         public async Task DeletePetAsync(string petId)
         {
             await petCollection.DeleteOneAsync(x => x.Id == petId);
         }
-
     }
 }
