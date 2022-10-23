@@ -8,7 +8,8 @@ namespace AquiEstoy_MongoDB.Data.Entities
         {
             [Key]
             [BsonId]
-            public ObjectId Id { get; set; }
+            [BsonRepresentation(BsonType.ObjectId)]
+            public string Id { get; set; }
 
             [BsonElement("namePet")]
             [JsonPropertyName("namePet")]

@@ -23,9 +23,9 @@ namespace AquiEstoy_MongoDB.Data.Repository
             await userCollection.InsertOneAsync(user);
         }
 
-        public async Task<UserEntity> GetUserAsync(String userId)
+        public async Task<UserEntity> GetUserAsync(string userId)
         {
-            return await userCollection.Find(x => x.Id == new ObjectId(userId)).FirstOrDefaultAsync();
+            return await userCollection.Find(x => x.Id == userId).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
