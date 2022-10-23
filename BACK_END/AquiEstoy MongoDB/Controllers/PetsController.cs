@@ -54,6 +54,34 @@ namespace AquiEstoy_MongoDB.Controllers
             }
         }
 
+        [HttpPut("{petId}")]
+        public async Task<IActionResult> UpdatePetAsync(string petId, string userId, [FromBody] PetModel petModel)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    foreach (var pair in ModelState)
+                    {
+                        if (pair.Key == nameof(petModel.UserID) && pair.Value.Errors.Count > 0)
+                        {
+                            return BadRequest(pair.Value.Errors);
+                        }
+                    }
+                }
+                await _petService.UpdatePetAsync(userId, petId, petModel);
+                return Ok();
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message); ;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Something happend: {ex.Message}");
+            }
+        }
+
         [HttpDelete("{petId}")]
         public async Task<ActionResult> DeleteUsersAsync(string userId, string petId)
         {

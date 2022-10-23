@@ -25,6 +25,17 @@ namespace AquiEstoy_MongoDB.Services
             return newPetModel;
         }
 
+        public async Task<PetModel> GetPetAsync(string userId, string petId){
+            await ValidateUser(userId);
+            var petEntity = await _aquiEstoyCollection.GetPetAsync(petId, userId);
+            if (petEntity == null)
+            {
+                throw new NotFoundOperationException($"The user id: {petId}, does not exist.");
+            }
+            var petModel = _mapper.Map<PetModel>(petEntity);
+            return petModel;
+        }
+
         public async Task<IEnumerable<PetModel>> GetAllPetsAsync(string userId)
         {
             await ValidateUser(userId);
@@ -32,6 +43,14 @@ namespace AquiEstoy_MongoDB.Services
             var petsModelList = _mapper.Map<IEnumerable<PetModel>>(petsEntityList);
             return petsModelList;
         }
+        public async Task UpdatePetAsync(string userId, string petId, PetModel petModel)
+        {
+            await ValidateUser(userId);
+            await ValidatePet(petId, userId);
+            var petEntity = _mapper.Map<PetEntity>(petModel);
+            await _aquiEstoyCollection.UpdatePetAsync(petId, petEntity);
+        }
+
         public async Task DeletePetAsync(string userId, string petId)
         {
             await ValidateUser(userId);
@@ -52,9 +71,8 @@ namespace AquiEstoy_MongoDB.Services
             var pet = await _aquiEstoyCollection.GetPetAsync(petId, userId);
             if (pet == null)
             {
-                throw new NotFoundOperationException($"The user id: {petId}, does not exist.");
+                throw new NotFoundOperationException($"The pet id: {petId}, does not exist.");
             }
         }
-
     }
 }

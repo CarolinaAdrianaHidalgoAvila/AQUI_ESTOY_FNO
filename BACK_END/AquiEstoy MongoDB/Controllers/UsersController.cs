@@ -41,6 +41,10 @@ namespace AquiEstoy_MongoDB.Controllers
                 var user = await _userService.GetUserAsync(userId);
                 return Ok(user);
             }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
@@ -80,8 +84,8 @@ namespace AquiEstoy_MongoDB.Controllers
                         }
                     }
                 }
-
-                return Ok(await _userService.UpdateUserAsync(userId, userModel));
+                await _userService.UpdateUserAsync(userId, userModel);
+                return Ok();
             }
             catch (NotFoundOperationException ex)
             {

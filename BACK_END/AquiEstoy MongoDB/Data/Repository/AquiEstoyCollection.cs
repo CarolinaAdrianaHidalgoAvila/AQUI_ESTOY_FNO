@@ -66,10 +66,14 @@ namespace AquiEstoy_MongoDB.Data.Repository
         {
             return await petCollection.Find(x => x.UserID == userId && x.Id == petId).FirstOrDefaultAsync();
         }
+        public async Task UpdatePetAsync(string petId, PetEntity petEntity) 
+        {
+            petEntity.Id = petId;
+            await petCollection.ReplaceOneAsync(sub => sub.Id == petId, petEntity);
+        }
         public async Task DeletePetAsync(string petId)
         {
             await petCollection.DeleteOneAsync(x => x.Id == petId);
         }
-
     }
 }

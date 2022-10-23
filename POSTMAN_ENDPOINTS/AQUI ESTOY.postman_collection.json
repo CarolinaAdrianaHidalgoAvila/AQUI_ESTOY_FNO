@@ -43,7 +43,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/6354aae3c20a9f37773ce88e",
+							"raw": "http://localhost:5500/api/users/6355b8856b3505380f9128d9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -52,7 +52,7 @@
 							"path": [
 								"api",
 								"users",
-								"6354aae3c20a9f37773ce88e"
+								"6355b8856b3505380f9128d9"
 							]
 						}
 					},
@@ -106,7 +106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Edited New User\",\r\n    \"lastName\": \"New User\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"newUser@gmail.com\",\r\n    \"address\": \"Sacaba\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Edited Edited New User\",\r\n    \"lastName\": \"New User\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"newUser@gmail.com\",\r\n    \"address\": \"Sacaba\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -140,7 +140,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/6354974f5d3813e1b021cb75/pets",
+							"raw": "http://localhost:5500/api/users/634751f769610488f29d608e/pets",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -149,7 +149,7 @@
 							"path": [
 								"api",
 								"users",
-								"6354974f5d3813e1b021cb75",
+								"634751f769610488f29d608e",
 								"pets"
 							]
 						}
@@ -205,6 +205,38 @@
 								"6354974f5d3813e1b021cb75",
 								"pets",
 								"63549992cc6c743f04286fa0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT PET",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namePet\":\"Cody Edited\",\r\n    \"gender\":\"M\",\r\n    \"hasNecklace\":true,\r\n    \"specie\":\"Gato\",\r\n    \"userID\":\"634751f769610488f29d608e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5500/api/users/634751f769610488f29d608e/pets/634752fb69610488f29d608f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"634751f769610488f29d608e",
+								"pets",
+								"634752fb69610488f29d608f"
 							]
 						}
 					},
