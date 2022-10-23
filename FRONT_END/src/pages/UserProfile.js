@@ -3,20 +3,24 @@ import { Avatar, CircularProgress } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import NavTab from '../components/NavBar/NavTab';
-import NewPetForm from "../components/Form/NewPetForm";
+import NewPetForm from "../components/Form/PetForm";
 import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
-import ListCards from '../components/ListCard/ListCards';
+import { ListCards } from '../components/ListCard/ListCards';
 import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
 import { EditUserForm } from '../components/Form/UserForm';
 
 import useFetch from '../hooks/useFetch';
+import { IconButtonDelete, IconButtonEdit } from '../components/Button/LittleButtons';
+import ListPetsCard from '../components/ListCard/ListPetsCards';
 
 function UserProfile(props) {
 
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
+
     const [value, setValue] = useState(0);
-    const {get, delete_, loading} = useFetch("http://localhost:5500/api/");
+
+    const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
 
     const [openConfirm, setOpenConfirm] = useState(false);
 
@@ -28,9 +32,8 @@ function UserProfile(props) {
             setUser(data);
         })
         .catch(error => console.log(error));
-
         //Get pets from user
-        get("users/6335dba37c28ccc604586936/pets")
+        get(`users/6335dba37c28ccc604586936/pets`)
         .then(data => {
             console.log(data);
             setPets(data);
@@ -76,15 +79,17 @@ function UserProfile(props) {
                         <div className='container'>
                             {(value === 0) && <p>Aqui las Publicaciones</p>}
                             {(value === 1) && 
-                            <div>
-                                <ListCards data={pets} showKeys={{
-                                "namePet": "Nombre: ",
-                                "birthDate": "Cumpleaños: ",
-                                "gender": "Genero: ",
-                                "specie": "Especie: "
-                                }} title={""} />
-                                <NewPetForm />
-                            </div>
+                                <ListPetsCard 
+                                    userId={"6335dba37c28ccc604586936"} 
+                                    pets={pets}
+                                    showKeys={{
+                                        "namePet": "Nombre: ",
+                                        "birthDate": "Cumpleaños: ",
+                                        "gender": "Genero: ",
+                                        "specie": "Especie: "
+                                        }} 
+                                    title={""} 
+                                />
                             }
                         </div>
                     </div>
