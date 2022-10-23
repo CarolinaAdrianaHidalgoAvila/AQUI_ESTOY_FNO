@@ -34,6 +34,12 @@ namespace AquiEstoy_MongoDB.Data.Repository
             return result;
         }
 
+        public bool UpdateUser(UserEntity userModel)
+        {
+            userCollection.ReplaceOne(sub => sub.Id == userModel.Id, userModel);
+            return true;
+        }
+
 
         //PETS COLLECTION
         public async Task<IEnumerable<PetEntity>> GetAllPetsAsync(string userId)

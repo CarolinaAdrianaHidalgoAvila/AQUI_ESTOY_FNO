@@ -3,6 +3,7 @@ using AquiEstoy_MongoDB.Data.Repository;
 using AquiEstoy_MongoDB.Exceptions;
 using AquiEstoy_MongoDB.Models;
 using AutoMapper;
+using MongoDB.Bson;
 
 namespace AquiEstoy_MongoDB.Services
 {
@@ -39,6 +40,15 @@ namespace AquiEstoy_MongoDB.Services
                 throw new NotFoundOperationException($"The user id: {userId}, does not exist.");
             }
             var userModel = _mapper.Map<UserModel>(userEntity);
+            return userModel;
+        }
+
+        public async Task<UserModel> UpdateUserAsync(string userId, UserModel userModel)
+        {
+            var userEntity = _mapper.Map<UserEntity>(userModel);
+            await GetUserAsync(userId);
+            //userEntity.Id = userId;
+            _aquiEstoyCollection.UpdateUser(userEntity);
             return userModel;
         }
     }
