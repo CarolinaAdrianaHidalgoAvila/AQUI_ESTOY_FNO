@@ -2,8 +2,7 @@
 	"info": {
 		"_postman_id": "0e69bd9c-3022-4214-8c19-564132811318",
 		"name": "AQUI ESTOY",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17768640"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -16,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Luis\",\r\n    \"lastName\": \"Enrique\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"luisEnrique@gmai.com\",\r\n    \"address\": \"Sacaba\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Fourth New User\",\r\n    \"lastName\": \"New User\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"newUser@gmail.com\",\r\n    \"address\": \"Cercado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +43,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/63227f9ca2f22b65f6585b30",
+							"raw": "http://localhost:5500/api/users/6354aae3c20a9f37773ce88e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -53,7 +52,7 @@
 							"path": [
 								"api",
 								"users",
-								"63227f9ca2f22b65f6585b30"
+								"6354aae3c20a9f37773ce88e"
 							]
 						}
 					},
@@ -78,6 +77,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/6354aad8c20a9f37773ce88d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"6354aad8c20a9f37773ce88d"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -90,7 +110,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/632280d2a2f22b65f6585b32/pets",
+							"raw": "http://localhost:5500/api/users/6354974f5d3813e1b021cb75/pets",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -99,7 +119,7 @@
 							"path": [
 								"api",
 								"users",
-								"632280d2a2f22b65f6585b32",
+								"6354974f5d3813e1b021cb75",
 								"pets"
 							]
 						}
@@ -113,7 +133,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"namePet\":\"Neymar\",\r\n    \"gender\":\"M\",\r\n    \"hasNecklace\":true,\r\n    \"specie\":\"Gato\"\r\n}",
+							"raw": "{\r\n    \"namePet\":\"4th new Pet\",\r\n    \"gender\":\"M\",\r\n    \"hasNecklace\":true,\r\n    \"specie\":\"Perro\",\r\n    \"userID\":\"6354aad8c20a9f37773ce88d\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -121,7 +141,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5500/api/users/632280d2a2f22b65f6585b32/pets",
+							"raw": "http://localhost:5500/api/users/6354aad8c20a9f37773ce88d/pets",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -130,8 +150,31 @@
 							"path": [
 								"api",
 								"users",
-								"632280d2a2f22b65f6585b32",
+								"6354aad8c20a9f37773ce88d",
 								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PET",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/6354974f5d3813e1b021cb75/pets/63549992cc6c743f04286fa0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"6354974f5d3813e1b021cb75",
+								"pets",
+								"63549992cc6c743f04286fa0"
 							]
 						}
 					},

@@ -7,7 +7,7 @@ namespace AquiEstoy_MongoDB.Models
 {
     public class PetModel
     {
-        public ObjectId Id { get; set; }
+        public string Id { get; set; } = String.Empty;
 
         public string? NamePet { get; set; }
         public DateTime BirthDate { get; set; }//Revisar fechas

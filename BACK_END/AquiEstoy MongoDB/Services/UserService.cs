@@ -51,5 +51,11 @@ namespace AquiEstoy_MongoDB.Services
             _aquiEstoyCollection.UpdateUser(userEntity);
             return userModel;
         }
+
+        public async Task DeleteUserAsync(string userId)
+        {
+            await GetUserAsync(userId);
+            await _aquiEstoyCollection.DeleteUserAsync(userId);
+        }
     }
 }

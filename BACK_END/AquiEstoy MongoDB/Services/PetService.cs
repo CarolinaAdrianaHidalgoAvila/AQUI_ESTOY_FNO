@@ -32,6 +32,12 @@ namespace AquiEstoy_MongoDB.Services
             var petsModelList = _mapper.Map<IEnumerable<PetModel>>(petsEntityList);
             return petsModelList;
         }
+        public async Task DeletePetAsync(string userId, string petId)
+        {
+            await ValidateUser(userId);
+            await ValidatePet(petId, userId);
+            await _aquiEstoyCollection.DeletePetAsync(petId);
+        }
 
         private async Task ValidateUser(string userId)
         {
@@ -39,6 +45,14 @@ namespace AquiEstoy_MongoDB.Services
             if (user == null)
             {
                 throw new NotFoundOperationException($"The user id: {userId}, does not exist.");
+            }
+        }
+        private async Task ValidatePet(string petId, string userId)
+        {
+            var pet = await _aquiEstoyCollection.GetPetAsync(petId, userId);
+            if (pet == null)
+            {
+                throw new NotFoundOperationException($"The user id: {petId}, does not exist.");
             }
         }
 

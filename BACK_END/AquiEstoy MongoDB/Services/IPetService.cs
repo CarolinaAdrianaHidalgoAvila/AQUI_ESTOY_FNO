@@ -6,5 +6,6 @@ namespace AquiEstoy_MongoDB.Services
     {
         Task<PetModel> CreatePetAsync(PetModel petModel, string userId);
         Task<IEnumerable<PetModel>> GetAllPetsAsync(string userId);
+        Task DeletePetAsync(string userId, string petId);
     }
 }
