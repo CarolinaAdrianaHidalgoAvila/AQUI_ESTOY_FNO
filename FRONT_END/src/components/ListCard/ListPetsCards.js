@@ -42,8 +42,14 @@ function ListPetsCard(props) {
         delete_(`users/${userId}/pets/${petId}`)
         .then(data => {
             console.log(data);
+            alert("Mascota borrada!");
+
         })
-        .catch(error => console.log(error))
+        .catch(error => alert(error))
+        .finally(() =>{
+            window.location.href = "/user";
+            setOpenConfirm(false);
+        })
     }
 
     function handleClickDeletePet(petId, petName){
@@ -75,10 +81,11 @@ function ListPetsCard(props) {
                             );
                         })
                     }
-                    <NewPetForm userId={userId} />
+                    
                 </Grid>
             </Grid>
             {openConfirm && confirmDialog}
+            <NewPetForm userId={userId} />
         </div>
     );
 }

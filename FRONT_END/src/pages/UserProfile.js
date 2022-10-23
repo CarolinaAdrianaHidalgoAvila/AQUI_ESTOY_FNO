@@ -3,7 +3,7 @@ import { Avatar, CircularProgress } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import NavTab from '../components/NavBar/NavTab';
-import NewPetForm from "../components/Form/PetForm";
+import {NewPetForm} from "../components/Form/PetForm";
 import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
 import { ListCards } from '../components/ListCard/ListCards';
 import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
@@ -24,16 +24,18 @@ function UserProfile(props) {
 
     const [openConfirm, setOpenConfirm] = useState(false);
 
+    const userId = "632332f9d23bfa3c7332a7da";
+
     useEffect(() => {
         //Get user information
-        get("users/6335dba37c28ccc604586936")
+        get(`users/${userId}`)
         .then(data => {
             console.log(data);
             setUser(data);
         })
         .catch(error => console.log(error));
         //Get pets from user
-        get(`users/6335dba37c28ccc604586936/pets`)
+        get(`users/${userId}/pets`)
         .then(data => {
             console.log(data);
             setPets(data);
@@ -46,11 +48,16 @@ function UserProfile(props) {
     }
 
     function handleDeleteUser(){
-        delete_("users/6335dba37c28ccc604586936")
+        delete_(`users/${userId}`)
         .then(data => {
             console.log(data);
+            alert("Usuario borrado!")
         })
-        .catch(error => console.log(error))
+        .catch(error => alert(error))
+        .finally(() => {
+            setOpenConfirm(false);
+            window.location.href = "/";
+        })
     }
 
     if(loading) {
@@ -80,7 +87,7 @@ function UserProfile(props) {
                             {(value === 0) && <p>Aqui las Publicaciones</p>}
                             {(value === 1) && 
                                 <ListPetsCard 
-                                    userId={"6335dba37c28ccc604586936"} 
+                                    userId={userId} 
                                     pets={pets}
                                     showKeys={{
                                         "namePet": "Nombre: ",
@@ -94,8 +101,15 @@ function UserProfile(props) {
                         </div>
                     </div>
                     <ButtonDanger startIcon={<DeleteIcon />} onClick={() => setOpenConfirm(true)}> Borrar Usuario </ButtonDanger>
-                    <EditUserForm />
-                    {openConfirm && <ConfirmDialog handleCancel={() => setOpenConfirm(false)} handleAccept={handleDeleteUser} dialogMessage={`¿Seguro que desea borrar el usuario de ${user.firstName} ${user.lastName} ?`}/>}
+                    <EditUserForm userId={userId} user={user} />
+                    {
+                        openConfirm && 
+                        <ConfirmDialog 
+                            handleCancel={() => setOpenConfirm(false)} 
+                            handleAccept={handleDeleteUser} 
+                            dialogMessage={`¿Seguro que desea borrar el usuario de ${user.firstName} ${user.lastName} ?`}
+                        />
+                    }
                 </div>
             </div> 
             

@@ -92,8 +92,9 @@ function NewUserForm(props) {
     );
 }
 
-function EditUserForm() {
-    const { post, get } = useFetch("http://localhost:5500/api/");
+function EditUserForm(props) {
+    const { userId, user } = props;
+    const { put } = useFetch("http://localhost:5500/api/");
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -107,16 +108,11 @@ function EditUserForm() {
     const [passwordValidation, setPasswordValidation] = useState(false);
 
     useEffect(() => {
-        get("users/6335dba37c28ccc604586936")
-        .then(data => {
-            console.log(data);
-            setFirstName(data.firstName);
-            setLastName(data.lastName);
-            setTelephone(data.phone);
-            setEMail(data.email);
-            setAddress(data.address);
-        })
-        .catch(error => console.log(error));
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setTelephone(user.phone);
+        setEMail(user.email);
+        setAddress(user.address);
     }, []);
 
     function validateEmail(email) {
@@ -134,7 +130,7 @@ function EditUserForm() {
             setEMailValidation(false);
         }
 
-        if(password != confirmPassword) {
+        if(password != confirmPassword || password == "") {
             setPasswordValidation(true);
             return true;
         } else { 
@@ -148,7 +144,7 @@ function EditUserForm() {
             address: address,
         }
 
-        post("users/6335dba37c28ccc604586936", user)
+        put(`users/${userId}`, user)
         .then(data => {
             console.log(data);
             if(data.name !== undefined) {
@@ -179,8 +175,8 @@ function EditUserForm() {
                         {eMailValidation && <Alert severity="error"> El e-mail introducido no es valido </Alert>}
                         <TextField id="form-user-cellphone" label="Telefono" variant="outlined" type="number" margin='normal' required value={telephone} onChange={(e) => {setTelephone(e.target.value)}} />
                         <TextField id="form-user-direction" label="Direccion" variant="outlined" margin='normal' value={address} onChange={(e) => {setAddress(e.target.value)}} />
-                        <TextField id="form-user-password" label="Nueva Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setPassword(e.target.value)}} required error={passwordValidation} />
-                        <TextField id="form-user-confirm-password" label="Confirmar Nueva Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setConfirmPassword(e.target.value)}} required error={passwordValidation}/>
+                        <TextField id="form-user-password" label="Nueva Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setPassword(e.target.value)}} error={passwordValidation} />
+                        <TextField id="form-user-confirm-password" label="Confirmar Nueva Contraseña" variant="outlined" margin='normal' type="password" onChange={(e) => {setConfirmPassword(e.target.value)}} error={passwordValidation}/>
                         {passwordValidation && <Alert severity="error"> Las contraseñas no coinciden </Alert>}
                     </div>    
                 </div>
