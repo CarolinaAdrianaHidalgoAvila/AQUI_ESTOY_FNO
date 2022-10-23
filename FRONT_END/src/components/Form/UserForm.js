@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { TextField, Alert } from '@mui/material';
+import { TextField, Alert, Link } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
+import { ButtonAccept, ButtonCheck } from '../Button/ButtonComp';
 
 function NewUserForm(props) {
     const { post } = useFetch("http://localhost:5500/api/");
@@ -61,9 +63,11 @@ function NewUserForm(props) {
         return false;
     }
 
+    const buttonRegisterUser = <Link underline='hover'>Registrarse</Link>
+
     return ( 
         <div>
-            <FormModal buttonName="Crear Usuario" formTitle="Registrar un nuevo usuario" submitName="Registarse" handleSubmit={handleCreateUserSubmit} buttonType="accept">
+            <FormModal formTitle="Registrar un nuevo usuario" submitName="Registarse" handleSubmit={handleCreateUserSubmit} buttonType={buttonRegisterUser}>
                 <div className='container'>
                     <div className='row justify-content-start'>
                         <div className='col'>
@@ -156,11 +160,11 @@ function EditUserForm() {
         return false;
     }
 
-
+    const buttonToEditUser = <ButtonCheck startIcon={<EditIcon />}>Editar Usuario</ButtonCheck>
 
     return ( 
         <div>
-            <FormModal buttonName="Editar usuario" formTitle="Editar los datos del usuario" submitName="Editar" handleSubmit={handleEditUserSubmit} buttonType="check">
+            <FormModal formTitle="Editar los datos del usuario" submitName="Editar" handleSubmit={handleEditUserSubmit} buttonType={buttonToEditUser}>
                 <div className='container'>
                     <div className='row justify-content-start'>
                         <div className='col'>

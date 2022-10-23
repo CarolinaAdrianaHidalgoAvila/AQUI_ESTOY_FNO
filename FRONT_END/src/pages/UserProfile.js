@@ -3,7 +3,7 @@ import { Avatar, CircularProgress } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import NavTab from '../components/NavBar/NavTab';
-import NewPetForm from "../components/Form/NewPetForm";
+import NewPetForm from "../components/Form/PetForm";
 import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
 import { ListCards } from '../components/ListCard/ListCards';
 import ConfirmDialog from '../components/Dialogs/ConfirmDialog';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { ListCards } from './ListCards';
 import { IconButtonEdit, IconButtonDelete } from '../Button/LittleButtons';
-import NewPetForm from '../Form/NewPetForm';
+import { NewPetForm, EditPetForm } from '../Form/PetForm';
 import ConfirmDialog from '../Dialogs/ConfirmDialog';
 import defImage from '../../Images/dog.jpg';
 import CardItem from './CardItem';
@@ -31,7 +31,7 @@ function ListPetsCard(props) {
                     element_array.push( [showKeys[key], element[key]] )
                 }
             }
-            var element_dictionary = {"id": element.id, "name": element.namePet, "data": element_array}
+            var element_dictionary = {"json": element, "data": element_array}
             data_list.push(element_dictionary);
         });
         setDataList(data_list);
@@ -51,18 +51,10 @@ function ListPetsCard(props) {
         setConfirmDialog(
             <ConfirmDialog 
                 handleCancel={() => setOpenConfirm(false)} 
-                handleAccept={() => handleClickDeletePet(petId)} 
+                handleAccept={() => handleDeletePet(petId)} 
                 dialogMessage={`¿Seguro que desea borrar ${petName} de sus registros?`}
             />
         );
-    }
-
-    function handleEditPet(petId, pet){
-        post(`users/${userId}/pets/${petId}`)
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.log(error))
     }
 
     return ( 
@@ -75,14 +67,15 @@ function ListPetsCard(props) {
                             let image = item.data.filter(element => element[0] === "image")[1] ?? defImage;
                             return (
                                 <>
-                                    <CardItem key={item.id} image={image} data={item.data}>
-                                        <IconButtonEdit />
-                                        <IconButtonDelete onClick={() => handleClickDeletePet(item.id, item.name)} />
+                                    <CardItem key={item.json.id} image={image} data={item.data}>
+                                        <EditPetForm userId={userId} petId={item.json.id} pet={item.json} />
+                                        <IconButtonDelete onClick={() => handleClickDeletePet(item.json.id, item.json.petName)} />
                                     </CardItem>
                                 </>
                             );
                         })
                     }
+                    <NewPetForm userId={userId} />
                 </Grid>
             </Grid>
             {openConfirm && confirmDialog}

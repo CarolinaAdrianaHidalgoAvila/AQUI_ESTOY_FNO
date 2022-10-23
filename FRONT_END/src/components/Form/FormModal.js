@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { ButtonComp, ButtonAccept, ButtonDanger, ButtonCheck } from '../Button/ButtonComp';
+import { ButtonAccept } from '../Button/ButtonComp';
 
 import { Box, Typography, Modal } from '@mui/material';
 
 
 function FormModal(props) {
-    const {children, buttonName, fromTitle, submitName, handleSubmit, buttonType} = props;
+    const {children, fromTitle, submitName, handleSubmit, buttonType} = props;
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const buttonToInsert = React.cloneElement(
+        buttonType,
+        { onClick: handleOpen }
+    );
 
     const style = {
         position: 'absolute',
@@ -23,11 +28,8 @@ function FormModal(props) {
         p: 4,
     };
 
-    const buttonTypes = {
-        "normal": <ButtonComp  onClick={handleOpen}>{buttonName}</ButtonComp>,
-        "accept": <ButtonAccept  onClick={handleOpen}>{buttonName}</ButtonAccept>,
-        "danger": <ButtonDanger  onClick={handleOpen}>{buttonName}</ButtonDanger>,
-        "check": <ButtonCheck  onClick={handleOpen}>{buttonName}</ButtonCheck>,
+    function addExtraProps(Component, extraProps) {
+        return <Component.type {...Component.props} {...extraProps} />;
     }
 
     function handleCloseSubmit(event){
@@ -37,7 +39,7 @@ function FormModal(props) {
 
     return ( 
         <>
-            {buttonType === undefined ? buttonTypes["normal"] : buttonTypes[buttonType]}
+            {addExtraProps(buttonType, { onClick: handleOpen })}
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
