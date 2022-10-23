@@ -8,7 +8,7 @@ namespace AquiEstoy_MongoDB.Data.Repository
         void CreateUser(UserEntity userEntity);
         Task<IEnumerable<UserEntity>> GetAllUsersAsync();
         Task<UserEntity> GetUserAsync(string userId);
-        bool UpdateUser(UserEntity userModel);
+        Task UpdateUser(string userId, UserEntity userEntity);
         Task DeleteUserAsync(string userId);
 
 

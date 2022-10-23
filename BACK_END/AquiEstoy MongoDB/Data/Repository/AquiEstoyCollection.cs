@@ -34,11 +34,12 @@ namespace AquiEstoy_MongoDB.Data.Repository
             return result;
         }
 
-        public bool UpdateUser(UserEntity userModel)
+        public async Task UpdateUser(string userId, UserEntity userEntity)
         {
-            userCollection.ReplaceOne(sub => sub.Id == userModel.Id, userModel);
-            return true;
+            userEntity.Id = userId;
+            await userCollection.ReplaceOneAsync(sub => sub.Id == userId, userEntity);
         }
+
         public async Task DeleteUserAsync(string userId)
         {
             var userPets = await GetAllPetsAsync(userId);

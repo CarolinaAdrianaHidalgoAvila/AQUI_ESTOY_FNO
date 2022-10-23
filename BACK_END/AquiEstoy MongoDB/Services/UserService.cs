@@ -45,11 +45,10 @@ namespace AquiEstoy_MongoDB.Services
 
         public async Task<UserModel> UpdateUserAsync(string userId, UserModel userModel)
         {
-            var userEntity = _mapper.Map<UserEntity>(userModel);
             await GetUserAsync(userId);
-            //userEntity.Id = userId;
-            _aquiEstoyCollection.UpdateUser(userEntity);
-            return userModel;
+            var userEntity = _mapper.Map<UserEntity>(userModel);
+            await _aquiEstoyCollection.UpdateUser(userId, userEntity);
+            return await GetUserAsync(userId);
         }
 
         public async Task DeleteUserAsync(string userId)

@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Fourth New User\",\r\n    \"lastName\": \"New User\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"newUser@gmail.com\",\r\n    \"address\": \"Cercado\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"New User to Edit\",\r\n    \"lastName\": \"New User\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"newUser@gmail.com\",\r\n    \"address\": \"Cercado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -94,6 +94,36 @@
 								"api",
 								"users",
 								"6354aad8c20a9f37773ce88d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT USER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Edited New User\",\r\n    \"lastName\": \"New User\",\r\n    \"phone\": \"70765412\",\r\n    \"email\": \"newUser@gmail.com\",\r\n    \"address\": \"Sacaba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5500/api/users/6355b8856b3505380f9128d9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"6355b8856b3505380f9128d9"
 							]
 						}
 					},
