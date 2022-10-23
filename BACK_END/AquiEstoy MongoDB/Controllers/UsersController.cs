@@ -93,5 +93,23 @@ namespace AquiEstoy_MongoDB.Controllers
             }
         }
 
+        [HttpDelete("{userId}")]
+        public async Task<ActionResult> DeleteUsersAsync(string userId)
+        {
+            try
+            {
+                await _userService.DeleteUserAsync(userId);
+                return Ok();
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
+        }
+
     }
 }

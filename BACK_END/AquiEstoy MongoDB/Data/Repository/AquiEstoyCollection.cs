@@ -39,6 +39,15 @@ namespace AquiEstoy_MongoDB.Data.Repository
             userCollection.ReplaceOne(sub => sub.Id == userModel.Id, userModel);
             return true;
         }
+        public async Task DeleteUserAsync(string userId)
+        {
+            var userPets = await GetAllPetsAsync(userId);
+            foreach (var pet in userPets)
+            {
+                await DeletePetAsync(pet.Id);
+            }
+            await userCollection.DeleteOneAsync(x => x.Id == userId);
+        }
 
 
         //PETS COLLECTION
@@ -52,5 +61,14 @@ namespace AquiEstoy_MongoDB.Data.Repository
             pet.UserID = userId;
             await petCollection.InsertOneAsync(pet);
         }
+        public async Task<PetEntity> GetPetAsync(string petId, string userId)
+        {
+            return await petCollection.Find(x => x.UserID == userId && x.Id == petId).FirstOrDefaultAsync();
+        }
+        public async Task DeletePetAsync(string petId)
+        {
+            await petCollection.DeleteOneAsync(x => x.Id == petId);
+        }
+
     }
 }

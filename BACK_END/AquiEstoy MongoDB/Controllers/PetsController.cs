@@ -27,6 +27,10 @@ namespace AquiEstoy_MongoDB.Controllers
                 var newPet = await _petService.CreatePetAsync(pet, userId);
                 return Created($"/users/{newPet.UserID}/{newPet.Id}", newPet);
             }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
@@ -47,6 +51,24 @@ namespace AquiEstoy_MongoDB.Controllers
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Something happend: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("{petId}")]
+        public async Task<ActionResult> DeleteUsersAsync(string userId, string petId)
+        {
+            try
+            {
+                await _petService.DeletePetAsync(userId, petId);
+                return Ok();
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Simething happend.");
             }
         }
     }

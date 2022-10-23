@@ -8,5 +8,6 @@ namespace AquiEstoy_MongoDB.Services
         Task<UserModel> GetUserAsync(string userId);
         Task<IEnumerable<UserModel>> GetAllUsersAsync();
         Task<UserModel> UpdateUserAsync(string userId, UserModel userModel);
+        Task DeleteUserAsync(string userId);
     }
 }
