@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Grid, Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material';
 
 
 
@@ -14,11 +14,12 @@ import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
         [
             ["label", data],
         ]
+        children: another kind of element you want to put on the cards, like buttons.
     }
 */
 
 function CardItem(props) {
-    const {key, image, data} = props;
+    const {key, image, data, children} = props;
 
     useEffect(() => {
         console.log(data);
@@ -36,6 +37,9 @@ function CardItem(props) {
                         })
                     }
                 </CardContent>
+                <CardActions>
+                    {children}
+                </CardActions>
             </Card>
         </Grid>
         </>
