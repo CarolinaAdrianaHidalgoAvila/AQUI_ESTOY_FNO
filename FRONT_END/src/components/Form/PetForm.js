@@ -114,17 +114,20 @@ function EditPetForm(props) {
             namePet: name,
             gender: gender,
             hasNecklace:(hasQr === "true") ? true : false,
-            specie: specie
+            specie: specie,
+            userID: userId
         }
         put(`users/${userId}/pets/${petId}`, pet)
         .then(data => {
             console.log(data);
             if(data.namePet !== undefined){
                 alert(`mascota ${data.namePet} editada!`);
-                window.location.href = "/user";
             }
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+        .finally(() => {
+            window.location.href = "/user";
+        });
         return false;
     }
 
