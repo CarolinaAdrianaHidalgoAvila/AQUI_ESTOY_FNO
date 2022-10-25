@@ -22,14 +22,16 @@ function CardItem(props) {
     const {key, image, data, children} = props;
 
     useEffect(() => {
-        console.log(data);
+        //console.log(data);
     }, [])
+
+    
 
     return ( 
         <>
         <Grid item xs={3} key={key}>
             <Card>
-            {image !== undefined && <CardMedia image={image} style={{ width: "250px", height: "300px", margin: "auto" }} />}
+            {image !== undefined && <CardMedia image={image} style={{ alignItems: 'center',width: "250px", height: "250px", marginTop: '5px', marginLeft:'auto',marginRight:' auto', display: ' block' }} />}
                 <CardContent>
                     {
                         data.map((item) => {
@@ -37,7 +39,7 @@ function CardItem(props) {
                         })
                     }
                 </CardContent>
-                <CardActions>
+                <CardActions >
                     {children}
                 </CardActions>
             </Card>

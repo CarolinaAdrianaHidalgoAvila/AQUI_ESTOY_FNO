@@ -91,8 +91,6 @@ function UserProfile(props) {
                                     pets={pets}
                                     showKeys={{
                                         "namePet": "Nombre: ",
-                                        "birthDate": "Cumpleaños: ",
-                                        "gender": "Genero: ",
                                         "specie": "Especie: "
                                         }} 
                                     title={""} 

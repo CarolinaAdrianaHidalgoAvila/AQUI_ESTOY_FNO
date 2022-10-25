@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import PreviewIcon from '@mui/icons-material/Preview';
 import { ListCards } from './ListCards';
-import { IconButtonEdit, IconButtonDelete } from '../Button/LittleButtons';
+import { IconButtonEdit, IconButtonDelete,IconButtonView } from '../Button/LittleButtons';
 import { NewPetForm, EditPetForm } from '../Form/PetForm';
 import ConfirmDialog from '../Dialogs/ConfirmDialog';
 import defImage from '../../Images/dog.jpg';
@@ -10,6 +10,7 @@ import CardItem from './CardItem';
 import { Grid } from '@mui/material';
 
 import useFetch from '../../hooks/useFetch';
+import ShowOnePet from '../../pages/ShowOnePet';
 
 
 function ListPetsCard(props) {
@@ -17,6 +18,9 @@ function ListPetsCard(props) {
 
     const  [openConfirm, setOpenConfirm] = useState(false);
     const  [confirmDialog, setConfirmDialog] = useState(<></>);
+    const  [openView, setOpenView] = useState(false);
+
+    const [showOnePet, setShowPet] = useState(<></>);
 
     const [dataList, setDataList] = useState([]);
 
@@ -63,6 +67,21 @@ function ListPetsCard(props) {
         );
     }
 
+    function handleViewPet(key,image,data,pet){
+        setOpenView(true)
+        setShowPet(
+            <ShowOnePet
+                Key={key}
+                Image= {image}
+                Data= {data}
+                Pet= {pet}
+                handleCancel={() => setOpenView(false)}
+            />
+            
+        );
+         
+    }
+
     return ( 
         <div>
             <h1>{title}</h1>
@@ -74,8 +93,9 @@ function ListPetsCard(props) {
                             return (
                                 <>
                                     <CardItem key={item.json.id} image={image} data={item.data}>
-                                        <EditPetForm userId={userId} petId={item.json.id} pet={item.json} />
-                                        <IconButtonDelete onClick={() => handleClickDeletePet(item.json.id, item.json.petName)} />
+                                        <IconButtonView onClick={() =>  handleViewPet(item.json.id, image,item.data, item.json)}/>
+                                        <EditPetForm userId={userId} petId={item.json.id} pet={item.json}/>
+                                        <IconButtonDelete onClick={() => handleClickDeletePet(item.json.id, item.json.namePet)}/>
                                     </CardItem>
                                 </>
                             );
@@ -84,6 +104,7 @@ function ListPetsCard(props) {
                     
                 </Grid>
             </Grid>
+            {openView && showOnePet}
             {openConfirm && confirmDialog}
             <NewPetForm userId={userId} />
         </div>

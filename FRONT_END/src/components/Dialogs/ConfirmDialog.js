@@ -36,6 +36,7 @@ function ConfirmDialog(props) {
                     <IconButtonAccept onClick={handleAcceptClose} />
                 </DialogActions>
             </Dialog>
+            {open}
         </>
     );
 }
