@@ -149,10 +149,13 @@ function EditUserForm(props) {
             console.log(data);
             if(data.name !== undefined) {
                 alert(`Usuario  ${data.name} editado correctamente!`);
-                window.location.href = "/user";
+                
             }
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+        .finally(() => {
+            window.location.href = "/user";
+        });
         return false;
     }
 
