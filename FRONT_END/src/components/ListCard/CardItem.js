@@ -22,7 +22,7 @@ function CardItem(props) {
     const {key, image, data, children} = props;
 
     useEffect(() => {
-        console.log(data);
+        //console.log(data);
     }, [])
 
     return ( 
