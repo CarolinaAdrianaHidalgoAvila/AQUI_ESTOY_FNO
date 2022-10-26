@@ -6,10 +6,12 @@
 
         public string? NamePet { get; set; }
         public string? Species { get; set; }
-        public string? DatePublication { get; set; }
+        public DateTime? DatePublication { get; set; }
         public string? Location { get; set; }
         public string? Email { get; set; }
         public string? Description { get; set; }
+        public int? Reward { get; set; }
         public string? UserID { get; set; }
+
     }
 }
