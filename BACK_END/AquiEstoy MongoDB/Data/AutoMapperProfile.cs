@@ -13,6 +13,8 @@ namespace AQUI_ESTOY.Data
                 .ReverseMap();
             this.CreateMap<PetEntity, PetModel>()
                 .ReverseMap();
+            this.CreateMap<PublicationEntity, PublicationModel>()
+                .ReverseMap();
 
         }
     }

@@ -10,11 +10,13 @@ namespace AquiEstoy_MongoDB.Data.Repository
         internal MongoDBRepository _repository = new MongoDBRepository();
         private IMongoCollection<UserEntity> userCollection;
         private IMongoCollection<PetEntity> petCollection;
+        private IMongoCollection<PublicationEntity> publicationCollection;
 
         public AquiEstoyCollection()
         {
             userCollection = _repository.db.GetCollection<UserEntity>("Users");
             petCollection = _repository.db.GetCollection<PetEntity>("Pets");
+            publicationCollection = _repository.db.GetCollection<PublicationEntity>("Publications");
         }
 
         //USERS COLLECTION
@@ -74,6 +76,17 @@ namespace AquiEstoy_MongoDB.Data.Repository
         public async Task DeletePetAsync(string petId)
         {
             await petCollection.DeleteOneAsync(x => x.Id == petId);
+        }
+        //PUBLICATIONS COLLECTION
+        public async Task<IEnumerable<PetEntity>> GetAllPublicationsAsync(string userId)
+        {
+            var result = await publicationCollection.FindAsync(x => x.UserID == userId).Result.ToListAsync();
+            return result;
+        }
+        public async void CreatePublication(PublicationEntity publication, string userId)
+        {
+            publication.UserID = userId;
+            await publicationCollection.InsertOneAsync(publication);
         }
     }
 }
