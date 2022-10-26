@@ -11,7 +11,7 @@ import useFetch from '../../hooks/useFetch';
 import { NewPublicationForm } from '../Form/PublicationForm';
 
 
-function ListPetsCard(props) {
+function ListPublicationsCard(props) {
     const { userId, publications, showKeys, title, children } = props;
     const [dataList, setDataList] = useState([]);
 
@@ -60,4 +60,4 @@ function ListPetsCard(props) {
     );
 }
 
-export default ListPetsCard;
+export default ListPublicationsCard;
