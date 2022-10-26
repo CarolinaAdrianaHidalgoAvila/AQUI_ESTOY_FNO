@@ -8,6 +8,7 @@ import CardItem from './CardItem';
 import { Grid } from '@mui/material';
 
 import useFetch from '../../hooks/useFetch';
+import { NewPublicationForm } from '../Form/PublicationForm';
 
 
 function ListPetsCard(props) {
@@ -54,7 +55,7 @@ function ListPetsCard(props) {
                     
                 </Grid>
             </Grid>
-           
+            <NewPublicationForm userId={userId} />
         </div>
     );
 }
