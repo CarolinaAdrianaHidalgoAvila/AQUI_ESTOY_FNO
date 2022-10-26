@@ -24,7 +24,7 @@ namespace AquiEstoy_MongoDB.Controllers
                     return BadRequest(ModelState);
 
                 var newPublication = await _publicationService.CreatePublicationAsync(publication, userId);
-                return Created($"/users/{newPublication.UserID}/{newPublication.Id}", newPublication);
+                return Created($"/users/{newPublication.UserID}/{newPublication.IdPublication}", newPublication);
             }
             catch (NotFoundOperationException ex)
             {
@@ -53,3 +53,4 @@ namespace AquiEstoy_MongoDB.Controllers
             }
         }
     }
+}

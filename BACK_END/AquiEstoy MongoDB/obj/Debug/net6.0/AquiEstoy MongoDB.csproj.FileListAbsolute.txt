@@ -334,3 +334,13 @@ D:\Universidad\II-2022\Taller de sisInfo\proyect\AQUI_ESTOY_FNO\BACK_END\AquiEst
 D:\Universidad\II-2022\Taller de sisInfo\proyect\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\ref\AquiEstoy MongoDB.dll
 D:\Universidad\II-2022\Taller de sisInfo\proyect\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.pdb
 D:\Universidad\II-2022\Taller de sisInfo\proyect\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.genruntimeconfig.cache
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.csproj.AssemblyReference.cache
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.GeneratedMSBuildEditorConfig.editorconfig
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.AssemblyInfoInputs.cache
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.AssemblyInfo.cs
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.csproj.CoreCompileInputs.cache
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.MvcApplicationPartsAssemblyInfo.cs
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.MvcApplicationPartsAssemblyInfo.cache
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\refint\AquiEstoy MongoDB.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.pdb
