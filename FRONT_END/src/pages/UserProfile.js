@@ -12,11 +12,13 @@ import { EditUserForm } from '../components/Form/UserForm';
 import useFetch from '../hooks/useFetch';
 import { IconButtonDelete, IconButtonEdit } from '../components/Button/LittleButtons';
 import ListPetsCard from '../components/ListCard/ListPetsCards';
+import ListPublicationsCard from '../components/ListCard/ListPublicationsCard';
 
 function UserProfile(props) {
 
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
+    const [publications, setPublications] = useState([]);
 
     const [value, setValue] = useState(0);
 
@@ -30,17 +32,27 @@ function UserProfile(props) {
         //Get user information
         get(`users/${userId}`)
         .then(data => {
-            console.log(data);
+            //console.log(data);
             setUser(data);
         })
         .catch(error => console.log(error));
+
         //Get pets from user
         get(`users/${userId}/pets`)
         .then(data => {
-            console.log(data);
+            //console.log(data);
             setPets(data);
         })
         .catch(error => console.log(error));
+
+        //Get publications from user
+        get(`users/${userId}/publications`)
+        .then(data => {
+            console.log(data);
+            setPublications(data);
+        })
+        .catch(error => console.log(error));
+
     }, []);
 
     function handleChangeNavTab(event, newValue) {
@@ -50,7 +62,7 @@ function UserProfile(props) {
     function handleDeleteUser(){
         delete_(`users/${userId}`)
         .then(data => {
-            console.log(data);
+            //console.log(data);
             alert("Usuario borrado!")
         })
         .catch(error => alert(error))
@@ -84,7 +96,19 @@ function UserProfile(props) {
                             <NavTab options={["Publicaciones", "Mascotas"]} onChange={handleChangeNavTab} value={value}/>
                         </div>
                         <div className='container'>
-                            {(value === 0) && <p>Aqui las Publicaciones</p>}
+                            {(value === 0) &&
+                            
+                                <ListPublicationsCard 
+                                    userId={userId} 
+                                    publications={publications}
+                                    showKeys={{
+                                        "namePet": "Nombre: ",
+                                        "species": "Especie: "
+                                        }} 
+                                    title={""} 
+                                />
+                                    
+                            }
                             {(value === 1) && 
                                 <ListPetsCard 
                                     userId={userId} 
