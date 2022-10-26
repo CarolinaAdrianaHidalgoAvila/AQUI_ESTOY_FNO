@@ -78,7 +78,7 @@ namespace AquiEstoy_MongoDB.Data.Repository
             await petCollection.DeleteOneAsync(x => x.Id == petId);
         }
         //PUBLICATIONS COLLECTION
-        public async Task<IEnumerable<PetEntity>> GetAllPublicationsAsync(string userId)
+        public async Task<IEnumerable<PublicationEntity>> GetAllPublicationsAsync(string userId)
         {
             var result = await publicationCollection.FindAsync(x => x.UserID == userId).Result.ToListAsync();
             return result;

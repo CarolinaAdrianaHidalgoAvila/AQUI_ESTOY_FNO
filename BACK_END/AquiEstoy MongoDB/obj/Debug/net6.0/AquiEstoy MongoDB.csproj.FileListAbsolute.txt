@@ -344,3 +344,41 @@ E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy
 E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.dll
 E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\refint\AquiEstoy MongoDB.dll
 E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.pdb
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\appsettings.Development.json
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\appsettings.json
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AquiEstoy MongoDB.exe
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AquiEstoy MongoDB.deps.json
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AquiEstoy MongoDB.runtimeconfig.json
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AquiEstoy MongoDB.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AquiEstoy MongoDB.pdb
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AutoMapper.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\DnsClient.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Microsoft.OpenApi.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\MongoDB.Bson.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\MongoDB.Driver.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\SharpCompress.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\linux\native\libsnappy64.so
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\linux\native\libzstd.so
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\osx\native\libsnappy64.dylib
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\osx\native\libzstd.dylib
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\win\native\libzstd.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\win\native\snappy32.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\win\native\snappy64.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\staticwebassets.build.json
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\staticwebassets.development.json
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\scopedcss\bundle\AquiEstoy MongoDB.styles.css
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.csproj.CopyComplete
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\AquiEstoy MongoDB.genruntimeconfig.cache
+E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\obj\Debug\net6.0\ref\AquiEstoy MongoDB.dll
