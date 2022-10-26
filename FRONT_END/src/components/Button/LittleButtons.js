@@ -4,7 +4,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import PreviewIcon from '@mui/icons-material/Preview';
 import IconButton from '@mui/material/IconButton'
 
 function IconButtonAccept(props) {
@@ -44,4 +44,14 @@ function IconButtonDelete(props) {
     );
 }
 
-export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete };
+function IconButtonView(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-accept" color='success' {...rest}>
+            <PreviewIcon />
+        </IconButton>
+    ); 
+}
+
+
+export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete, IconButtonView };
