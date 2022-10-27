@@ -43,7 +43,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/6355b8856b3505380f9128d9",
+							"raw": "http://localhost:5500/api/users/63350ad0dc2254ff8eb26d2e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -52,7 +52,7 @@
 							"path": [
 								"api",
 								"users",
-								"6355b8856b3505380f9128d9"
+								"63350ad0dc2254ff8eb26d2e"
 							]
 						}
 					},
@@ -84,7 +84,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/6354aad8c20a9f37773ce88d",
+							"raw": "http://localhost:5500/api/users/634751f769610488f29d608e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -93,7 +93,7 @@
 							"path": [
 								"api",
 								"users",
-								"6354aad8c20a9f37773ce88d"
+								"634751f769610488f29d608e"
 							]
 						}
 					},
@@ -135,12 +135,12 @@
 			"name": "PETS",
 			"item": [
 				{
-					"name": "GET ALL PETS",
+					"name": "GET ALL USER PETS",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/634751f769610488f29d608e/pets",
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/pets",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -149,7 +149,7 @@
 							"path": [
 								"api",
 								"users",
-								"634751f769610488f29d608e",
+								"632333ceca137c2c4b95168c",
 								"pets"
 							]
 						}
@@ -163,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"namePet\":\"4th new Pet\",\r\n    \"gender\":\"M\",\r\n    \"hasNecklace\":true,\r\n    \"specie\":\"Perro\",\r\n    \"userID\":\"6354aad8c20a9f37773ce88d\"\r\n}",
+							"raw": "{\r\n    \"namePet\":\"Último Perro\",\r\n    \"gender\":\"M\",\r\n    \"hasNecklace\":true,\r\n    \"specie\":\"Perrooooo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,7 +171,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5500/api/users/6354aad8c20a9f37773ce88d/pets",
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/pets",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -180,7 +180,7 @@
 							"path": [
 								"api",
 								"users",
-								"6354aad8c20a9f37773ce88d",
+								"632333ceca137c2c4b95168c",
 								"pets"
 							]
 						}
@@ -237,6 +237,110 @@
 								"634751f769610488f29d608e",
 								"pets",
 								"634752fb69610488f29d608f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE PET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/pets/63585ed84d0627660973878b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"632333ceca137c2c4b95168c",
+								"pets",
+								"63585ed84d0627660973878b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POSTS",
+			"item": [
+				{
+					"name": "GET ALL POSTS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/publications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"632333ceca137c2c4b95168c",
+								"publications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE POST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/publications/6359dfec18272aa245d33305",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"632333ceca137c2c4b95168c",
+								"publications",
+								"6359dfec18272aa245d33305"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ONE PUB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namePet\": \"Coco\",\r\n    \"species\": \"Dálmata\",\r\n    \"datePublication\": \"2014-08-19T01:11:54Z\",\r\n    \"location\": \"Sacaba\",\r\n    \"email\": \"drake@gmail.com\",\r\n    \"description\": \"desc\",\r\n    \"reward\": 150,\r\n    \"userID\": \"632333ceca137c2c4b95168c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/publications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"632333ceca137c2c4b95168c",
+								"publications"
 							]
 						}
 					},

@@ -88,5 +88,10 @@ namespace AquiEstoy_MongoDB.Data.Repository
             publication.UserID = userId;
             await publicationCollection.InsertOneAsync(publication);
         }
+        public async Task<PublicationEntity> GetPostAsync(string postId)
+        {
+            return await publicationCollection.Find(x => x.IdPublication == postId).FirstOrDefaultAsync();
+        }
+
     }
 }
