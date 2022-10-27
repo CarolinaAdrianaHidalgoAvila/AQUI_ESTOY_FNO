@@ -16,6 +16,24 @@ namespace AquiEstoy_MongoDB.Controllers
             _petService = petService;
         }
 
+        [HttpGet("{petId}")]
+        public async Task<ActionResult<PetModel>> GetPetAsync(string petId, string userId)
+        {
+            try
+            {
+                var pet = await _petService.GetPetAsync(userId, petId);
+                return Ok(pet);
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<PetModel>> PostPetAsync([FromBody] PetModel pet, string userId)
         {
