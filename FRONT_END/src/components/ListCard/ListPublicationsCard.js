@@ -33,6 +33,12 @@ function ListPublicationsCard(props) {
 
     }, [])
 
+    function handleViewPublication(key,image,data,pet){
+        console.log('publication')
+         
+    }
+
+
 
 
     return ( 
@@ -45,7 +51,7 @@ function ListPublicationsCard(props) {
                             let image = item.data.filter(element => element[0] === "image")[1] ?? defImage;
                             return (
                                 <>
-                                    <CardItem key={item.json.id} image={image} data={item.data}>
+                                    <CardItem sx={{cursor: "pointer"}} onClick={() =>  handleViewPublication(item.json.id, image,item.data, item.json)} key={item.json.id} image={image} data={item.data}>
                                         
                                     </CardItem>
                                 </>

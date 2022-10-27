@@ -103,7 +103,13 @@ function UserProfile(props) {
                                     publications={publications}
                                     showKeys={{
                                         "namePet": "Nombre: ",
-                                        "species": "Especie: "
+                                        "species": "Especie: ",
+                                        "datePublication": "Fecha de publicacion: ",
+                                        "location": "localizacion: ",
+                                        "email": "email: ",
+                                        "description": "descripcion: ",
+                                        "reward": "recompenza: ",
+
                                         }} 
                                     title={""} 
                                 />
