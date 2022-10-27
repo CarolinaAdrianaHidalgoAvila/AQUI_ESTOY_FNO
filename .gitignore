@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /Debug
-/obj
-bin
-obj
+/Obj
+bin/
+obj/

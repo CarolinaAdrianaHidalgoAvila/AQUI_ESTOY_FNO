@@ -8,17 +8,9 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AquiEstoy_MongoDB
 build_property.RootNamespace = AquiEstoy_MongoDB
-<<<<<<< HEAD
-build_property.ProjectDir = D:\Universidad\II-2022\Taller de sisInfo\v2\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\
+build_property.ProjectDir = d:\Universidad\II-2022\Taller de sisInfo\v2\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Universidad\II-2022\Taller de sisInfo\v2\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB
-=======
-build_property.ProjectDir = E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB\
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\CAROLINA\8_SEMESTRE\TALLER_SIS\25_AQUIEstoy\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB
->>>>>>> b8ed4083d2fa7b4528e9585cde5474fbc9a17251
+build_property.MSBuildProjectDirectory = d:\Universidad\II-2022\Taller de sisInfo\v2\AQUI_ESTOY_FNO\BACK_END\AquiEstoy MongoDB
 build_property._RazorSourceGeneratorDebug = 
