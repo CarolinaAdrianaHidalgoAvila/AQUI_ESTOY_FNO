@@ -52,5 +52,23 @@ namespace AquiEstoy_MongoDB.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Something happend: {ex.Message}");
             }
         }
+
+        [HttpGet("{postId}")]
+        public async Task<ActionResult<UserModel>> GetPostAsync(string postId)
+        {
+            try
+            {
+                var post = await _publicationService.GetPostAsync(postId);
+                return Ok(post);
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
+        }
     }
 }

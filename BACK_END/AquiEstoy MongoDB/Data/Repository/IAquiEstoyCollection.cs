@@ -19,8 +19,10 @@ namespace AquiEstoy_MongoDB.Data.Repository
         Task UpdatePetAsync(string petId, PetEntity petEntity);
         Task DeletePetAsync(string petId);
 
+
         //PUBLICATIONS
         Task<IEnumerable<PublicationEntity>> GetAllPublicationsAsync(string userId);
         void CreatePublication(PublicationEntity publicationEntity, string userId);
+        Task<PublicationEntity> GetPostAsync(string postId);
     }
 }

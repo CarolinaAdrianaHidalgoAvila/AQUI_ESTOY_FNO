@@ -6,5 +6,6 @@ namespace AquiEstoy_MongoDB.Services
     {
         Task<PublicationModel> CreatePublicationAsync(PublicationModel publicationModel, string userId);
         Task<IEnumerable<PublicationModel>> GetAllPublicationsAsync(string userId);
+        Task<PublicationModel> GetPostAsync(string postId);
     }
 }

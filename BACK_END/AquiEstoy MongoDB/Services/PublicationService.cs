@@ -33,6 +33,19 @@ namespace AquiEstoy_MongoDB.Services
             var publicationsModelList = _mapper.Map<IEnumerable<PublicationModel>>(publicationsEntityList);
             return publicationsModelList;
         }
+
+
+        public async Task<PublicationModel> GetPostAsync(string postId)
+        {
+            var postEntity = await _aquiEstoyCollection.GetPostAsync(postId);
+            if (postEntity == null)
+            {
+                throw new NotFoundOperationException($"The post id: {postId}, does not exist.");
+            }
+            var postModel = _mapper.Map<PublicationModel>(postEntity);
+            return postModel;
+        }
+
         private async Task ValidateUser(string userId)
         {
             var user = await _aquiEstoyCollection.GetUserAsync(userId);
