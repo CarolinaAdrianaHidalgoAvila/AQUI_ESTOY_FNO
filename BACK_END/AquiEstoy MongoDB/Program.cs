@@ -23,7 +23,7 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<IAquiEstoyCollection, AquiEstoyCollection>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IPetService, PetService>();
-builder.Services.AddTransient<IPublicationService, PublicationService>();
+builder.Services.AddTransient<ILostPetPostService, LostPetPostService>();
 
 
 

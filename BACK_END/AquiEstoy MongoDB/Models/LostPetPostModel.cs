@@ -1,6 +1,6 @@
 ﻿namespace AquiEstoy_MongoDB.Models
 {
-    public class PublicationModel
+    public class LostPetPostModel
     {
         public string IdPublication { get; set; } = string.Empty;
 
