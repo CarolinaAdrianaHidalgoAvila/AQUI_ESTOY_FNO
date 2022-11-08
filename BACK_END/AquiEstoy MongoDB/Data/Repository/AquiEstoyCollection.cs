@@ -10,13 +10,13 @@ namespace AquiEstoy_MongoDB.Data.Repository
         internal MongoDBRepository _repository = new MongoDBRepository();
         private IMongoCollection<UserEntity> userCollection;
         private IMongoCollection<PetEntity> petCollection;
-        private IMongoCollection<PublicationEntity> publicationCollection;
+        private IMongoCollection<LostPetPostEntity> lostPetPostCollection;
 
         public AquiEstoyCollection()
         {
             userCollection = _repository.db.GetCollection<UserEntity>("Users");
             petCollection = _repository.db.GetCollection<PetEntity>("Pets");
-            publicationCollection = _repository.db.GetCollection<PublicationEntity>("Publications");
+            lostPetPostCollection = _repository.db.GetCollection<LostPetPostEntity>("Publications");
         }
 
         //USERS COLLECTION
@@ -77,20 +77,26 @@ namespace AquiEstoy_MongoDB.Data.Repository
         {
             await petCollection.DeleteOneAsync(x => x.Id == petId);
         }
-        //PUBLICATIONS COLLECTION
-        public async Task<IEnumerable<PublicationEntity>> GetAllPublicationsAsync(string userId)
+
+
+        //LOST PETS POSTS COLLECTION
+        public async Task<IEnumerable<LostPetPostEntity>> GetAllLostPetsPostsAsync(string userId)
         {
-            var result = await publicationCollection.FindAsync(x => x.UserID == userId).Result.ToListAsync();
+            var result = await lostPetPostCollection.FindAsync(x => x.UserID == userId).Result.ToListAsync();
             return result;
         }
-        public async void CreatePublication(PublicationEntity publication, string userId)
+        public async void CreateLostPetPost(LostPetPostEntity lostPetPostEntity, string userId)
         {
-            publication.UserID = userId;
-            await publicationCollection.InsertOneAsync(publication);
+            lostPetPostEntity.UserID = userId;
+            await lostPetPostCollection.InsertOneAsync(lostPetPostEntity);
         }
-        public async Task<PublicationEntity> GetPostAsync(string postId)
+        public async Task<LostPetPostEntity> GetLostPetPostAsync(string postId)
         {
-            return await publicationCollection.Find(x => x.IdPublication == postId).FirstOrDefaultAsync();
+            return await lostPetPostCollection.Find(x => x.IdPublication == postId).FirstOrDefaultAsync();
+        }
+        public async Task DeleteLostPetPostAsync(string postId)
+        {
+            await lostPetPostCollection.DeleteOneAsync(x => x.IdPublication == postId);
         }
 
     }

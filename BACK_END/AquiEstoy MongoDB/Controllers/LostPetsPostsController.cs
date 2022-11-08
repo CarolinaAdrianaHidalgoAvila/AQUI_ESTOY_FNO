@@ -5,25 +5,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AquiEstoy_MongoDB.Controllers
 {
-    [Route("api/users/{userId}/publications")]
-    public class PublicationsController : ControllerBase
+    [Route("api/users/{userId}/lostPetsPosts")]
+    public class LostPetsPostsController : ControllerBase
     {
-        private IPublicationService _publicationService;
+        private ILostPetPostService _lostPetsPostsService;
 
-        public PublicationsController(IPublicationService publicationService)
+        public LostPetsPostsController(ILostPetPostService publicationService)
         {
-            _publicationService = publicationService;
+            _lostPetsPostsService = publicationService;
         }
 
         [HttpPost]
-        public async Task<ActionResult<PublicationModel>> PostPublicationAsync([FromBody] PublicationModel publication, string userId)
+        public async Task<ActionResult<LostPetPostModel>> PostLostPetsPostsAsync([FromBody] LostPetPostModel publication, string userId)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var newPublication = await _publicationService.CreatePublicationAsync(publication, userId);
+                var newPublication = await _lostPetsPostsService.CreateLostPetPostAsync(publication, userId);
                 return Created($"/users/{newPublication.UserID}/{newPublication.IdPublication}", newPublication);
             }
             catch (NotFoundOperationException ex)
@@ -37,11 +37,11 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PublicationModel>>> GetPublications(string userId)
+        public async Task<ActionResult<IEnumerable<LostPetPostModel>>> GetLostPetsPosts(string userId)
         {
             try
             {
-                return Ok(await _publicationService.GetAllPublicationsAsync(userId));
+                return Ok(await _lostPetsPostsService.GetAllLostPetsPostsAsync(userId));
             }
             catch (NotFoundOperationException ex)
             {
@@ -54,12 +54,30 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpGet("{postId}")]
-        public async Task<ActionResult<UserModel>> GetPostAsync(string postId)
+        public async Task<ActionResult<UserModel>> GetLostPetPostAsync(string postId)
         {
             try
             {
-                var post = await _publicationService.GetPostAsync(postId);
+                var post = await _lostPetsPostsService.GetLostPetPostAsync(postId);
                 return Ok(post);
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
+        }
+
+        [HttpDelete("{postId}")]
+        public async Task<ActionResult> DeleteLostPetPostAsync(string postId)
+        {
+            try
+            {
+                await _lostPetsPostsService.DeleteLostPetPostAsync(postId);
+                return Ok();
             }
             catch (NotFoundOperationException ex)
             {
