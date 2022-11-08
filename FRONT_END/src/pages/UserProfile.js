@@ -46,7 +46,7 @@ function UserProfile(props) {
         .catch(error => console.log(error));
 
         //Get publications from user
-        get(`users/${userId}/publications`)
+        get(`users/${userId}/lostPetsPosts`)
         .then(data => {
             console.log(data);
             setPublications(data);
