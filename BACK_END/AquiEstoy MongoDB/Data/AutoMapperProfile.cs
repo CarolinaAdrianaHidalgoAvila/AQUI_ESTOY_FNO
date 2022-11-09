@@ -15,7 +15,8 @@ namespace AQUI_ESTOY.Data
                 .ReverseMap();
             this.CreateMap<LostPetPostEntity, LostPetPostModel>()
                 .ReverseMap();
-
+            this.CreateMap<FoundPetPostEntity, FoundPetPostModel>()
+                .ReverseMap();
         }
     }
 }

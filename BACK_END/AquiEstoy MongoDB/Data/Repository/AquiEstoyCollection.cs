@@ -11,12 +11,14 @@ namespace AquiEstoy_MongoDB.Data.Repository
         private IMongoCollection<UserEntity> userCollection;
         private IMongoCollection<PetEntity> petCollection;
         private IMongoCollection<LostPetPostEntity> lostPetPostCollection;
+        private IMongoCollection<FoundPetPostEntity> foundPetPostCollection;
 
         public AquiEstoyCollection()
         {
             userCollection = _repository.db.GetCollection<UserEntity>("Users");
             petCollection = _repository.db.GetCollection<PetEntity>("Pets");
             lostPetPostCollection = _repository.db.GetCollection<LostPetPostEntity>("Publications");
+            foundPetPostCollection = _repository.db.GetCollection<FoundPetPostEntity>("Found Pets Posts");
         }
 
         //USERS COLLECTION
@@ -99,5 +101,21 @@ namespace AquiEstoy_MongoDB.Data.Repository
             await lostPetPostCollection.DeleteOneAsync(x => x.IdPublication == postId);
         }
 
+
+
+        //FOUND PET POSTS COLLECTION
+        public async Task<IEnumerable<FoundPetPostEntity>> GetAllFoundPetsPostsAsync(string userId)
+        {
+            var result = await foundPetPostCollection.FindAsync(x => x.UserID == userId).Result.ToListAsync();
+            return result;
+        }
+        public async Task<FoundPetPostEntity> GetFoundPetPostAsync(string postId)
+        {
+            return await foundPetPostCollection.Find(x => x.IdPublication == postId).FirstOrDefaultAsync();
+        }
+        public async Task UpdateFoundPetPostAsync(string userId, FoundPetPostEntity foundPetPostEntity)
+        {
+
+        }
     }
 }
