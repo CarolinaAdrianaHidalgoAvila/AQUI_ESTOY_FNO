@@ -36,7 +36,7 @@ function Publication(props) {
 
     return ( 
         <>
-            <Box padding="1rem 1rem 0 1rem" borderBottom="1px solid #ccc">
+            <Box padding="1rem 1rem 0 1rem">
                 <Grid container sx={{ display: "flex",  flexDirection: "column"}}>
                     <Grid item sx={{ paddingRight: "1rem" }}>
                         {header}

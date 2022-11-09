@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box } from "@mui/material";
 
+import useFetch from '../../hooks/useFetch';
+
 import { ButtonAccept } from "../Button/ButtonComp.js";
 import { Publication, NewPublication } from "./Publication.js";
 import { IconButtonMoreVert, IconButtonComment, IconButtonShare } from "../Button/LittleButtons.js";
@@ -9,18 +11,44 @@ import { IconButtonMoreVert, IconButtonComment, IconButtonShare } from "../Butto
 function NewLostPublication(props) {
     const {pets, user} = props;
 
+    const { post } = useFetch("http://localhost:5500/api/");
+
     const [reward, setReward] = useState(0)
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
     const [pet, setPet] = useState({})
 
-    const userProfilePicture = <Avatar alt="av" src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" sx={{ width: "50px", height: "50px"}}>  </Avatar>
-    const buttons = <ButtonAccept disabled={description.trimStart().length === 0 && location.trimStart().length === 0}>Publicar</ButtonAccept>
-
     useEffect(() => {
         console.log(description);
+        console.log(reward);
+        console.log(location);
         console.log(pet);
-    },[description, pet])
+        const date = new Date("2014-08-19T01:11:54Z");
+        console.log(date.toISOString())
+    },[description, pet, reward, location])
+
+    function handleSubmitPublication(){
+        const dateNow = new Date();
+        const publication = {
+            namePet: pet.data.namePet,
+            species: pet.data.specie,
+            datePublication: dateNow.toISOString(),
+            location: location,
+            email: user.email,
+            description: description,
+            reward: parseInt(reward),
+            userID: user.id,
+        }
+
+        post(`users/${user.id}/lostPetsPosts`, publication)
+        .then(data => {
+            console.log(data);
+            if(data !== undefined){
+                window.location.href = "/user";
+            }
+        })
+        .catch(error => console.log(error));
+    }
 
     function getPetsOptions(pets){
         return pets.map((p) => {
@@ -29,6 +57,23 @@ function NewLostPublication(props) {
             );
         })
     }
+
+    const userProfilePicture = <>
+        <Avatar 
+            alt="av" 
+            src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" 
+            sx={{ width: "50px", height: "50px"}}
+        ></Avatar>
+    </>;
+    
+    const buttons = <>
+        <ButtonAccept 
+            disabled={description.trimStart().length === 0 && location.trimStart().length === 0}
+            onClick={handleSubmitPublication}
+        >
+            Publicar
+        </ButtonAccept>
+    </>
 
     return ( 
        <>
@@ -49,8 +94,9 @@ function NewLostPublication(props) {
                         disablePortal 
                         variant="outlined" 
                         options={getPetsOptions(pets)} 
+                        value={pet.namePet}
                         inputValue={pet.namePet} 
-                        onInputChange={(event, newPet) => {setPet(newPet)}} 
+                        onChange={(event, pet) => {setPet(pet)}} 
                         renderInput={
                             (params) => <TextField {...params} label="Mascota" required />
                         }
@@ -69,6 +115,7 @@ function NewLostPublication(props) {
                         <InputLabel htmlFor="form-publication-lost-reward">Recompensa:</InputLabel>
                         <OutlinedInput
                             id="form-publication-lost-reward"
+                            type='number'
                             value={reward}
                             onChange={(e) => {setReward(e.target.value)}}
                             startAdornment={<InputAdornment position="start">Bs.</InputAdornment>}
@@ -85,6 +132,12 @@ function NewLostPublication(props) {
 function LostPublication(props) {
     const { publication, user } = props;
 
+    function getLocalDate(dateString){
+        const date = new Date(dateString);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString("es-mx", options);
+    }
+
     const header = <div style={{display: "flex"}}>
         <Avatar 
             alt="av" 
@@ -94,7 +147,7 @@ function LostPublication(props) {
         </Avatar>
         <div style={{display: "flex", flexDirection: "column" , paddingLeft: "20px"}}>
             <Box sx={{color: "text-secondary"}}>{user.firstName} {user.lastName}</Box>
-            <Box sx={{fontSize: "14px", color: "text.disabled"}}>{publication.datePublication}</Box>
+            <Box sx={{fontSize: "14px", color: "text.disabled"}}>{getLocalDate(publication.datePublication)}</Box>
         </div>
     </div>
     
