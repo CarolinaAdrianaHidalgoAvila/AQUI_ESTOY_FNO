@@ -5,7 +5,7 @@ function ButtonComp(props) {
 
     const style = {
         margin:1, 
-        background:'#BBDFC8'
+        background: rest.disabled ? '#CCCCCC' : '#BBDFC8' 
     }
     
     return ( 
@@ -18,7 +18,7 @@ function ButtonAccept(props) {
 
     const style = {
         margin:1, 
-        background:'#75CFB8'
+        background: rest.disabled ? '#CCCCCC' : '#75CFB8'
     }
     
     return ( 
@@ -31,7 +31,7 @@ function ButtonDanger(props) {
 
     const style = {
         margin:1, 
-        background:'#fa6464'
+        background: rest.disabled ? '#CCCCCC' : '#fa6464'
     }
     
     return ( 
@@ -44,7 +44,7 @@ function ButtonCheck(props) {
 
     const style = {
         margin:1, 
-        background:'#5c7df7'
+        background: rest.disabled ? '#CCCCCC' : '#5c7df7'
     }
     
     return ( 
