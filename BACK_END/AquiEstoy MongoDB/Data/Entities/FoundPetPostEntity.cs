@@ -10,7 +10,7 @@ namespace AquiEstoy_MongoDB.Data.Entities
         [Key]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string IdPublication { get; set; }
+        public string IdFoundPetPost { get; set; }
 
         [BsonElement("namePet")]
         [JsonPropertyName("namePet")]
@@ -35,7 +35,7 @@ namespace AquiEstoy_MongoDB.Data.Entities
         [JsonPropertyName("description")]
         public string? Description { get; set; }
 
-        [BsonElement("perWhoFound")]
+        [BsonElement("personWhoFound")]
         [JsonPropertyName("personWhoFound")]
         public string? PersonWhoFound { get; set; }
 

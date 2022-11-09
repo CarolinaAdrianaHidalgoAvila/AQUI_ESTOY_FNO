@@ -18,7 +18,7 @@ namespace AquiEstoy_MongoDB.Data.Repository
             userCollection = _repository.db.GetCollection<UserEntity>("Users");
             petCollection = _repository.db.GetCollection<PetEntity>("Pets");
             lostPetPostCollection = _repository.db.GetCollection<LostPetPostEntity>("Publications");
-            foundPetPostCollection = _repository.db.GetCollection<FoundPetPostEntity>("Found Pets Posts");
+            foundPetPostCollection = _repository.db.GetCollection<FoundPetPostEntity>("FoundPetsPosts");
         }
 
         //USERS COLLECTION
@@ -111,11 +111,12 @@ namespace AquiEstoy_MongoDB.Data.Repository
         }
         public async Task<FoundPetPostEntity> GetFoundPetPostAsync(string postId)
         {
-            return await foundPetPostCollection.Find(x => x.IdPublication == postId).FirstOrDefaultAsync();
+            return await foundPetPostCollection.Find(x => x.IdFoundPetPost == postId).FirstOrDefaultAsync();
         }
-        public async Task UpdateFoundPetPostAsync(string userId, FoundPetPostEntity foundPetPostEntity)
+        public async Task UpdateFoundPetPostAsync(string foundPetPostId, FoundPetPostEntity foundPetPostEntity)
         {
-
+            foundPetPostEntity.IdFoundPetPost = foundPetPostId;
+            await foundPetPostCollection.ReplaceOneAsync(sub => sub.IdFoundPetPost == foundPetPostId, foundPetPostEntity);
         }
     }
 }

@@ -16,14 +16,14 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<LostPetPostModel>> PostLostPetsPostsAsync([FromBody] LostPetPostModel publication, string userId)
+        public async Task<ActionResult<LostPetPostModel>> CreateLostPetsPostsAsync([FromBody] LostPetPostModel lostPetPostModel, string userId)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var newPublication = await _lostPetsPostsService.CreateLostPetPostAsync(publication, userId);
+                var newPublication = await _lostPetsPostsService.CreateLostPetPostAsync(lostPetPostModel, userId);
                 return Created($"/users/{newPublication.UserID}/{newPublication.IdPublication}", newPublication);
             }
             catch (NotFoundOperationException ex)

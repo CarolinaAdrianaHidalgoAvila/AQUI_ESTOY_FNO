@@ -30,6 +30,6 @@ namespace AquiEstoy_MongoDB.Data.Repository
         //FOUND PETS POSTS
         Task<IEnumerable<FoundPetPostEntity>> GetAllFoundPetsPostsAsync(string userId);
         Task<FoundPetPostEntity> GetFoundPetPostAsync(string postId);
-        Task UpdateFoundPetPostAsync(string userId, FoundPetPostEntity foundPetPostEntity);
+        Task UpdateFoundPetPostAsync(string foundPetPostId, FoundPetPostEntity foundPetPostEntity);
     }
 }
