@@ -6,7 +6,8 @@ import useFetch from '../../hooks/useFetch';
 
 import { ButtonAccept } from "../Button/ButtonComp.js";
 import { Publication, NewPublication } from "./Publication.js";
-import { IconButtonMoreVert, IconButtonComment, IconButtonShare } from "../Button/LittleButtons.js";
+import { IconButtonMoreVert } from "../Button/LittleButtons.js";
+import DeployalbeMenu from '../Menu/Menu';
 
 function NewLostPublication(props) {
     const {pets, user} = props;
@@ -132,10 +133,22 @@ function NewLostPublication(props) {
 function LostPublication(props) {
     const { publication, user } = props;
 
+    const { delete_ } = useFetch("http://localhost:5500/api/");
+
     function getLocalDate(dateString){
         const date = new Date(dateString);
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString("es-mx", options);
+    }
+
+    function handleDeletePublication(userId, pubId){
+        delete_(`users/${userId}/lostPetsPosts/${pubId}`)
+        .then(data => {
+            //console.log(data);
+            alert("Publicacion Borrada!")
+            window.location.href = "/user";
+        })
+        .catch(error => alert(error));
     }
 
     const header = <div style={{display: "flex"}}>
@@ -152,9 +165,12 @@ function LostPublication(props) {
     </div>
     
     const footer = <div style={{display: "flex", flexDirection: "row-reverse", alignItems: "center", gap: "10px"}}>
-        <IconButtonMoreVert />
-        <IconButtonComment />
-        <IconButtonShare />
+        <DeployalbeMenu 
+            buttonType={<IconButtonMoreVert />}
+            options={[
+                { label: "Borrar", onClick: () => {handleDeletePublication(user.id, publication.id)} },
+            ]}
+        />
         <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
         <Box sx={{color: "info.main", fontSize: "16px"}}>{publication.location}</Box>
         <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
