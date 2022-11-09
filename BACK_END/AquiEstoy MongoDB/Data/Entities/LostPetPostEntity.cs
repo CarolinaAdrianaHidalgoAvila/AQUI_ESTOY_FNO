@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace AquiEstoy_MongoDB.Data.Entities
 {
-    public class PublicationEntity
+    public class LostPetPostEntity
     {
         [Key]
         [BsonId]
