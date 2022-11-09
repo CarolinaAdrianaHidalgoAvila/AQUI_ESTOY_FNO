@@ -5,7 +5,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PreviewIcon from '@mui/icons-material/Preview';
-import IconButton from '@mui/material/IconButton'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import ShareIcon from '@mui/icons-material/Share';
+import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 function IconButtonAccept(props) {
     const {...rest} = props
@@ -53,5 +58,43 @@ function IconButtonView(props){
     ); 
 }
 
+function IconButtonLike(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-like" {...rest}>
+            <ThumbUpIcon />
+        </IconButton>
+    ); 
+}
 
-export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete, IconButtonView };
+function IconButtonComment(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-comment" {...rest}>
+            <AddCommentIcon />
+        </IconButton>
+    ); 
+}
+
+function IconButtonShare(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-share"  {...rest}>
+            <ShareIcon />
+        </IconButton>
+    ); 
+}
+
+
+function IconButtonMoreVert(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-share"  {...rest}>
+            <MoreVertIcon />
+        </IconButton>
+    ); 
+}
+
+
+
+export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete, IconButtonView, IconButtonLike, IconButtonComment, IconButtonShare, IconButtonMoreVert };

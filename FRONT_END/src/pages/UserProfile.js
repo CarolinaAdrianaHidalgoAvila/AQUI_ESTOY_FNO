@@ -10,9 +10,8 @@ import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
 import { EditUserForm } from '../components/Form/UserForm';
 
 import useFetch from '../hooks/useFetch';
-import { IconButtonDelete, IconButtonEdit } from '../components/Button/LittleButtons';
 import ListPetsCard from '../components/ListCard/ListPetsCards';
-import ListPublicationsCard from '../components/ListCard/ListPublicationsCard';
+import { LostPublication, NewLostPublication } from '../components/Publications/LostPublication';
 
 function UserProfile(props) {
 
@@ -46,7 +45,7 @@ function UserProfile(props) {
         .catch(error => console.log(error));
 
         //Get publications from user
-        get(`users/${userId}/publications`)
+        get(`users/${userId}/lostPetsPosts`)
         .then(data => {
             console.log(data);
             setPublications(data);
@@ -97,22 +96,16 @@ function UserProfile(props) {
                         </div>
                         <div className='container'>
                             {(value === 0) &&
-                            
-                                <ListPublicationsCard 
-                                    userId={userId} 
-                                    publications={publications}
-                                    showKeys={{
-                                        "namePet": "Nombre: ",
-                                        "species": "Especie: ",
-                                        "datePublication": "Fecha de publicacion: ",
-                                        "location": "localizacion: ",
-                                        "email": "email: ",
-                                        "description": "descripcion: ",
-                                        "reward": "recompenza: ",
-
-                                        }} 
-                                    title={""} 
-                                />
+                                <div>
+                                    <NewLostPublication user={user} pets={pets} />
+                                    {
+                                        publications.map((publication) => {
+                                            return(
+                                                <LostPublication publication={publication} user={user} />
+                                            );
+                                        })
+                                    }
+                                </div>
                                     
                             }
                             {(value === 1) && 
