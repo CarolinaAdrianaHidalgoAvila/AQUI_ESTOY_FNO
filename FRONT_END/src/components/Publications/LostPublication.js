@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box } from "@mui/material";
 
 import { ButtonAccept } from "../Button/ButtonComp.js";
-import { Publication } from "./Publication.js";
-import { IconButtonLike, IconButtonComment, IconButtonShare } from "../Button/LittleButtons.js";
-import { color } from '@mui/system';
+import { Publication, NewPublication } from "./Publication.js";
+import { IconButtonMoreVert, IconButtonComment, IconButtonShare } from "../Button/LittleButtons.js";
 
 function NewLostPublication(props) {
     const {pets, user} = props;
@@ -33,7 +32,7 @@ function NewLostPublication(props) {
 
     return ( 
        <>
-            <Publication header={userProfilePicture} footer={buttons}>
+            <NewPublication header={userProfilePicture} footer={buttons}>
                 <Input
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -78,12 +77,13 @@ function NewLostPublication(props) {
                     </FormControl>
                 </div>
                 
-            </Publication>
+            </NewPublication>
        </>
     );
 }
 
 function LostPublication(props) {
+    const { publication, user } = props;
 
     const header = <div style={{display: "flex"}}>
         <Avatar 
@@ -93,23 +93,24 @@ function LostPublication(props) {
         >  
         </Avatar>
         <div style={{display: "flex", flexDirection: "column" , paddingLeft: "20px"}}>
-            <Box sx={{color: "text-secondary"}}>Roberto Silvaa rocabado</Box>
-            <Box sx={{fontSize: "14px", color: "text.disabled"}}>17 de Octubre de 2022</Box>
+            <Box sx={{color: "text-secondary"}}>{user.firstName} {user.lastName}</Box>
+            <Box sx={{fontSize: "14px", color: "text.disabled"}}>{publication.datePublication}</Box>
         </div>
     </div>
     
     const footer = <div style={{display: "flex", flexDirection: "row-reverse", alignItems: "center", gap: "10px"}}>
-        <IconButtonLike />
+        <IconButtonMoreVert />
         <IconButtonComment />
         <IconButtonShare />
-        <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. 1000</Box>
-        <Box sx={{color: "info.main", fontSize: "16px"}}>Parque Fidel Anze</Box>
+        <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
+        <Box sx={{color: "info.main", fontSize: "16px"}}>{publication.location}</Box>
+        <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
     </div>
     return ( 
         <>
             <Publication header={header} footer={footer}>
                 <Box sx={{fontSize: "16px"}}>
-                Mi mascota se perido porfa ayuda a quien pueda encontrarle, es un perrito de medio año pug se perdio por la Av. Circunvalacion junto a los pollos panchita, le gusta mucho esos pollos
+                    {publication.description}
                 </Box>
             </Publication>
         </>

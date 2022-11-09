@@ -9,6 +9,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import ShareIcon from '@mui/icons-material/Share';
 import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
 function IconButtonAccept(props) {
@@ -85,4 +86,15 @@ function IconButtonShare(props){
 }
 
 
-export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete, IconButtonView, IconButtonLike, IconButtonComment, IconButtonShare };
+function IconButtonMoreVert(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-share"  {...rest}>
+            <MoreVertIcon />
+        </IconButton>
+    ); 
+}
+
+
+
+export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete, IconButtonView, IconButtonLike, IconButtonComment, IconButtonShare, IconButtonMoreVert };

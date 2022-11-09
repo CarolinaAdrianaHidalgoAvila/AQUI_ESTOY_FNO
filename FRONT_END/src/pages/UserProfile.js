@@ -98,8 +98,13 @@ function UserProfile(props) {
                             {(value === 0) &&
                                 <div>
                                     <NewLostPublication user={user} pets={pets} />
-                                    <LostPublication></LostPublication>
-                                    <LostPublication></LostPublication>
+                                    {
+                                        publications.map((publication) => {
+                                            return(
+                                                <LostPublication publication={publication} user={user} />
+                                            );
+                                        })
+                                    }
                                 </div>
                                     
                             }
