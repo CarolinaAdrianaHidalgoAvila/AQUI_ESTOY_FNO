@@ -268,7 +268,7 @@
 			]
 		},
 		{
-			"name": "POSTS",
+			"name": "LOST PET POSTS",
 			"item": [
 				{
 					"name": "GET ALL POSTS",
@@ -276,7 +276,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/publications",
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/lostPetsPosts",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -286,7 +286,7 @@
 								"api",
 								"users",
 								"632333ceca137c2c4b95168c",
-								"publications"
+								"lostPetsPosts"
 							]
 						}
 					},
@@ -298,7 +298,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/publications/6359dfec18272aa245d33305",
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/lostPetsPosts/6359dfec18272aa245d33305",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -308,7 +308,7 @@
 								"api",
 								"users",
 								"632333ceca137c2c4b95168c",
-								"publications",
+								"lostPetsPosts",
 								"6359dfec18272aa245d33305"
 							]
 						}
@@ -330,7 +330,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/publications",
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/lostPetsPosts",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -340,7 +340,30 @@
 								"api",
 								"users",
 								"632333ceca137c2c4b95168c",
-								"publications"
+								"lostPetsPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE POST",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/users/632333ceca137c2c4b95168c/lostPetsPosts/636b9056d165db150d20a2d9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"users",
+								"632333ceca137c2c4b95168c",
+								"lostPetsPosts",
+								"636b9056d165db150d20a2d9"
 							]
 						}
 					},

@@ -45,8 +45,9 @@ namespace AquiEstoy_MongoDB.Services
             return lostPetPostModel;
         }
 
-        public async Task DeleteLostPetPostAsync(string postId)
+        public async Task DeleteLostPetPostAsync(string postId, string userId)
         {
+            await ValidateUser(userId);
             await GetLostPetPostAsync(postId);
             await _aquiEstoyCollection.DeleteLostPetPostAsync(postId);
         }

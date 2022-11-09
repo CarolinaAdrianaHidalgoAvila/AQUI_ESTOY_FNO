@@ -72,11 +72,11 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpDelete("{postId}")]
-        public async Task<ActionResult> DeleteLostPetPostAsync(string postId)
+        public async Task<ActionResult> DeleteLostPetPostAsync(string postId, string userId)
         {
             try
             {
-                await _lostPetsPostsService.DeleteLostPetPostAsync(postId);
+                await _lostPetsPostsService.DeleteLostPetPostAsync(postId, userId);
                 return Ok();
             }
             catch (NotFoundOperationException ex)
