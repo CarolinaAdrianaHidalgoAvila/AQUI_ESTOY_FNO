@@ -94,5 +94,25 @@ namespace AquiEstoy_MongoDB.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
             }
         }
+        [HttpPost]
+        public async Task<ActionResult<FoundPetPostModel>> CreateFoundPetsPostsAsync([FromBody] FoundPetPostModel foundPetPostModel, string userId)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var newPublication = await _foundPetsPostsService.CreateFoundPetPostAsync(foundPetPostModel, userId);
+                return Created($"/users/{newPublication.UserID}/{newPublication.IdFoundPetPost}", newPublication);
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
+        }
     }
 }

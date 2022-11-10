@@ -127,5 +127,10 @@ namespace AquiEstoy_MongoDB.Data.Repository
         {
             await foundPetPostCollection.DeleteOneAsync(x => x.IdFoundPetPost == postId);
         }
+        public async void CreateFoundPetPost(FoundPetPostEntity foundPetPostEntity, string userId)
+        {
+            foundPetPostEntity.UserID = userId;
+            await foundPetPostCollection.InsertOneAsync(foundPetPostEntity);
+        }
     }
 }

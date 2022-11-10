@@ -33,5 +33,6 @@ namespace AquiEstoy_MongoDB.Data.Repository
         Task<FoundPetPostEntity> GetFoundPetPostAsync(string postId);
         Task UpdateFoundPetPostAsync(string foundPetPostId, FoundPetPostEntity foundPetPostEntity);
         Task DeleteFoundPetPostAsync(string postId);
+        void CreateFoundPetPost(FoundPetPostEntity foundPetPostEntity, string userId);
     }
 }
