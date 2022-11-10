@@ -33,6 +33,8 @@ obj/
 .vs/
 bin
 bin/
+obj
+obj/
 
 BACK_END/.vs
 
