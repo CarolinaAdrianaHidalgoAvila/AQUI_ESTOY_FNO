@@ -18,7 +18,7 @@ import {
       <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box position="fixed" width={300}>
           <Typography variant="h6" fontWeight={100}>
-            Online Friends
+            Amigos conectados
           </Typography>
           <AvatarGroup max={7}>
             <Avatar
@@ -56,30 +56,30 @@ import {
             />
           </AvatarGroup>
           <Typography variant="h6" fontWeight={100} mt={2} mb={2}>
-            Latest Photos
+            Ultimas fotos
           </Typography>
           <ImageList cols={3} rowHeight={100} gap={5}>
             <ImageListItem>
               <img
-                src="https://material-ui.com/static/images/image-list/breakfast.jpg"
+                src="https://images.pexels.com/photos/1835007/pexels-photo-1835007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                 alt=""
               />
             </ImageListItem>
             <ImageListItem>
               <img
-                src="https://material-ui.com/static/images/image-list/burgers.jpg"
+                src="https://images.pexels.com/photos/2279202/pexels-photo-2279202.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                 alt=""
               />
             </ImageListItem>
             <ImageListItem>
               <img
-                src="https://material-ui.com/static/images/image-list/camera.jpg"
+                src="https://images.pexels.com/photos/1265616/pexels-photo-1265616.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                 alt=""
               />
             </ImageListItem>
           </ImageList>
           <Typography variant="h6" fontWeight={100} mt={2}>
-            Latest Conversations
+            Ultimas conversaciones
           </Typography>
           <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         <ListItem alignItems="flex-start">
