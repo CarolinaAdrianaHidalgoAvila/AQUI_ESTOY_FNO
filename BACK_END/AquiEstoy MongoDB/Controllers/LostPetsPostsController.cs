@@ -16,14 +16,14 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<LostPetPostModel>> PostLostPetsPostsAsync([FromBody] LostPetPostModel publication, string userId)
+        public async Task<ActionResult<LostPetPostModel>> CreateLostPetsPostsAsync([FromBody] LostPetPostModel lostPetPostModel, string userId)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var newPublication = await _lostPetsPostsService.CreateLostPetPostAsync(publication, userId);
+                var newPublication = await _lostPetsPostsService.CreateLostPetPostAsync(lostPetPostModel, userId);
                 return Created($"/users/{newPublication.UserID}/{newPublication.IdPublication}", newPublication);
             }
             catch (NotFoundOperationException ex)
@@ -72,11 +72,11 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpDelete("{postId}")]
-        public async Task<ActionResult> DeleteLostPetPostAsync(string postId)
+        public async Task<ActionResult> DeleteLostPetPostAsync(string postId, string userId)
         {
             try
             {
-                await _lostPetsPostsService.DeleteLostPetPostAsync(postId);
+                await _lostPetsPostsService.DeleteLostPetPostAsync(postId, userId);
                 return Ok();
             }
             catch (NotFoundOperationException ex)
@@ -86,6 +86,33 @@ namespace AquiEstoy_MongoDB.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Something happend.");
+            }
+        }
+        [HttpPut("{postId}")]
+        public async Task<IActionResult> UpdateLostPetAsync(string postId, string userId, [FromBody] LostPetPostModel lostPetPostModel)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    foreach (var pair in ModelState)
+                    {
+                        if (pair.Key == nameof(lostPetPostModel.UserID) && pair.Value.Errors.Count > 0)
+                        {
+                            return BadRequest(pair.Value.Errors);
+                        }
+                    }
+                }
+                await _lostPetsPostsService.UpdateLostPetPostAsync(userId, postId, lostPetPostModel);
+                return Ok();
+            }
+            catch (NotFoundOperationException ex)
+            {
+                return NotFound(ex.Message); ;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Something happend: {ex.Message}");
             }
         }
     }

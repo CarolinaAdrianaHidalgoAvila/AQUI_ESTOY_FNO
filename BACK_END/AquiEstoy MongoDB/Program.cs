@@ -24,7 +24,7 @@ builder.Services.AddTransient<IAquiEstoyCollection, AquiEstoyCollection>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IPetService, PetService>();
 builder.Services.AddTransient<ILostPetPostService, LostPetPostService>();
-
+builder.Services.AddTransient<IFoundPetPostService, FoundPetPostService>();
 
 
 

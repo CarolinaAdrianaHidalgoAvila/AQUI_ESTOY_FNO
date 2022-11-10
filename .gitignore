@@ -31,6 +31,8 @@ obj/
 #=== BACK END ====
 .vs
 .vs/
+bin
+bin/
 
 BACK_END/.vs
 
