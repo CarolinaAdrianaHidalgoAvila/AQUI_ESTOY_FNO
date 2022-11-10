@@ -26,6 +26,8 @@ yarn-error.log*
 
 /Debug
 /Obj
+obj
+/obj
 bin/
 obj/
 #=== BACK END ====
