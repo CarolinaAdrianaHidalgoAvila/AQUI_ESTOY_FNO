@@ -1,5 +1,8 @@
 import React from 'react'
-import MediaCard from '../components/MediaCard/MediaCard';
+import Sidebar from '../components/HomePage/Sidebar';
+import Feed from '../components/HomePage/Feed';
+import Rightbar from '../components/HomePage/Rightbar';
+import { Box, Stack } from '@mui/material';
 
 function HomePage() {
   return (
