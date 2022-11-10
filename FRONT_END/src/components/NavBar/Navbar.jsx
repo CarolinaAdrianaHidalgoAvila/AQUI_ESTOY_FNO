@@ -27,7 +27,7 @@ function Navbar() {
 
   const [value, setValue] = useState();
   return (
-    <AppBar sx={{backgroundColor: '#ffc478'}}>
+    <AppBar className="navBar"  sx={{backgroundColor: '#ffc478', marginBottom:'5vh', display:{sm:'block'}}}>
       <Toolbar>
         
         { isMatch ? <>
@@ -64,10 +64,9 @@ function Navbar() {
             
 
             <Grid xs={9} />
-            <NewUserForm sx={{color: '#75cfbb',cursor: 'pointer',marginLeft:10,width:150,textTransform:'none'}}/>
-            <Grid  item xs={0}>
-                <AccountCircleIcon sx={{color: '#75cfbb',cursor: 'pointer',marginLeft:5, fontSize: 50}} fontSize="large" onClick={handleClickUser} />
-            </Grid>
+            <NewUserForm sx={{color: '#75cfbb',cursor: 'pointer',marginLeft:10,width:150,textTransform:'none', display:{xs:'block' , sm:'none'}}}/>
+
+            <AccountCircleIcon sx={{ display:{xs:'none' , sm:'block'}, color: '#75cfbb',cursor: 'pointer',marginLeft:5, fontSize: 50}} fontSize="large" onClick={handleClickUser} />
             
             
 
