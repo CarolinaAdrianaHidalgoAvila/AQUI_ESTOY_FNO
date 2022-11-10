@@ -1,12 +1,18 @@
 import React from 'react'
-import Navbar from '../components/NavBar/Navbar'
 import MediaCard from '../components/MediaCard/MediaCard';
 
 function HomePage() {
   return (
     <>
       <div  style={{marginTop: '3em'}} className="homePage">
-        <MediaCard/>
+        <Box>
+          <Stack direction='row' spacing={2} justifyContent='space-between' >
+            <Sidebar/>
+            <Feed/>
+            <Rightbar/>
+
+          </Stack>
+        </Box>
       </div>
     </>
   )
