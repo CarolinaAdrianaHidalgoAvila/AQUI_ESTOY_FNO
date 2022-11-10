@@ -51,6 +51,13 @@ namespace AquiEstoy_MongoDB.Services
             await GetLostPetPostAsync(postId);
             await _aquiEstoyCollection.DeleteLostPetPostAsync(postId);
         }
+        public async Task UpdateLostPetPostAsync(string userId, string lostPetPostId, LostPetPostModel lostPetPostModel)
+        {
+            await ValidateUser(userId);
+            await GetLostPetPostAsync(lostPetPostId);
+            var lostPetPostEntity = _mapper.Map<LostPetPostEntity>(lostPetPostModel);
+            await _aquiEstoyCollection.UpdateLostPetPostAsync(lostPetPostId, lostPetPostEntity);
+        }
 
         private async Task ValidateUser(string userId)
         {

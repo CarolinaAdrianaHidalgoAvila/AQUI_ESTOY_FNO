@@ -100,6 +100,11 @@ namespace AquiEstoy_MongoDB.Data.Repository
         {
             await lostPetPostCollection.DeleteOneAsync(x => x.IdPublication == postId);
         }
+        public async Task UpdateLostPetPostAsync(string lostPetPostId, LostPetPostEntity lostPetPostEntity)
+        {
+            lostPetPostEntity.IdPublication = lostPetPostId;
+            await lostPetPostCollection.ReplaceOneAsync(sub => sub.IdPublication == lostPetPostId, lostPetPostEntity);
+        }
 
 
 
@@ -120,7 +125,7 @@ namespace AquiEstoy_MongoDB.Data.Repository
         }
         public async Task DeleteFoundPetPostAsync(string postId)
         {
-            await foundPetPostCollection.DeleteOneAsync(x => x.IdPublication == postId);
+            await foundPetPostCollection.DeleteOneAsync(x => x.IdFoundPetPost == postId);
         }
     }
 }
