@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FsGnLSgNg/BM47+QHaqS/SPh4VPtKAQGMxBJcVRszbulJrgygUQbGAPY+IT/7p5LB1npSqtZYj2kdUU+6ba+pA==",
+  "dgSpecHash": "cg2IttiIcMzQ0xUKj0nF7xiraWyEXCz+nFsyCjSDJiYZLV9OsaNbv5CaEhcW8sMXWaW08+bHM5Nz7Ns/5tDA0g==",
   "success": true,
   "projectFilePath": "E:\\CAROLINA\\8_SEMESTRE\\TALLER_SIS\\25_AQUIEstoy\\AQUI_ESTOY_FNO1\\AQUI_ESTOY_FNO\\BACK_END\\AquiEstoy MongoDB\\AquiEstoy MongoDB.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,7 @@
     "C:\\Users\\MiPC\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\MiPC\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\MiPC\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
-    "C:\\Users\\MiPC\\.nuget\\packages\\mongodb.bson\\2.17.1\\mongodb.bson.2.17.1.nupkg.sha512",
+    "C:\\Users\\MiPC\\.nuget\\packages\\mongodb.bson\\2.18.0\\mongodb.bson.2.18.0.nupkg.sha512",
     "C:\\Users\\MiPC\\.nuget\\packages\\mongodb.driver\\2.17.1\\mongodb.driver.2.17.1.nupkg.sha512",
     "C:\\Users\\MiPC\\.nuget\\packages\\mongodb.driver.core\\2.17.1\\mongodb.driver.core.2.17.1.nupkg.sha512",
     "C:\\Users\\MiPC\\.nuget\\packages\\mongodb.libmongocrypt\\1.5.5\\mongodb.libmongocrypt.1.5.5.nupkg.sha512",

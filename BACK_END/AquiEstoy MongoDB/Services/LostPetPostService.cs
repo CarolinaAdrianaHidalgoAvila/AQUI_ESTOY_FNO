@@ -39,14 +39,15 @@ namespace AquiEstoy_MongoDB.Services
             var lostPetPostEntity = await _aquiEstoyCollection.GetLostPetPostAsync(postId);
             if (lostPetPostEntity == null)
             {
-                throw new NotFoundOperationException($"The post id: {postId}, does not exist.");
+                throw new NotFoundOperationException($"The lost pet post id: {postId}, does not exist.");
             }
             var lostPetPostModel = _mapper.Map<LostPetPostModel>(lostPetPostEntity);
             return lostPetPostModel;
         }
 
-        public async Task DeleteLostPetPostAsync(string postId)
+        public async Task DeleteLostPetPostAsync(string postId, string userId)
         {
+            await ValidateUser(userId);
             await GetLostPetPostAsync(postId);
             await _aquiEstoyCollection.DeleteLostPetPostAsync(postId);
         }
