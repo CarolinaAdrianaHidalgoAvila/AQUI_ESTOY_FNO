@@ -1,10 +1,9 @@
-import mapboxgl from 'mapbox-gl';
 import ReactMapGl, { GeolocateControl, Marker, NavigationControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 import { Box } from '@mui/material'
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Geocoder from './Geocoder';
 
 const mapTokenApp = "pk.eyJ1IjoiZGllZ29xciIsImEiOiJjbGFvcGtmdDExMWR0M25ubTBnZDJ4YTZjIn0.QZ7rzPRM1Z7Y8ySxPdgWug";

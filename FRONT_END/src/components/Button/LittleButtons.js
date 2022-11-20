@@ -10,6 +10,7 @@ import AddCommentIcon from '@mui/icons-material/AddComment';
 import ShareIcon from '@mui/icons-material/Share';
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
 function IconButtonAccept(props) {
@@ -95,6 +96,26 @@ function IconButtonMoreVert(props){
     ); 
 }
 
+function IconButtonLocation(props){
+    const {...rest} = props
+    return ( 
+        <IconButton aria-label="icon-button-share"  {...rest}>
+            <LocationOnIcon />
+        </IconButton>
+    ); 
+}
 
 
-export { IconButtonAccept, IconButtonReject, IconButtonEdit, IconButtonDelete, IconButtonView, IconButtonLike, IconButtonComment, IconButtonShare, IconButtonMoreVert };
+
+export { 
+    IconButtonAccept, 
+    IconButtonReject, 
+    IconButtonEdit, 
+    IconButtonDelete, 
+    IconButtonView, 
+    IconButtonLike, 
+    IconButtonComment, 
+    IconButtonShare, 
+    IconButtonMoreVert, 
+    IconButtonLocation 
+};

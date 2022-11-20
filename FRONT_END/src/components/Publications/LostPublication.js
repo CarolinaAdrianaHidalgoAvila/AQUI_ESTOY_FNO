@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box } from "@mui/material";
+import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box, Link } from "@mui/material";
 
 import useFetch from '../../hooks/useFetch';
 
 import { ButtonAccept } from "../Button/ButtonComp.js";
 import { Publication, NewPublication } from "./Publication.js";
-import { IconButtonMoreVert } from "../Button/LittleButtons.js";
+import { IconButtonMoreVert, IconButtonLocation } from "../Button/LittleButtons.js";
 import DeployalbeMenu from '../Menu/Menu';
 import { DragMap } from '../Map/Map';
 
@@ -169,8 +169,10 @@ function LostPublication(props) {
                 { label: "Borrar", onClick: () => {handleDeletePublication(user.id, publication.id)} },
             ]}
         />
+        <Box sx={{color: "info.main", fontSize: "16px"}}>
+            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${-17.389023},${-66.159634}`} target="_blank" />
+        </Box>
         <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
-        <Box sx={{color: "info.main", fontSize: "16px"}}>{publication.location}</Box>
         <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
     </div>
     return ( 
