@@ -4,6 +4,8 @@ import './index.css';
 import AppWraper from './App';
 import reportWebVitals from './reportWebVitals';
 
+const script = document.createElement("script");
+script.src = "https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

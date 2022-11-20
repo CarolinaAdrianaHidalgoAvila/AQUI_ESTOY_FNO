@@ -20,3 +20,25 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.calculation-box {
+  height: 75px;
+  width: 150px;
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  text-align: center;
+}
+
+.map-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.map-container p{
+  font-family: 'Poppins';
+  color: rgba(192, 192, 192, 0.9);
+  font-size: 16px;
+}
