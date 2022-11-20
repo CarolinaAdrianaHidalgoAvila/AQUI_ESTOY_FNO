@@ -3,9 +3,8 @@ import { Avatar, CircularProgress } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import NavTab from '../components/NavBar/NavTab';
-import {NewPetForm} from "../components/Form/PetForm";
-import { ButtonDanger, ButtonCheck } from "../components/Button/ButtonComp";
-import { ListCards } from '../components/ListCard/ListCards';
+import { ButtonDanger } from "../components/Button/ButtonComp";
+import Map from '../components/Map/Map';
 import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
 import { EditUserForm } from '../components/Form/UserForm';
 
@@ -47,7 +46,7 @@ function UserProfile(props) {
         //Get publications from user
         get(`users/${userId}/lostPetsPosts`)
         .then(data => {
-            console.log(data);
+            //console.log(data);
             setPublications(data);
         })
         .catch(error => console.log(error));
@@ -131,6 +130,7 @@ function UserProfile(props) {
                             dialogMessage={`¿Seguro que desea borrar el usuario de ${user.firstName} ${user.lastName} ?`}
                         />
                     }
+                    
                 </div>
             </div> 
             

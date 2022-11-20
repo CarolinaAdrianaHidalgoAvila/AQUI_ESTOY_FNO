@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box } from "@mui/material";
+import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box, Link } from "@mui/material";
 
 import useFetch from '../../hooks/useFetch';
 
 import { ButtonAccept } from "../Button/ButtonComp.js";
 import { Publication, NewPublication } from "./Publication.js";
-import { IconButtonMoreVert } from "../Button/LittleButtons.js";
+import { IconButtonMoreVert, IconButtonLocation } from "../Button/LittleButtons.js";
 import DeployalbeMenu from '../Menu/Menu';
+import { DragMap } from '../Map/Map';
 
 function NewLostPublication(props) {
     const {pets, user} = props;
@@ -16,17 +17,15 @@ function NewLostPublication(props) {
 
     const [reward, setReward] = useState(0)
     const [location, setLocation] = useState("");
+    const [latitude, setLatitude] = useState(-17.389023);
+    const [longitude, setLongitude] = useState(-66.159634);
     const [description, setDescription] = useState("");
-    const [pet, setPet] = useState({})
+    const [pet, setPet] = useState({});
 
     useEffect(() => {
-        console.log(description);
-        console.log(reward);
-        console.log(location);
-        console.log(pet);
-        const date = new Date("2014-08-19T01:11:54Z");
-        console.log(date.toISOString())
-    },[description, pet, reward, location])
+        console.log(latitude);
+        console.log(longitude);
+    },[latitude, longitude])
 
     function handleSubmitPublication(){
         const dateNow = new Date();
@@ -57,6 +56,11 @@ function NewLostPublication(props) {
                 {label: p.namePet, data: p}
             );
         })
+    }
+
+    function handleCoordChange(newLat, newLng){
+        setLatitude(newLat);
+        setLongitude(newLng);
     }
 
     const userProfilePicture = <>
@@ -103,15 +107,6 @@ function NewLostPublication(props) {
                         }
                         sx={{flexGrow: 1}}
                     />
-                    <TextField 
-                        id="form-publication-lost-location" 
-                        label="Localizacion" 
-                        variant="outlined" 
-                        value={location}
-                        onChange={(e) => {setLocation(e.target.value)}} 
-                        required
-                        sx={{flexGrow: 6}} 
-                    />
                     <FormControl>
                         <InputLabel htmlFor="form-publication-lost-reward">Recompensa:</InputLabel>
                         <OutlinedInput
@@ -124,7 +119,10 @@ function NewLostPublication(props) {
                         />
                     </FormControl>
                 </div>
-                
+                <div className='map-container'>
+                    <p>Arrastra el marcador a la ubicacion donde perdio a su mascota:</p>
+                    <DragMap lat={latitude} lng={longitude} zoom={9} onCoordChange={handleCoordChange}/>
+                </div>
             </NewPublication>
        </>
     );
@@ -171,8 +169,10 @@ function LostPublication(props) {
                 { label: "Borrar", onClick: () => {handleDeletePublication(user.id, publication.id)} },
             ]}
         />
+        <Box sx={{color: "info.main", fontSize: "16px"}}>
+            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${-17.389023},${-66.159634}`} target="_blank" />
+        </Box>
         <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
-        <Box sx={{color: "info.main", fontSize: "16px"}}>{publication.location}</Box>
         <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
     </div>
     return ( 

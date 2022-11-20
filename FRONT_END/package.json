@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@mui/icons-material": "^5.10.3",
     "@mui/lab": "^5.0.0-alpha.104",
     "@mui/material": "^5.10.5",
@@ -13,8 +14,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "dayjs": "^1.11.5",
+    "mapbox-gl": "^2.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.19",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
