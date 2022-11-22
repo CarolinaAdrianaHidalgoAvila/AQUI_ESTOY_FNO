@@ -29,6 +29,9 @@ yarn-error.log*
 bin/
 obj/
 #=== BACK END ====
+BACK_END/AquiEstoy MongoDB/obj/
+BACK_END/AquiEstoy MongoDB/bin/
+BACK_END/.vs/
 .vs
 .vs/
 bin

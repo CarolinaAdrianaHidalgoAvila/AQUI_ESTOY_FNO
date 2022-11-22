@@ -10,6 +10,7 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.9",
+          "MongoDB.Bson": "2.18.0",
           "MongoDB.Driver": "2.17.1",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
@@ -142,20 +143,20 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
-      "MongoDB.Bson/2.17.1": {
+      "MongoDB.Bson/2.18.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "runtime": {
           "lib/netstandard2.1/MongoDB.Bson.dll": {
-            "assemblyVersion": "2.17.1.0",
-            "fileVersion": "2.17.1.0"
+            "assemblyVersion": "2.18.0.0",
+            "fileVersion": "2.18.0.0"
           }
         }
       },
       "MongoDB.Driver/2.17.1": {
         "dependencies": {
-          "MongoDB.Bson": "2.17.1",
+          "MongoDB.Bson": "2.18.0",
           "MongoDB.Driver.Core": "2.17.1",
           "MongoDB.Libmongocrypt": "1.5.5"
         },
@@ -169,7 +170,7 @@
       "MongoDB.Driver.Core/2.17.1": {
         "dependencies": {
           "DnsClient": "1.6.1",
-          "MongoDB.Bson": "2.17.1",
+          "MongoDB.Bson": "2.18.0",
           "MongoDB.Libmongocrypt": "1.5.5",
           "SharpCompress": "0.30.1",
           "System.Buffers": "4.5.1"
@@ -449,12 +450,12 @@
       "path": "microsoft.win32.registry/5.0.0",
       "hashPath": "microsoft.win32.registry.5.0.0.nupkg.sha512"
     },
-    "MongoDB.Bson/2.17.1": {
+    "MongoDB.Bson/2.18.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IBr5w6ygeUCTobiS4J2UlYeIsnjSJvOOf31g60EkRa3NIeyrYs7Y51HeOvJ8r6NPcKv1hLj8xwoop6hDTetAdA==",
-      "path": "mongodb.bson/2.17.1",
-      "hashPath": "mongodb.bson.2.17.1.nupkg.sha512"
+      "sha512": "sha512-iyiVjkCAZIUiyYDZXXUqISeW7n3O/qcM90PUeJybryg7g4rXhSMRY0oLpAg+NdoXD/Qm9LlmVIePAluHQB91tQ==",
+      "path": "mongodb.bson/2.18.0",
+      "hashPath": "mongodb.bson.2.18.0.nupkg.sha512"
     },
     "MongoDB.Driver/2.17.1": {
       "type": "package",
