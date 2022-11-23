@@ -11,6 +11,7 @@ import { EditUserForm } from '../components/Form/UserForm';
 import useFetch from '../hooks/useFetch';
 import ListPetsCard from '../components/ListCard/ListPetsCards';
 import { LostPublication, NewLostPublication } from '../components/Publications/LostPublication';
+import { NewFoundPublication } from '../components/Publications/FoundPublication';
 
 function UserProfile(props) {
 
@@ -97,7 +98,8 @@ function UserProfile(props) {
                             {(value === 0) &&
                                 <div>
                                     <NewLostPublication user={user} pets={pets} />
-                                    {
+                                    <NewFoundPublication user = {user}/>
+                                    { 
                                         publications.map((publication) => {
                                             return(
                                                 <LostPublication publication={publication} user={user} />
