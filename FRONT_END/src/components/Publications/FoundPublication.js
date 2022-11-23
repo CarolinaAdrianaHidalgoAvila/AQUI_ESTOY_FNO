@@ -58,7 +58,7 @@ function NewFoundPublication(props) {
       .then((data) => {
         console.log(data);
         if (data !== undefined) {
-          //window.location.href = "/user";
+            window.location.href = "/user";
         }
       })
       .catch((error) => console.log(error));
@@ -168,12 +168,8 @@ function FoundPublication(props) {
 
   function handleDeletePublication(userId, pubId) {
     delete_(`users/${userId}/FoundPetsPosts/${pubId}`)
-      .then((data) => {
-        //console.log(data);
         alert("Publicacion Borrada!");
         window.location.href = "/user";
-      })
-      .catch((error) => alert(error));
   }
 
   const header = (
@@ -215,7 +211,7 @@ function FoundPublication(props) {
           {
             label: "Borrar",
             onClick: () => {
-              handleDeletePublication(user.id, fpublication.id);
+              handleDeletePublication(user.id, fpublication.idFoundPetPost);
             },
           },
         ]}
@@ -227,12 +223,10 @@ function FoundPublication(props) {
           target="_blank"
         />
       </Box>
-      <Box sx={{ color: "warning.main", fontSize: "16px" }}>
-        {fpublication.personWhoFound}
-      </Box>
       <Box sx={{ color: "success.main", fontSize: "16px" }}>
-        Encontrado por:
+        Encontrado por: {fpublication.personWhoFound}
       </Box>
+      <Box sx={{color: "warning.main", fontSize: "16px"}}>{fpublication.namePet} - {fpublication.species}</Box>
       
     </div>
   );
