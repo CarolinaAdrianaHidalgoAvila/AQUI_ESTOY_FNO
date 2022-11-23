@@ -64,12 +64,7 @@ function NewFoundPublication(props) {
       .catch((error) => console.log(error));
   }
 
-  function getPetsOptions(pets) {
-    return pets.map((p) => {
-      return { label: p.namePet, data: p };
-    });
-  }
-
+  
   function handleCoordChange(newLat, newLng) {
     setLatitude(newLat);
     setLongitude(newLng);
@@ -232,12 +227,13 @@ function FoundPublication(props) {
           target="_blank"
         />
       </Box>
-      <Box sx={{ color: "success.main", fontSize: "16px" }}>
-        Encontrado por. {publication.PersonWhoFound}
-      </Box>
       <Box sx={{ color: "warning.main", fontSize: "16px" }}>
-        {publication.namePet} - {publication.species}
+        {publication.personWhoFound}
       </Box>
+      <Box sx={{ color: "success.main", fontSize: "16px" }}>
+        Encontrado por:
+      </Box>
+      
     </div>
   );
   return (

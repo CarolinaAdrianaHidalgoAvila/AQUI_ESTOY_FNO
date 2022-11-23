@@ -11,14 +11,14 @@ import { EditUserForm } from '../components/Form/UserForm';
 import useFetch from '../hooks/useFetch';
 import ListPetsCard from '../components/ListCard/ListPetsCards';
 import { LostPublication, NewLostPublication } from '../components/Publications/LostPublication';
-import { NewFoundPublication } from '../components/Publications/FoundPublication';
+import { FoundPublication, NewFoundPublication } from '../components/Publications/FoundPublication';
 
 function UserProfile(props) {
 
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
     const [publications, setPublications] = useState([]);
-
+    const [fpublications, setfPublications] = useState([]);
     const [value, setValue] = useState(0);
 
     const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
@@ -49,6 +49,14 @@ function UserProfile(props) {
         .then(data => {
             //console.log(data);
             setPublications(data);
+        })
+        .catch(error => console.log(error));
+
+
+        get(`users/${userId}/foundPetsPosts`)
+        .then(data => {
+            //console.log(data);
+            setfPublications(data);
         })
         .catch(error => console.log(error));
 
@@ -105,7 +113,21 @@ function UserProfile(props) {
                                                 <LostPublication publication={publication} user={user} />
                                             );
                                         })
+
+                                    
                                     }
+
+{ 
+                                        publications.map((fpublication) => {
+                                            return(
+                                                <FoundPublication publication={fpublication} user={user} />
+                                            );
+                                        })
+                                    }
+
+
+
+
                                 </div>
                                     
                             }
