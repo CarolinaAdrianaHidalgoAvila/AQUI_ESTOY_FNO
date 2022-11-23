@@ -90,7 +90,7 @@ function NewLostPublication(props) {
                     rows="2"
                     disableUnderline
                     type="text"
-                    placeholder="¿Perido a su mascota?"
+                    placeholder="¿Perdio a su mascota?"
                     sx={{ width: "100%" }}
                 />
                 <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "10px"}}>

@@ -11,13 +11,14 @@ import { EditUserForm } from '../components/Form/UserForm';
 import useFetch from '../hooks/useFetch';
 import ListPetsCard from '../components/ListCard/ListPetsCards';
 import { LostPublication, NewLostPublication } from '../components/Publications/LostPublication';
+import { FoundPublication, NewFoundPublication } from '../components/Publications/FoundPublication';
 
 function UserProfile(props) {
 
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
     const [publications, setPublications] = useState([]);
-
+    const [fpublications, setfPublications] = useState([]);
     const [value, setValue] = useState(0);
 
     const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
@@ -48,6 +49,15 @@ function UserProfile(props) {
         .then(data => {
             //console.log(data);
             setPublications(data);
+        })
+        .catch(error => console.log(error));
+
+
+        
+        get(`users/${userId}/foundPetsPosts`)
+        .then(data => {
+            //console.log(data);
+            setfPublications(data);
         })
         .catch(error => console.log(error));
 
@@ -96,14 +106,37 @@ function UserProfile(props) {
                         <div className='container'>
                             {(value === 0) &&
                                 <div>
+                                    <h2>Crear publicación de perdida:</h2>
                                     <NewLostPublication user={user} pets={pets} />
-                                    {
+                                    <br/>
+                                    <h2>Crear publicación de hallazgo:</h2>
+                                    <NewFoundPublication user = {user}/>
+                                    <br/>
+                                    <h2>Mascotas perdidas:</h2>
+                                    <br/>
+                                    { 
                                         publications.map((publication) => {
                                             return(
                                                 <LostPublication publication={publication} user={user} />
                                             );
                                         })
+
+                                    
                                     }
+                                    <br/>
+                                    <h2>Mascotas encontradas:</h2>
+                                    <br/>
+                                    { 
+                                        fpublications.map((fpublication) => {
+                                            return(
+                                                <FoundPublication fpublication={fpublication} user={user} />
+                                            );
+                                        })
+                                    }
+
+
+
+
                                 </div>
                                     
                             }
