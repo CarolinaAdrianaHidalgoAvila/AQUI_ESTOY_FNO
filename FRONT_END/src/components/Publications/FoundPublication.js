@@ -25,7 +25,7 @@ import DeployalbeMenu from "../Menu/Menu";
 import { DragMap } from "../Map/Map";
 
 function NewFoundPublication(props) {
-  const { pets, user } = props;
+  const { user } = props;
 
   const { post } = useFetch("http://localhost:5500/api/");
   const [namePet, setnamePet] = useState("");
@@ -43,7 +43,7 @@ function NewFoundPublication(props) {
 
   function handleSubmitPublication() {
     const dateNow = new Date();
-    const publication = {
+    const fpublication = {
       namePet: namePet,
       species: species,
       datePublication: dateNow.toISOString(),
@@ -54,7 +54,7 @@ function NewFoundPublication(props) {
       personWhoFound: user.firstName + " " + user.lastName,
     };
 
-    post(`users/${user.id}/FoundPetsPosts`, publication)
+    post(`users/${user.id}/FoundPetsPosts`, fpublication)
       .then((data) => {
         console.log(data);
         if (data !== undefined) {
@@ -151,7 +151,7 @@ function NewFoundPublication(props) {
 }
 
 function FoundPublication(props) {
-  const { publication, user } = props;
+  const { fpublication, user } = props;
 
   const { delete_ } = useFetch("http://localhost:5500/api/");
 
@@ -194,7 +194,7 @@ function FoundPublication(props) {
           {user.firstName} {user.lastName}
         </Box>
         <Box sx={{ fontSize: "14px", color: "text.disabled" }}>
-          {getLocalDate(publication.datePublication)}
+          {getLocalDate(fpublication.datePublication)}
         </Box>
       </div>
     </div>
@@ -215,7 +215,7 @@ function FoundPublication(props) {
           {
             label: "Borrar",
             onClick: () => {
-              handleDeletePublication(user.id, publication.id);
+              handleDeletePublication(user.id, fpublication.id);
             },
           },
         ]}
@@ -228,7 +228,7 @@ function FoundPublication(props) {
         />
       </Box>
       <Box sx={{ color: "warning.main", fontSize: "16px" }}>
-        {publication.personWhoFound}
+        {fpublication.personWhoFound}
       </Box>
       <Box sx={{ color: "success.main", fontSize: "16px" }}>
         Encontrado por:
@@ -239,7 +239,7 @@ function FoundPublication(props) {
   return (
     <>
       <Publication header={header} footer={footer}>
-        <Box sx={{ fontSize: "16px" }}>{publication.description}</Box>
+        <Box sx={{ fontSize: "16px" }}>{fpublication.description}</Box>
       </Publication>
     </>
   );

@@ -53,6 +53,7 @@ function UserProfile(props) {
         .catch(error => console.log(error));
 
 
+        
         get(`users/${userId}/foundPetsPosts`)
         .then(data => {
             //console.log(data);
@@ -105,8 +106,14 @@ function UserProfile(props) {
                         <div className='container'>
                             {(value === 0) &&
                                 <div>
+                                    <h2>Crear publicación de perdida:</h2>
                                     <NewLostPublication user={user} pets={pets} />
+                                    <br/>
+                                    <h2>Crear publicación de hallazgo:</h2>
                                     <NewFoundPublication user = {user}/>
+                                    <br/>
+                                    <h2>Mascotas perdidas:</h2>
+                                    <br/>
                                     { 
                                         publications.map((publication) => {
                                             return(
@@ -116,11 +123,13 @@ function UserProfile(props) {
 
                                     
                                     }
-
-{ 
-                                        publications.map((fpublication) => {
+                                    <br/>
+                                    <h2>Mascotas encontradas:</h2>
+                                    <br/>
+                                    { 
+                                        fpublications.map((fpublication) => {
                                             return(
-                                                <FoundPublication publication={fpublication} user={user} />
+                                                <FoundPublication fpublication={fpublication} user={user} />
                                             );
                                         })
                                     }
