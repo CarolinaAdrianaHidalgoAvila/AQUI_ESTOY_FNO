@@ -141,12 +141,14 @@ function LostPublication(props) {
 
     function handleDeletePublication(userId, pubId){
         delete_(`users/${userId}/lostPetsPosts/${pubId}`)
-        .then(data => {
+        alert("Publicacion Borrada!");
+        window.location.href = "/user";
+        /*.then(data => {
             //console.log(data);
             alert("Publicacion Borrada!")
             window.location.href = "/user";
         })
-        .catch(error => alert(error));
+        .catch(error => alert(error));*/
     }
 
     const header = <div style={{display: "flex"}}>
@@ -166,7 +168,7 @@ function LostPublication(props) {
         <DeployalbeMenu 
             buttonType={<IconButtonMoreVert />}
             options={[
-                { label: "Borrar", onClick: () => {handleDeletePublication(user.id, publication.id)} },
+                { label: "Borrar", onClick: () => {handleDeletePublication(user.id, publication.idPublication)} },
             ]}
         />
         <Box sx={{color: "info.main", fontSize: "16px"}}>
