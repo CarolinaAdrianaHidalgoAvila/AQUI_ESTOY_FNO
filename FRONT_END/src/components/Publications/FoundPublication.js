@@ -58,7 +58,7 @@ function NewFoundPublication(props) {
       .then((data) => {
         console.log(data);
         if (data !== undefined) {
-          //window.location.href = "/user";
+            window.location.href = "/user";
         }
       })
       .catch((error) => console.log(error));
