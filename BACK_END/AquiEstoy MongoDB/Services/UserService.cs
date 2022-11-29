@@ -11,14 +11,21 @@ namespace AquiEstoy_MongoDB.Services
     {
         private IAquiEstoyCollection _aquiEstoyCollection;
         private IMapper _mapper;
-        public UserService(IAquiEstoyCollection aquiEstoyCollection, IMapper mapper)
+        private IFileService _fileService;
+        public UserService(IAquiEstoyCollection aquiEstoyCollection, IMapper mapper, IFileService fileService)
         {
             _aquiEstoyCollection = aquiEstoyCollection;
             _mapper = mapper;
+            _fileService = fileService;
         }
 
         public async Task<UserModel> CreateUserAsync(UserModel userModel)
         {
+            if(userModel.Photo != null)
+            {
+                string newPath = _fileService.uploadImage(userModel.Photo);
+                userModel.Photo = newPath;
+            }
             var userEntity = _mapper.Map<UserEntity>(userModel);
             _aquiEstoyCollection.CreateUser(userEntity);
             var newUserModel = _mapper.Map<UserModel>(userEntity);

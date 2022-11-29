@@ -31,5 +31,9 @@ namespace AquiEstoy_MongoDB.Data.Entities
         [BsonElement("address")]
         [JsonPropertyName("address")]
         public string? Address { get; set; }
+
+        [BsonElement("photo")]
+        [JsonPropertyName("photo")]
+        public string? Photo { get; set; }
     }
 }
