@@ -7,7 +7,8 @@
         public string? NamePet { get; set; }
         public string? Species { get; set; }
         public DateTime? DatePublication { get; set; }
-        public string? Location { get; set; }
+        public int? Longitud { get; set; }
+        public int? Latitud { get; set; }
         public string? Email { get; set; }
         public string? Description { get; set; }
         public int? Reward { get; set; }

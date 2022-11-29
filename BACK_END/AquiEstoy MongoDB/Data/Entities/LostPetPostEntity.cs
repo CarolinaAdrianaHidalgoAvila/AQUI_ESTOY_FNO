@@ -23,9 +23,12 @@ namespace AquiEstoy_MongoDB.Data.Entities
         [JsonPropertyName("datePublication")]
         public DateTime DatePublication { get; set; }//Revisar fechas
 
-        [BsonElement("location")]
-        [JsonPropertyName("location")]
-        public string? Location { get; set; }
+        [BsonElement("longitud")]
+        [JsonPropertyName("longitud")]
+        public int? Longitud { get; set; }
+
+        [BsonElement("latitud")]
+        [JsonPropertyName("latitud")]
 
         [BsonElement("email")]
         [JsonPropertyName("email")]
