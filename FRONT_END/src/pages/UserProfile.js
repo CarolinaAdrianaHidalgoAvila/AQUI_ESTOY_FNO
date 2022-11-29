@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Avatar, CircularProgress } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import NavTab from '../components/NavBar/NavTab';
 import { ButtonDanger } from "../components/Button/ButtonComp";
-import Map from '../components/Map/Map';
 import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
 import { EditUserForm } from '../components/Form/UserForm';
 
@@ -89,7 +88,12 @@ function UserProfile(props) {
             <div id='user-profile' className='container m-2 userPage'>
                 <div className='row align-items-start my-4'>
                     <div className='col col-sm-4'>
-                        <Avatar alt={user.firstName} src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" sx={{ width: 250, height: 250 }}> {user.full_name} </Avatar>
+                        <Avatar
+                            src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"} 
+                            sx={{ width: 250, height: 250 }}
+                        >
+                            {user.full_name} 
+                        </Avatar>
                     </div>
                     <div className='col-lg-auto my-auto d-flex flex-column p-2'>
                         <h1 className='display-4'>{`${user.firstName} ${user.lastName}`}</h1>
