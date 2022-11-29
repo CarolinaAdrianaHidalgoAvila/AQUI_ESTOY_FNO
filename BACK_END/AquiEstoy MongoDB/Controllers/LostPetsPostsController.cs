@@ -54,7 +54,7 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpGet("{postId}")]
-        public async Task<ActionResult<UserModel>> GetLostPetPostAsync(string postId)
+        public async Task<ActionResult<LostPetPostModel>> GetLostPetPostAsync(string postId)
         {
             try
             {

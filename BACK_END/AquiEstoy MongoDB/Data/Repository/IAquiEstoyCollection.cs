@@ -27,6 +27,9 @@ namespace AquiEstoy_MongoDB.Data.Repository
         Task UpdateLostPetPostAsync(string lostPetPostId, LostPetPostEntity lostPetPostEntity);
         Task DeleteLostPetPostAsync(string postId);
 
+        Task<IEnumerable<LostPetPostEntity>> GetAllLostPetsSUPostsAsync();
+        Task<LostPetPostEntity> GetLostPetSUPostAsync(string postId);
+
 
 
         //FOUND PETS POSTS

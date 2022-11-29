@@ -106,6 +106,16 @@ namespace AquiEstoy_MongoDB.Data.Repository
             await lostPetPostCollection.ReplaceOneAsync(sub => sub.IdPublication == lostPetPostId, lostPetPostEntity);
         }
 
+        public async Task<IEnumerable<LostPetPostEntity>> GetAllLostPetsSUPostsAsync()
+        {
+            var result = await lostPetPostCollection.FindAsync(x => true).Result.ToListAsync();
+            return result;
+        }
+        public async Task<LostPetPostEntity> GetLostPetSUPostAsync(string postId)
+        {
+            return await lostPetPostCollection.Find(x => x.IdPublication == postId).FirstOrDefaultAsync();
+        }
+
 
 
         //FOUND PET POSTS COLLECTION

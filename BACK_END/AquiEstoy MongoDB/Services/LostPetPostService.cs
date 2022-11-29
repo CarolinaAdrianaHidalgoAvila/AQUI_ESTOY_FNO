@@ -67,5 +67,23 @@ namespace AquiEstoy_MongoDB.Services
                 throw new NotFoundOperationException($"The user id: {userId}, does not exist.");
             }
         }
+
+        public async Task<IEnumerable<LostPetPostModel>> GetAllLostPetsSUPostsAsync()
+        {
+            var lostPetPostEntityList = await _aquiEstoyCollection.GetAllLostPetsSUPostsAsync();
+            var lostPetModelList = _mapper.Map<IEnumerable<LostPetPostModel>>(lostPetPostEntityList);
+            return lostPetModelList;
+        }
+        public async Task<LostPetPostModel> GetLostPetSUPostAsync(string lostPetPostId)
+        {
+            var lostPetPostEntity = await _aquiEstoyCollection.GetLostPetPostAsync(lostPetPostId);
+            if (lostPetPostEntity == null)
+            {
+                throw new NotFoundOperationException($"The Lost pet post id: {lostPetPostId}, does not exist.");
+            }
+            var lostPetPostModel = _mapper.Map<LostPetPostModel>(lostPetPostEntity);
+            return lostPetPostModel;
+
+        }
     }
 }

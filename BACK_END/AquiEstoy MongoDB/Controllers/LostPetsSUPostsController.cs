@@ -5,22 +5,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AquiEstoy_MongoDB.Controllers
 {
-    [Route("api/foundPetsPosts")]
-    public class FoundPetsPostsSUController : ControllerBase
+    [Route("api/lostPetsPosts")]
+    public class LostPetsSUPostsController : ControllerBase
     {
-        private IFoundPetPostService _foundPetsSUPostsService;
+        private ILostPetPostService _lostPetsSUPostsService;
 
-        public FoundPetsPostsSUController(IFoundPetPostService foundPetSUPostService)
+        public LostPetsSUPostsController(ILostPetPostService publicationService)
         {
-            _foundPetsSUPostsService = foundPetSUPostService;
+            _lostPetsSUPostsService = publicationService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FoundPetPostModel>>> GetFoundPetsSUPosts()
+        public async Task<ActionResult<IEnumerable<LostPetPostModel>>> GetLostPetsSUPosts()
         {
             try
             {
-                return Ok(await _foundPetsSUPostsService.GetAllFoundPetsSUPostsAsync());
+                return Ok(await _lostPetsSUPostsService.GetAllLostPetsSUPostsAsync());
             }
             catch (NotFoundOperationException ex)
             {
@@ -33,11 +33,11 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpGet("{postId}")]
-        public async Task<ActionResult<FoundPetPostModel>> GetFoundPetSUPostAsync(string postId)
+        public async Task<ActionResult<UserModel>> GetLostPetSUPostAsync(string postId)
         {
             try
             {
-                var post = await _foundPetsSUPostsService.GetFoundPetSUPostAsync(postId);
+                var post = await _lostPetsSUPostsService.GetLostPetSUPostAsync(postId);
                 return Ok(post);
             }
             catch (NotFoundOperationException ex)
