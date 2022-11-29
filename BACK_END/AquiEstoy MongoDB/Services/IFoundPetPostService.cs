@@ -10,5 +10,9 @@ namespace AquiEstoy_MongoDB.Services
         Task DeleteFoundPetPostAsync(string postId, string userId);
 
         Task<FoundPetPostModel> CreateFoundPetPostAsync(FoundPetPostModel foundPetPostModel, string userId);
+
+
+        Task<IEnumerable<FoundPetPostModel>> GetAllFoundPetsSUPostsAsync();
+        Task<FoundPetPostModel> GetFoundPetSUPostAsync(string postId);
     }
 }

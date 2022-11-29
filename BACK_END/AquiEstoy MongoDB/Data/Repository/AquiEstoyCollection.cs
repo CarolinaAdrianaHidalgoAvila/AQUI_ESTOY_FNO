@@ -132,5 +132,15 @@ namespace AquiEstoy_MongoDB.Data.Repository
             foundPetPostEntity.UserID = userId;
             await foundPetPostCollection.InsertOneAsync(foundPetPostEntity);
         }
+
+        public async Task<IEnumerable<FoundPetPostEntity>> GetAllFoundPetsSUPostsAsync()
+        {
+            var result = await foundPetPostCollection.FindAsync(x => true).Result.ToListAsync();
+            return result;
+        }
+        public async Task<FoundPetPostEntity> GetFoundPetSUPostAsync(string postId)
+        {
+            return await foundPetPostCollection.Find(x => x.IdFoundPetPost == postId).FirstOrDefaultAsync();
+        }
     }
 }
