@@ -9,6 +9,7 @@ import { Publication, NewPublication } from "./Publication.js";
 import { IconButtonMoreVert, IconButtonLocation } from "../Button/LittleButtons.js";
 import DeployalbeMenu from '../Menu/Menu';
 import { DragMap } from '../Map/Map';
+import DragAndDropZone from '../DragAndDrop/DragAndDropZone';
 
 function NewLostPublication(props) {
     const {pets, user} = props;
@@ -83,6 +84,7 @@ function NewLostPublication(props) {
     return ( 
        <>
             <NewPublication header={userProfilePicture} footer={buttons}>
+                <DragAndDropZone />
                 <Input
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
