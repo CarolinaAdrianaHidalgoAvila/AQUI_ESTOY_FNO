@@ -25,7 +25,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IPetService, PetService>();
 builder.Services.AddTransient<ILostPetPostService, LostPetPostService>();
 builder.Services.AddTransient<IFoundPetPostService, FoundPetPostService>();
-
+builder.Services.AddTransient<IFileService, FileService>();
 
 
 builder.Services.AddEndpointsApiExplorer();
