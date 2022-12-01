@@ -23,6 +23,7 @@ import {
 } from "../Button/LittleButtons.js";
 import DeployalbeMenu from "../Menu/Menu";
 import { DragMap } from "../Map/Map";
+import CarouselImages from '../ImageCarousel/ImageCarousel';
 
 function NewFoundPublication(props) {
   const { user } = props;
@@ -233,6 +234,7 @@ function FoundPublication(props) {
   return (
     <>
       <Publication header={header} footer={footer}>
+      <CarouselImages />
         <Box sx={{ fontSize: "16px" }}>{fpublication.description}</Box>
       </Publication>
     </>

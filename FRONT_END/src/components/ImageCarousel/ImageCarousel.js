@@ -1,8 +1,6 @@
 import Carousel from 'react-material-ui-carousel'
 import ImageItem from './ImageItem.js'
 
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 function CarouselImages(props) {
@@ -18,13 +16,15 @@ function CarouselImages(props) {
         width: 500,
         height: 500,
         margin: 5,
-        alignSelf: "auto"
+        alignSelf: "center"
     }
 
     return ( 
         <Carousel
             sx={sx ?? defaultSx}
             autoPlay={false}
+            animation="slide"
+            indicators={true}
         >
             {
                 items.map( (item, i) => <ImageItem key={i} imageUrl={item} alt={i} sx={sx ?? defaultSx}/> )

@@ -50,6 +50,7 @@ function Publication(props) {
                             paddingBottom=".5rem"
                             paddingTop=".5rem"
                             borderTop="1px solid #ccc"
+                            width="800px"
                         >
                             {footer}
                         </Box>
