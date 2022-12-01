@@ -25,11 +25,11 @@ namespace AquiEstoy_MongoDB.Data.Entities
 
         [BsonElement("longitud")]
         [JsonPropertyName("longitud")]
-        public int? Longitud { get; set; }
+        public double? Longitud { get; set; }
 
         [BsonElement("latitud")]
         [JsonPropertyName("latitud")]
-        public int? Latitud {get; set; }
+        public double? Latitud { get; set; }
 
         [BsonElement("email")]
         [JsonPropertyName("email")]
@@ -48,3 +48,5 @@ namespace AquiEstoy_MongoDB.Data.Entities
         public string? UserID { get; set; }
     }
 }
+
+
