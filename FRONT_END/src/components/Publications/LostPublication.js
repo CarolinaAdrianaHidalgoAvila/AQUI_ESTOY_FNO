@@ -18,7 +18,6 @@ function NewLostPublication(props) {
     const { post } = useFetch("http://localhost:5500/api/");
 
     const [reward, setReward] = useState(0)
-    const [location, setLocation] = useState("");
     const [latitude, setLatitude] = useState(-17.389023);
     const [longitude, setLongitude] = useState(-66.159634);
     const [description, setDescription] = useState("");
@@ -35,7 +34,8 @@ function NewLostPublication(props) {
             namePet: pet.data.namePet,
             species: pet.data.specie,
             datePublication: dateNow.toISOString(),
-            location: location,
+            longitud: longitude,
+            latitud: latitude,
             email: user.email,
             description: description,
             reward: parseInt(reward),
@@ -75,7 +75,7 @@ function NewLostPublication(props) {
     
     const buttons = <>
         <ButtonAccept 
-            disabled={description.trimStart().length === 0 && location.trimStart().length === 0}
+            disabled={description.trimStart().length === 0}
             onClick={handleSubmitPublication}
         >
             Publicar
@@ -175,7 +175,7 @@ function LostPublication(props) {
             ]}
         />
         <Box sx={{color: "info.main", fontSize: "16px"}}>
-            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${-17.389023},${-66.159634}`} target="_blank" />
+            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${publication.latitud},${publication.longitud}`} target="_blank" />
         </Box>
         <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
         <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
