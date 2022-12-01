@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "0e69bd9c-3022-4214-8c19-564132811318",
+		"_postman_id": "a333a3bd-aca2-4ef4-ab64-9099a12e047d",
 		"name": "AQUI ESTOY",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17768640"
+		"_exporter_id": "20240656"
 	},
 	"item": [
 		{
@@ -19,33 +19,33 @@
 							"formdata": [
 								{
 									"key": "firstName",
-									"value": "Lucio",
+									"value": "Diego",
 									"type": "text"
 								},
 								{
 									"key": "lastName",
-									"value": "Suarez",
+									"value": "Quiñones",
 									"type": "text"
 								},
 								{
 									"key": "phone",
-									"value": "65344374",
+									"value": "6731234",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "LucioSuarez@gmail.com",
+									"value": "diegoqr3000@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "zzzzz",
+									"value": "Av. abc",
 									"type": "text"
 								},
 								{
 									"key": "photo",
-									"value": "C:\\Users\\ddcre\\OneDrive\\Escritorio\\IMAGENES RENE\\1ee339b09a7c3cd9f7605ef32826d69f.jpg",
-									"type": "text"
+									"type": "file",
+									"src": "/C:/Users/diego/OneDrive/Imágenes/Saved Pictures/Screenshot_20220817-184919_YouTube.jpg"
 								}
 							]
 						},
@@ -111,7 +111,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5500/api/users/634751f769610488f29d608e",
+							"raw": "http://localhost:5500/api/users/6386cee1eb07491e042f7762",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -120,7 +120,7 @@
 							"path": [
 								"api",
 								"users",
-								"634751f769610488f29d608e"
+								"6386cee1eb07491e042f7762"
 							]
 						}
 					},
@@ -349,7 +349,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"namePet\": \"Coco\",\r\n    \"species\": \"Dálmata\",\r\n    \"datePublication\": \"2014-08-19T01:11:54Z\",\r\n    \"location\": \"Sacaba\",\r\n    \"email\": \"drake@gmail.com\",\r\n    \"description\": \"desc\",\r\n    \"reward\": 150,\r\n    \"userID\": \"632333ceca137c2c4b95168c\"\r\n}",
+							"raw": "{\r\n    \"namePet\": \"Coco\",\r\n    \"species\": \"Dálmata\",\r\n    \"datePublication\": \"2014-08-19T01:11:54Z\",\r\n    \"longitud\": -12.21431234,\r\n    \"latitud\": 15.1243123,\r\n    \"email\": \"drake@gmail.com\",\r\n    \"description\": \"desc\",\r\n    \"reward\": 150,\r\n    \"userID\": \"632333ceca137c2c4b95168c\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

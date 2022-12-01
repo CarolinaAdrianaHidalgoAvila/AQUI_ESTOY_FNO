@@ -23,6 +23,7 @@ import {
 } from "../Button/LittleButtons.js";
 import DeployalbeMenu from "../Menu/Menu";
 import { DragMap } from "../Map/Map";
+import CarouselImages from '../ImageCarousel/ImageCarousel';
 
 function NewFoundPublication(props) {
   const { user } = props;
@@ -30,12 +31,10 @@ function NewFoundPublication(props) {
   const { post } = useFetch("http://localhost:5500/api/");
   const [namePet, setnamePet] = useState("");
   const [species, setSpecies] = useState("");
-  const [location, setLocation] = useState("");
   const [latitude, setLatitude] = useState(-17.389023);
   const [longitude, setLongitude] = useState(-66.159634);
   const [description, setDescription] = useState("");
-  const [pet, setPet] = useState({});
-
+  
   useEffect(() => {
     console.log(latitude);
     console.log(longitude);
@@ -47,14 +46,15 @@ function NewFoundPublication(props) {
       namePet: namePet,
       species: species,
       datePublication: dateNow.toISOString(),
-      location: location,
+      longitud: longitude,
+      latitud: latitude,
       email: user.email,
       description: description,
       userID: user.id,
       personWhoFound: user.firstName + " " + user.lastName,
     };
 
-    post(`users/${user.id}/FoundPetsPosts`, fpublication)
+    post(`users/${user.id}/foundPetsPosts`, fpublication)
       .then((data) => {
         console.log(data);
         if (data !== undefined) {
@@ -74,7 +74,7 @@ function NewFoundPublication(props) {
     <>
       <Avatar
         alt="av"
-        src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000"
+        src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"}
         sx={{ width: "50px", height: "50px" }}
       ></Avatar>
     </>
@@ -84,8 +84,7 @@ function NewFoundPublication(props) {
     <>
       <ButtonAccept
         disabled={
-          description.trimStart().length === 0 &&
-          location.trimStart().length === 0
+          description.trimStart().length === 0
         }
         onClick={handleSubmitPublication}
       >
@@ -167,7 +166,7 @@ function FoundPublication(props) {
   }
 
   function handleDeletePublication(userId, pubId) {
-    delete_(`users/${userId}/FoundPetsPosts/${pubId}`)
+    delete_(`users/${userId}/foundPetsPosts/${pubId}`)
         alert("Publicacion Borrada!");
         window.location.href = "/user";
   }
@@ -176,7 +175,7 @@ function FoundPublication(props) {
     <div style={{ display: "flex" }}>
       <Avatar
         alt="av"
-        src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000"
+        src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"}
         sx={{ width: "50px", height: "50px" }}
       ></Avatar>
       <div
@@ -219,7 +218,7 @@ function FoundPublication(props) {
       <Box sx={{ color: "info.main", fontSize: "16px" }}>
         <IconButtonLocation
           rel="noopener noreferrer"
-          href={`https://www.google.com/maps?q=${-17.389023},${-66.159634}`}
+          href={`https://www.google.com/maps?q=${fpublication.latitud},${fpublication.longitud}`}
           target="_blank"
         />
       </Box>
@@ -233,6 +232,7 @@ function FoundPublication(props) {
   return (
     <>
       <Publication header={header} footer={footer}>
+      <CarouselImages />
         <Box sx={{ fontSize: "16px" }}>{fpublication.description}</Box>
       </Publication>
     </>

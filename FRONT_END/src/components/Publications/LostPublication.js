@@ -9,6 +9,8 @@ import { Publication, NewPublication } from "./Publication.js";
 import { IconButtonMoreVert, IconButtonLocation } from "../Button/LittleButtons.js";
 import DeployalbeMenu from '../Menu/Menu';
 import { DragMap } from '../Map/Map';
+import DragAndDropZone from '../DragAndDrop/DragAndDropZone';
+import CarouselImages from '../ImageCarousel/ImageCarousel';
 
 function NewLostPublication(props) {
     const {pets, user} = props;
@@ -16,7 +18,6 @@ function NewLostPublication(props) {
     const { post } = useFetch("http://localhost:5500/api/");
 
     const [reward, setReward] = useState(0)
-    const [location, setLocation] = useState("");
     const [latitude, setLatitude] = useState(-17.389023);
     const [longitude, setLongitude] = useState(-66.159634);
     const [description, setDescription] = useState("");
@@ -33,7 +34,8 @@ function NewLostPublication(props) {
             namePet: pet.data.namePet,
             species: pet.data.specie,
             datePublication: dateNow.toISOString(),
-            location: location,
+            longitud: longitude,
+            latitud: latitude,
             email: user.email,
             description: description,
             reward: parseInt(reward),
@@ -66,14 +68,14 @@ function NewLostPublication(props) {
     const userProfilePicture = <>
         <Avatar 
             alt="av" 
-            src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" 
+            src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"} 
             sx={{ width: "50px", height: "50px"}}
         ></Avatar>
     </>;
     
     const buttons = <>
         <ButtonAccept 
-            disabled={description.trimStart().length === 0 && location.trimStart().length === 0}
+            disabled={description.trimStart().length === 0}
             onClick={handleSubmitPublication}
         >
             Publicar
@@ -83,6 +85,7 @@ function NewLostPublication(props) {
     return ( 
        <>
             <NewPublication header={userProfilePicture} footer={buttons}>
+                <DragAndDropZone />
                 <Input
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -154,7 +157,7 @@ function LostPublication(props) {
     const header = <div style={{display: "flex"}}>
         <Avatar 
             alt="av" 
-            src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" 
+            src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"} 
             sx={{ width: "50px", height: "50px"}}
         >  
         </Avatar>
@@ -172,7 +175,7 @@ function LostPublication(props) {
             ]}
         />
         <Box sx={{color: "info.main", fontSize: "16px"}}>
-            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${-17.389023},${-66.159634}`} target="_blank" />
+            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${publication.latitud},${publication.longitud}`} target="_blank" />
         </Box>
         <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
         <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
@@ -180,6 +183,7 @@ function LostPublication(props) {
     return ( 
         <>
             <Publication header={header} footer={footer}>
+                <CarouselImages />
                 <Box sx={{fontSize: "16px"}}>
                     {publication.description}
                 </Box>

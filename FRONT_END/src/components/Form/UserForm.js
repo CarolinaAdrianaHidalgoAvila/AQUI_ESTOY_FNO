@@ -6,10 +6,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
 import { ButtonAccept, ButtonCheck } from '../Button/ButtonComp';
+import ProfilePictureInput from './ProfilePictureInput';
 
 function NewUserForm(props) {
-    const { post } = useFetch("http://localhost:5500/api/");
+    const { post, post_form } = useFetch("http://localhost:5500/api/");
 
+    const [profilePicture, setProfilePicture] = useState();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [eMail, setEMail] = useState("");
@@ -26,6 +28,11 @@ function NewUserForm(props) {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
+    }
+
+    function handlUploadProfilePicture(event){
+        console.log(event.currentTarget.image.files[0]);
+        setProfilePicture(event.currentTarget.image.files[0]);
     }
 
     function handleCreateUserSubmit(event){
@@ -47,11 +54,12 @@ function NewUserForm(props) {
             firstName: firstName,
             lastName: lastName,
             phone: telephone,
-            eMail: eMail,
+            email: eMail,
             address: address,
+            photo: profilePicture,
         }
 
-        post("users", user)
+        post_form("users", user)
         .then(data => {
             console.log(data);
             if(data.name !== undefined) {
@@ -67,7 +75,13 @@ function NewUserForm(props) {
 
     return ( 
         <div>
-            <FormModal formTitle="Registrar un nuevo usuario" submitName="Registarse" handleSubmit={handleCreateUserSubmit} buttonType={buttonRegisterUser}>
+            <FormModal formTitle="Registrar un nuevo usuario" submitName="Registarse" handleSubmit={handleCreateUserSubmit} buttonType={buttonRegisterUser} id="form-user-register">
+                <div className='row justify-content-center'>
+                    <ProfilePictureInput onChange={handlUploadProfilePicture}/>
+                </div>
+                <div className='row justify-content-center' style={{color: "grey"}}>
+                    Ingresar una foto de perfil
+                </div>
                 <div className='container'>
                     <div className='row justify-content-start'>
                         <div className='col'>
