@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-
-import {Input, Autocomplete, Avatar, TextField, InputAdornment, OutlinedInput, InputLabel, FormControl, Box, Link } from "@mui/material";
-
+import React, { useState, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch';
 
+import { Avatar, Input, Autocomplete, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, Box } from '@mui/material';
 import { ButtonAccept } from "../Button/ButtonComp.js";
 import { Publication, NewPublication } from "./Publication.js";
 import { IconButtonMoreVert, IconButtonLocation } from "../Button/LittleButtons.js";
@@ -142,22 +140,24 @@ function LostPublication(props) {
         return date.toLocaleDateString("es-mx", options);
     }
 
-    function handleDeletePublication(userId, pubId){
-        delete_(`users/${userId}/lostPetsPosts/${pubId}`)
-        alert("Publicacion Borrada!");
-        window.location.href = "/user";
-        /*.then(data => {
+    function handleDeletePublication(){
+        console.log(user.id);
+        console.log(publication.idPublication);
+        delete_(`users/${user.id}/lostPetsPosts/${publication.idPublication}`)
+        .then(data => {
             //console.log(data);
             alert("Publicacion Borrada!")
-            window.location.href = "/user";
         })
-        .catch(error => alert(error));*/
+        .catch(error => console.log(error))
+        .finally(() => {
+            window.location.href = "/user";
+        });
     }
 
     const header = <div style={{display: "flex"}}>
         <Avatar 
             alt="av" 
-            src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"} 
+            src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" 
             sx={{ width: "50px", height: "50px"}}
         >  
         </Avatar>
@@ -171,13 +171,15 @@ function LostPublication(props) {
         <DeployalbeMenu 
             buttonType={<IconButtonMoreVert />}
             options={[
-                { label: "Borrar", onClick: () => {handleDeletePublication(user.id, publication.idPublication)} },
+                { label: "Borrar", onClick: handleDeletePublication} ,
             ]}
         />
-        <Box sx={{color: "info.main", fontSize: "16px"}}>
-            <IconButtonLocation rel="noopener noreferrer" href={`https://www.google.com/maps?q=${publication.latitud},${publication.longitud}`} target="_blank" />
-        </Box>
         <Box sx={{color: "success.main", fontSize: "16px"}}>Bs. {publication.reward}</Box>
+        <IconButtonLocation
+          rel="noopener noreferrer"
+          href={`https://www.google.com/maps?q=${publication.latitud},${publication.longitud}`}
+          target="_blank"
+        />
         <Box sx={{color: "warning.main", fontSize: "16px"}}>{publication.namePet} - {publication.species}</Box>
     </div>
     return ( 

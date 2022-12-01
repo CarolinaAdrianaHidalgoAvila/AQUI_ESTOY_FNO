@@ -30,29 +30,15 @@ const Feed = (props) => {
         setLostPublications(data);
       })
     .catch(error => console.log(error));
+    console.log(lostPublications);
+    console.log(foundPublication);
   }, [])
   return (
     <Box flex={4} p={2}>
-        {
-          lostPublications.map(publication => {
-            var user
-            get(`user/${publication.userID}`)
-            .then(data => {
-              user = data
-            })
-            return <LostPublication publication={publication} user={user}/>;
-          })
-        }
-        {
-          foundPublication.map(publication => {
-            var user
-            get(`user/${publication.userID}`)
-            .then(data => {
-              user = data
-            })
-            return <FoundPublication publication={publication} user={user}/>;
-          })
-        }
+      <Post />
+      <Post />
+      <Post />
+      <Post />
     </Box>
   );
 };
