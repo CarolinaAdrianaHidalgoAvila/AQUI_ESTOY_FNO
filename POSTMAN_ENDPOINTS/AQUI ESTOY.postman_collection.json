@@ -395,6 +395,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET ALL SU POST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/lostPetsPosts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"lostPetsPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SU POST ONE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/lostPetsPosts/637c49487f12e7a64be0966e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"lostPetsPosts",
+								"637c49487f12e7a64be0966e"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -473,6 +514,47 @@
 								"632333ceca137c2c4b95168c",
 								"foundPetsPosts",
 								"636bc972ab7cd176fc12e8e7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL SU POST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/foundPetsPosts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"foundPetsPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE SU POST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5500/api/foundPetsPosts/637c2857324ea6a0c14e9b31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"foundPetsPosts",
+								"637c2857324ea6a0c14e9b31"
 							]
 						}
 					},
