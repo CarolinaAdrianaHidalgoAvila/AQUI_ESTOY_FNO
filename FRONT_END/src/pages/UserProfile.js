@@ -9,8 +9,10 @@ import { EditUserForm } from '../components/Form/UserForm';
 
 import useFetch from '../hooks/useFetch';
 import ListPetsCard from '../components/ListCard/ListPetsCards';
-import { LostPublication, NewLostPublication } from '../components/Publications/LostPublication';
-import { FoundPublication, NewFoundPublication } from '../components/Publications/FoundPublication';
+import LostPublication from '../components/Publications/LostPublication';
+import NewLostPublication from '../components/Publications/NewLostPublication';
+import FoundPublication from '../components/Publications/FoundPublication';
+import NewFoundPublication from '../components/Publications/NewFoundPublication'
 
 function UserProfile(props) {
 
@@ -20,7 +22,7 @@ function UserProfile(props) {
     const [fpublications, setfPublications] = useState([]);
     const [value, setValue] = useState(0);
 
-    const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
+    const {get, post, delete_, loading} = useFetch(process.env.REACT_APP_BACKEND_URL);
 
     const [openConfirm, setOpenConfirm] = useState(false);
 

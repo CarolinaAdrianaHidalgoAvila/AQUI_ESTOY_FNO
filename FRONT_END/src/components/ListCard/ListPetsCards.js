@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PreviewIcon from '@mui/icons-material/Preview';
 import { ListCards } from './ListCards';
-import { IconButtonEdit, IconButtonDelete,IconButtonView } from '../Button/LittleButtons';
+import { IconButtonEdit, IconButtonDelete,IconButtonView } from '../Button/IconButton';
 import { NewPetForm, EditPetForm } from '../Form/PetForm';
 import ConfirmDialog from '../Dialogs/ConfirmDialog';
 import defImage from '../../Images/dog.jpg';
@@ -24,7 +24,7 @@ function ListPetsCard(props) {
 
     const [dataList, setDataList] = useState([]);
 
-    const {get, post, delete_, loading} = useFetch("http://localhost:5500/api/");
+    const {get, post, delete_, loading} = useFetch(process.env.REACT_APP_BACKEND_URL);
 
     useEffect(() => {
         let data_list = [];

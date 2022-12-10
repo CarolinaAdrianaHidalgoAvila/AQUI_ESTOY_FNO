@@ -6,7 +6,7 @@ import { Box } from '@mui/material'
 import React from 'react';
 import Geocoder from './Geocoder';
 
-const mapTokenApp = "pk.eyJ1IjoiZGllZ29xciIsImEiOiJjbGFvcGtmdDExMWR0M25ubTBnZDJ4YTZjIn0.QZ7rzPRM1Z7Y8ySxPdgWug";
+const mapTokenApp = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 function DragMap(props) {
     const {lat, lng, zoom, onCoordChange } = props;

@@ -13,7 +13,7 @@ const Feed = (props) => {
   const [lostPublications, setLostPublications] = useState([]);
   const [foundPublication, setFoundPublications] = useState([]);
 
-  const { get } = useFetch('http://localhost:5500/api/');
+  const { get } = useFetch(process.env.REACT_APP_BACKEND_URL);
 
   useEffect(() => {
     //Get all found pets information

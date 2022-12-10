@@ -6,7 +6,7 @@ import { Box, Typography, Modal } from '@mui/material';
 
 
 function FormModal(props) {
-    const {children, fromTitle, submitName, handleSubmit, buttonType, id} = props;
+    const {children, formTitle, submitName, handleSubmit, buttonType, id} = props;
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -43,7 +43,7 @@ function FormModal(props) {
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {fromTitle}
+                        {formTitle}
                     </Typography>
                     <form onSubmit={handleCloseSubmit} id={id}>
                         <div className='container'>

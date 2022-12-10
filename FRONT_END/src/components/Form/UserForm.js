@@ -9,7 +9,7 @@ import { ButtonAccept, ButtonCheck } from '../Button/ButtonComp';
 import ProfilePictureInput from './ProfilePictureInput';
 
 function NewUserForm(props) {
-    const { post, post_form } = useFetch("http://localhost:5500/api/");
+    const { post, post_form } = useFetch(process.env.REACT_APP_BACKEND_URL);
 
     const [profilePicture, setProfilePicture] = useState();
     const [firstName, setFirstName] = useState("");
@@ -79,7 +79,7 @@ function NewUserForm(props) {
                 <div className='row justify-content-center'>
                     <ProfilePictureInput onChange={handlUploadProfilePicture}/>
                 </div>
-                <div className='row justify-content-center' style={{color: "grey"}}>
+                <div className='row justify-content-center' style={{color: "grey", fontSize: 18}}>
                     Ingresar una foto de perfil
                 </div>
                 <div className='container'>

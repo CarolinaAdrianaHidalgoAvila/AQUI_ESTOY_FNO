@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogTitle, DialogActions, Grid, Card, CardMedia, Typography, CardContent } from '@mui/material';
 import CardItem from '../components/ListCard/CardItem';
-import { IconButtonReject } from '../components/Button/LittleButtons';
+import { IconButtonReject } from '../components/Button/IconButton';
 function ShowOnePet(props) {
     const {Key,Image,Data,Pet, handleCancel, ...rest} = props
     

@@ -9,12 +9,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
-import { IconButtonEdit } from '../Button/LittleButtons';
+import { IconButtonEdit } from '../Button/IconButton';
 import { ButtonAccept } from '../Button/ButtonComp';
 
 function NewPetForm(props) {
     const { userId } = props;
-    const { post } = useFetch("http://localhost:5500/api/");
+    const { post } = useFetch(process.env.REACT_APP_BACKEND_URL);
 
     const [name, setName] = useState("");
     const [birthday, setBirthday] = useState(dayjs('2014-08-18T21:11:54'));
@@ -65,7 +65,7 @@ function NewPetForm(props) {
                     </div>
                 </div>
                 <div className='row justify-content-center'>
-                    <Autocomplete id="form-pet-spiece" disablePortal variant="outlined" margin='normal' options={species} inputValue={specie} onInputChange={(event, newSpecie) => {setSpecie(newSpecie)}} renderInput={
+                    <Autocomplete id="form-pet-spiece" disablePortal freeSolo variant="outlined" margin='normal' options={species} inputValue={specie} onInputChange={(event, newSpecie) => {setSpecie(newSpecie)}} renderInput={
                         (params) => <TextField {...params} label="Especie" required />
                     } />
                     <FormLabel id="form-gender-radio-button">Genero: </FormLabel>
@@ -86,7 +86,9 @@ function NewPetForm(props) {
 const species = [
     {label: "Perro"},
     {label: "Gato"},
+    {label: "Hamster"},
     {label: "Loro"},
+    {label: "Conejo"},
 ]
 
 function EditPetForm(props) {

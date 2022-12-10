@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Dialog, DialogTitle, DialogActions } from '@mui/material';
 
-import {IconButtonAccept, IconButtonDelete, IconButtonReject} from '../Button/LittleButtons';
+import {IconButtonAccept, IconButtonDelete, IconButtonReject} from '../Button/IconButton';
 
 function ConfirmDialog(props) {
     const {handleCancel, handleAccept, dialogMessage, ...rest} = props;
