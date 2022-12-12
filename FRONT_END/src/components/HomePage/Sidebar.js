@@ -28,7 +28,7 @@ const Sidebar = () => {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton component="a" href="/">
+            <ListItemButton component="a" href="/user">
               <ListItemIcon>
                 <PetsIcon />
               </ListItemIcon>
@@ -37,7 +37,7 @@ const Sidebar = () => {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton component="a" href="/">
+            <ListItemButton component="a" href="/user">
               <ListItemIcon>
                 <ArticleIcon />
               </ListItemIcon>

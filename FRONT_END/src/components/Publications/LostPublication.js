@@ -11,9 +11,18 @@ import DragAndDropZone from '../DragAndDrop/DragAndDropZone';
 import CarouselImages from '../ImageCarousel/ImageCarousel';
 
 function LostPublication(props) {
-    const { publication, user } = props;
+    const { publication } = props;
+    const [user, setUser] = useState({});
 
-    const { delete_ } = useFetch("http://localhost:5500/api/");
+    const { delete_, get } = useFetch(process.env.REACT_APP_BACKEND_URL);
+
+    useEffect(() => {
+        get(`users/${publication.userID}`)
+        .then(data => {
+            setUser(data);
+        })
+        .catch(error => console.log(error))
+    }, [])
 
     function getLocalDate(dateString){
         const date = new Date(dateString);

@@ -26,9 +26,19 @@ import { DragMap } from "../Map/Map";
 import CarouselImages from '../ImageCarousel/ImageCarousel';
 
 function FoundPublication(props) {
-  const { fpublication, user } = props;
+  const { fpublication } = props;
+  
+  const [user, setUser] = useState({});
 
-  const { delete_ } = useFetch("http://localhost:5500/api/");
+  const { delete_, get } = useFetch(process.env.REACT_APP_BACKEND_URL);
+
+  useEffect(() => {
+    get(`users/${fpublication.userID}`)
+    .then(data => {
+        setUser(data);
+    })
+    .catch(error => console.log(error))
+}, [])
 
   function getLocalDate(dateString) {
     const date = new Date(dateString);
