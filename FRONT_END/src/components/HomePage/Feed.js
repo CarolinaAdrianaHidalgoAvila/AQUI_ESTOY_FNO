@@ -65,7 +65,7 @@ const Feed = (props) => {
             {
               foundPublication.map((pub) => {
                 if(pub.userID !== null){
-                  return <LostPublication publication={pub} />
+                  return <FoundPublication fpublication={pub} />
                 }
                 return <></>
               }) 
