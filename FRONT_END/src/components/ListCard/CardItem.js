@@ -33,7 +33,9 @@ function CardItem(props) {
                 <CardContent>
                     {
                         data.map((item) => {
-                            return (<Typography><b>{item[0]}</b> {item[1]}</Typography>);
+                            if(item[0] !== "Foto"){
+                                return (<Typography><b>{item[0]}</b> {item[1]}</Typography>);
+                            }
                         })
                     }
                 </CardContent>

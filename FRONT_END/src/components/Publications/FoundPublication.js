@@ -118,7 +118,7 @@ function FoundPublication(props) {
   return (
     <>
       <Publication header={header} footer={footer}>
-      <CarouselImages />
+      <CarouselImages imagesList={fpublication.photos} />
         <Box sx={{ fontSize: "16px" }}>{fpublication.description}</Box>
       </Publication>
     </>

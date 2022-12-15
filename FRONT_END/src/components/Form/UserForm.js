@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { TextField, Alert, Link } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
 import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
-import { ButtonAccept, ButtonCheck } from '../Button/ButtonComp';
+import { ButtonCheck } from '../Button/ButtonComp';
 import ProfilePictureInput from './ProfilePictureInput';
+import Axios from 'axios';
+import AlertSnackbar from '../AlertMessage/AlertSnackbar';
 
 function NewUserForm(props) {
-    const { post, post_form } = useFetch(process.env.REACT_APP_BACKEND_URL);
+    const { post } = useFetch(process.env.REACT_APP_BACKEND_URL);
 
-    const [profilePicture, setProfilePicture] = useState();
+    const [imageUpload, ] = useState({});
+    const [, setImage] = useState({})
+    const [logo, setLogo] = useState("")
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [eMail, setEMail] = useState("");
@@ -24,18 +29,38 @@ function NewUserForm(props) {
     const [passwordValidation, setPasswordValidation] = useState(false);
 
 
+
     function validateEmail(email) {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
     }
 
-    function handlUploadProfilePicture(event){
-        console.log(event.currentTarget.image.files[0]);
-        setProfilePicture(event.currentTarget.image.files[0]);
+    async function uploadProfilePicture(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "ProfilePictures");
+        let data = "";
+        await Axios.post(process.env.REACT_APP_CLOUDINARY_API_URL + "/image/upload", formData)
+        .then((response) => {
+            data = response.data["secure_url"];
+        });
+        return data;
     }
 
-    function handleCreateUserSubmit(event){
+
+    function handlChangeProfilePicture(event){
+        if(event.target.files[0]) {
+            setImage({
+                src: URL.createObjectURL(event.target.files[0]),
+                alt: event.target.files[0].name
+            })
+            setLogo(event.target.files[0]);
+        }
+    }
+
+
+    async function handleCreateUserSubmit(event){
         event.preventDefault();
         if(!validateEmail(eMail)){
             setEMailValidation(true);
@@ -50,16 +75,23 @@ function NewUserForm(props) {
         } else { 
             setPasswordValidation(false);
         }
+
+        imageUpload.image = logo;
+        var image_url = null
+        if(logo !== "") {
+            image_url = await uploadProfilePicture(logo);
+        }
+        console.log(image_url);
+
         var user = {
             firstName: firstName,
             lastName: lastName,
             phone: telephone,
             email: eMail,
             address: address,
-            photo: profilePicture,
+            photo: image_url,
         }
-
-        post_form("users", user)
+        post("users", user)
         .then(data => {
             console.log(data);
             if(data.name !== undefined) {
@@ -77,7 +109,7 @@ function NewUserForm(props) {
         <div>
             <FormModal formTitle="Registrar un nuevo usuario" submitName="Registarse" handleSubmit={handleCreateUserSubmit} buttonType={buttonRegisterUser} id="form-user-register">
                 <div className='row justify-content-center'>
-                    <ProfilePictureInput onChange={handlUploadProfilePicture}/>
+                    <ProfilePictureInput image={imageUpload.image} imageUpload={handlChangeProfilePicture}/>
                 </div>
                 <div className='row justify-content-center' style={{color: "grey", fontSize: 18}}>
                     Ingresar una foto de perfil

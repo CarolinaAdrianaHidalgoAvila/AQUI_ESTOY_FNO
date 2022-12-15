@@ -89,7 +89,11 @@ function ListPetsCard(props) {
                 <Grid container spacing={2} style={{ paddingTop: "20px", paddingLeft: "50px", paddingRight: "50px" }}>
                     {
                         dataList.map((item) => {
-                            let image = item.data.filter(element => element[0] === "image")[1] ?? defImage;
+                            var imagePet = item.data.filter(element => element[0] === 'Foto');
+                            let image = defImage;
+                            if(imagePet !== ""){
+                                image = imagePet[0][1];
+                            }
                             return (
                                 <>
                                     <CardItem key={item.json.id} image={image} data={item.data}>

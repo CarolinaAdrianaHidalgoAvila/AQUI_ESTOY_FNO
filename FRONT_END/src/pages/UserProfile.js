@@ -14,8 +14,12 @@ import NewLostPublication from '../components/Publications/NewLostPublication';
 import FoundPublication from '../components/Publications/FoundPublication';
 import NewFoundPublication from '../components/Publications/NewFoundPublication'
 import DropdownList from '../components/DropdownList/DropdownList';
+import AlertSnackbar from '../components/AlertMessage/AlertSnackbar';
 
 function UserProfile(props) {
+
+    const [isAlert, setIsAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState({});
 
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
@@ -23,11 +27,11 @@ function UserProfile(props) {
     const [fpublications, setfPublications] = useState([]);
     const [value, setValue] = useState(0);
 
-    const {get, post, delete_, loading} = useFetch(process.env.REACT_APP_BACKEND_URL);
+    const {get, delete_, loading} = useFetch(process.env.REACT_APP_BACKEND_URL);
 
     const [openConfirm, setOpenConfirm] = useState(false);
 
-    const userId = "632333ceca137c2c4b95168c";
+    const userId = "639b186d2f293f5ff0290644";
 
     useEffect(() => {
         //Get user information
@@ -73,9 +77,19 @@ function UserProfile(props) {
         delete_(`users/${userId}`)
         .then(data => {
             //console.log(data);
-            alert("Usuario borrado!")
+            setIsAlert(true);
+            setAlertMessage({
+                severity: "success",
+                message: "El usuario actual ha sido borrado"
+            })
         })
-        .catch(error => alert(error))
+        .catch(error => {
+            setIsAlert(true);
+            setAlertMessage({
+                severity: "error",
+                message: error
+            })
+        })
         .finally(() => {
             setOpenConfirm(false);
             window.location.href = "/";
@@ -144,7 +158,8 @@ function UserProfile(props) {
                                     pets={pets}
                                     showKeys={{
                                         "namePet": "Nombre: ",
-                                        "specie": "Especie: "
+                                        "specie": "Especie: ",
+                                        "photo": "Foto"
                                         }} 
                                     title={""} 
                                 />
@@ -163,8 +178,8 @@ function UserProfile(props) {
                     }
                     
                 </div>
+                <AlertSnackbar isOpen={isAlert} severity={alertMessage.severity} message={alertMessage.message}/>
             </div> 
-            
         </>
      );
 }
