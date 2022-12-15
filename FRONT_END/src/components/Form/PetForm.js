@@ -40,7 +40,7 @@ function NewPetForm(props) {
     async function uploadProfilePicture(file) {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
+        formData.append("upload_preset", "PetPictures");
         let data = "";
         await Axios.post(process.env.REACT_APP_CLOUDINARY_API_URL + "/image/upload", formData)
         .then((response) => {
@@ -63,16 +63,17 @@ function NewPetForm(props) {
         event.preventDefault();
         imageUpload.image = logo;
         console.log(logo);
+        var image_url = null;
         if(logo !== ""){
-            const image_url = await uploadProfilePicture(logo);
+            image_url = await uploadProfilePicture(logo);
         }
         var pet = {
             namePet: name,
             birthDate: birthday.toISOString(),
             gender: gender,
             hasNecklace:(hasQr === "true") ? true : false,
-            specie: specie
-            //photo: image_url
+            specie: specie,
+            photo: image_url
         }
         post(`users/${userId}/pets`, pet)
         .then(data => {

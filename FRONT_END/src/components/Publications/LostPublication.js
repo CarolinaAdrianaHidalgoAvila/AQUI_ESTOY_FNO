@@ -74,7 +74,9 @@ function LostPublication(props) {
     return ( 
         <>
             <Publication header={header} footer={footer}>
-                <CarouselImages />
+                {
+                    publication.photos.length > 0 ? <CarouselImages imagesList={publication.photos}/> : <></>
+                }
                 <Box sx={{fontSize: "16px"}}>
                     {publication.description}
                 </Box>

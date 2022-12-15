@@ -11,6 +11,22 @@ function DragAndDropZone(props) {
     const [image, setImage] = useState({array: []})
     const [loading, setLoading] = useState(false);
 
+    function imagePreview() {
+        if(loading){
+            return <h3>Loading...</h3>
+        } else {
+            return (<h3>
+                {image.array.length <= 0 ? "No hay imagenes" : image.array.map((item) => (
+                    <img 
+                        alt="uploaded image" 
+                        style={{width: "125px", height: "70px", backgroundSize: "cover", paddingRight: "15px"}}
+                        src={item}
+                    />
+                ))}
+            </h3>)
+        }
+    }
+
     function handleDropImage(files){
         const uploaders = files.map((file) => {
             const formData = new FormData();
@@ -38,22 +54,6 @@ function DragAndDropZone(props) {
         axios.all(uploaders).then(() => {
             setLoading(false);
         })
-    }
-
-    function imagePreview() {
-        if(loading){
-            return <h3>Loading...</h3>
-        } else {
-            return (<h3>
-                {image.array.length <= 0 ? "No hay imagenes" : image.array.map((item) => (
-                    <img 
-                        alt="uploaded image" 
-                        style={{width: "125px", height: "70px", backgroundSize: "cover", paddingRight: "15px"}}
-                        src={item}
-                    />
-                ))}
-            </h3>)
-        }
     }
 
     return ( 

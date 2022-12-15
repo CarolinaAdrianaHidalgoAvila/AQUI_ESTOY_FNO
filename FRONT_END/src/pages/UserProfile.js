@@ -31,7 +31,7 @@ function UserProfile(props) {
 
     const [openConfirm, setOpenConfirm] = useState(false);
 
-    const userId = "639a7dee5a77ffcaa76c942e";
+    const userId = "639b186d2f293f5ff0290644";
 
     useEffect(() => {
         //Get user information
@@ -158,7 +158,8 @@ function UserProfile(props) {
                                     pets={pets}
                                     showKeys={{
                                         "namePet": "Nombre: ",
-                                        "specie": "Especie: "
+                                        "specie": "Especie: ",
+                                        "photo": "Foto"
                                         }} 
                                     title={""} 
                                 />
