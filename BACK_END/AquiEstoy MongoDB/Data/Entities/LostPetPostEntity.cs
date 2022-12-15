@@ -46,6 +46,10 @@ namespace AquiEstoy_MongoDB.Data.Entities
         [BsonElement("userID")]
         [JsonPropertyName("userID")]
         public string? UserID { get; set; }
+
+        [BsonElement("photos")]
+        [JsonPropertyName("photos")]
+        public IEnumerable<string> Photos { get; set; }
     }
 }
 

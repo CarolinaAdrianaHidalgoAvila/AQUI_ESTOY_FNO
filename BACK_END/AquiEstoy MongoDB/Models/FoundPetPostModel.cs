@@ -13,6 +13,7 @@
         public string? Description { get; set; }
         public string? UserID { get; set; }
         public string? PersonWhoFound { get; set; }
+        public IEnumerable<string> Photos { get; set; }
     }
 }
 

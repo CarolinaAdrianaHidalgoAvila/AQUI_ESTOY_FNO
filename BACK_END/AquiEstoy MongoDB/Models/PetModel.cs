@@ -16,5 +16,6 @@ namespace AquiEstoy_MongoDB.Models
         public bool? HasNecklace { get; set; }
         public string? Specie { get; set; }
         public string? UserID { get; set; }
+        public string? Photo { get; set; }
     }
 }
