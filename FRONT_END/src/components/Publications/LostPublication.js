@@ -47,7 +47,7 @@ function LostPublication(props) {
     const header = <div style={{display: "flex"}}>
         <Avatar 
             alt="av" 
-            src="https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?w=2000" 
+            src={user.photo ?? "https://res.cloudinary.com/dmvbmrdak/image/upload/v1669750526/default-avatar-AE_uioe92.jpg"}
             sx={{ width: "50px", height: "50px"}}
         >  
         </Avatar>
