@@ -24,6 +24,9 @@ import {
 import DeployalbeMenu from "../Menu/Menu";
 import { DragMap } from "../Map/Map";
 import CarouselImages from '../ImageCarousel/ImageCarousel';
+import DragAndDropZone from "../ImageUpload/DragAndDropZone";
+
+import axios from "axios";
 
 function NewFoundPublication(props) {
   const { user } = props;
@@ -34,6 +37,9 @@ function NewFoundPublication(props) {
   const [latitude, setLatitude] = useState(-17.389023);
   const [longitude, setLongitude] = useState(-66.159634);
   const [description, setDescription] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const [images, setImages] = useState([])
   
   useEffect(() => {
     console.log(latitude);
@@ -52,6 +58,7 @@ function NewFoundPublication(props) {
       description: description,
       userID: user.id,
       personWhoFound: user.firstName + " " + user.lastName,
+      photos: images
     };
 
     post(`users/${user.id}/foundPetsPosts`, fpublication)
@@ -64,6 +71,32 @@ function NewFoundPublication(props) {
       .catch((error) => console.log(error));
   }
 
+  function handleDropImage(files){
+    const uploaders = files.map((file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("tags", 'codeinfuse, medium, gist');
+        formData.append('upload_preset', "FoundPublications");
+        formData.append('api_key', process.env.REACT_APP_CLOUDINARY_API_KEY)
+        formData.append('timestamp', (Date.now() / 1000) | 0)
+        setLoading(true);
+        return axios.post(process.env.REACT_APP_CLOUDINARY_API_URL + "image/upload", formData, {
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+        })
+        .then((response) => {
+            var data = response.data;
+            console.log(data);
+            const imageurl = data.secure_url
+            console.log(imageurl);
+            var specificArrayInObject = images;
+            specificArrayInObject.push(imageurl);
+            setImages(specificArrayInObject)
+        })
+    })
+    axios.all(uploaders).then(() => {
+        setLoading(false);
+    })
+}
   
   function handleCoordChange(newLat, newLng) {
     setLatitude(newLat);
@@ -145,6 +178,9 @@ function NewFoundPublication(props) {
           />
         </div>
       </NewPublication>
+      <div>
+        <DragAndDropZone handleDropImage={handleDropImage} images={images} loading={loading} />
+      </div>
     </>
   );
 }
