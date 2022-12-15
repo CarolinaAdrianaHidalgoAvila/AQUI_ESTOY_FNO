@@ -14,8 +14,12 @@ import NewLostPublication from '../components/Publications/NewLostPublication';
 import FoundPublication from '../components/Publications/FoundPublication';
 import NewFoundPublication from '../components/Publications/NewFoundPublication'
 import DropdownList from '../components/DropdownList/DropdownList';
+import AlertSnackbar from '../components/AlertMessage/AlertSnackbar';
 
 function UserProfile(props) {
+
+    const [isAlert, setIsAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState({});
 
     const [user, setUser] = useState({});
     const [pets, setPets] = useState([]);
@@ -73,9 +77,19 @@ function UserProfile(props) {
         delete_(`users/${userId}`)
         .then(data => {
             //console.log(data);
-            alert("Usuario borrado!")
+            setIsAlert(true);
+            setAlertMessage({
+                severity: "success",
+                message: "El usuario actual ha sido borrado"
+            })
         })
-        .catch(error => alert(error))
+        .catch(error => {
+            setIsAlert(true);
+            setAlertMessage({
+                severity: "error",
+                message: error
+            })
+        })
         .finally(() => {
             setOpenConfirm(false);
             window.location.href = "/";
@@ -163,8 +177,8 @@ function UserProfile(props) {
                     }
                     
                 </div>
+                <AlertSnackbar isOpen={isAlert} severity={alertMessage.severity} message={alertMessage.message}/>
             </div> 
-            
         </>
      );
 }

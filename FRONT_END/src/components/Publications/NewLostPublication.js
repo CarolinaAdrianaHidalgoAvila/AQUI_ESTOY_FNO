@@ -7,8 +7,8 @@ import { Publication, NewPublication } from "./Publication.js";
 import { IconButtonMoreVert, IconButtonLocation } from "../Button/IconButton.js";
 import DeployalbeMenu from '../Menu/Menu';
 import { DragMap } from '../Map/Map';
-import DragAndDropZone from '../DragAndDrop/DragAndDropZone';
 import CarouselImages from '../ImageCarousel/ImageCarousel';
+import DragAndDropZone from '../ImageUpload/DragAndDropZone';
 
 function NewLostPublication(props) {
     const {pets, user} = props;
@@ -83,7 +83,6 @@ function NewLostPublication(props) {
     return ( 
        <>
             <NewPublication header={userProfilePicture} footer={buttons}>
-                <DragAndDropZone />
                 <Input
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -123,6 +122,9 @@ function NewLostPublication(props) {
                 <div className='map-container'>
                     <p>Arrastra el marcador a la ubicacion donde perdio a su mascota:</p>
                     <DragMap lat={latitude} lng={longitude} zoom={9} onCoordChange={handleCoordChange}/>
+                </div>
+                <div>
+                    <DragAndDropZone uploadPreset="LostPublications"/>
                 </div>
             </NewPublication>
        </>

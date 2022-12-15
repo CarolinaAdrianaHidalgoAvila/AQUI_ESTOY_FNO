@@ -11,10 +11,17 @@ import useFetch from '../../hooks/useFetch';
 import FormModal from './FormModal';
 import { IconButtonEdit } from '../Button/IconButton';
 import { ButtonAccept } from '../Button/ButtonComp';
+import ProfilePictureInput from './ProfilePictureInput';
+
+import Axios from 'axios';
 
 function NewPetForm(props) {
     const { userId } = props;
     const { post } = useFetch(process.env.REACT_APP_BACKEND_URL);
+
+    const [imageUpload, ] = useState({});
+    const [, setImage] = useState({})
+    const [logo, setLogo] = useState("")
 
     const [name, setName] = useState("");
     const [birthday, setBirthday] = useState(dayjs('2014-08-18T21:11:54'));
@@ -29,15 +36,43 @@ function NewPetForm(props) {
         console.log(gender);
         console.log(hasQr);
     }, [name, birthday, specie, gender, hasQr])
-  
 
-    function handleCreatePetSubmit(event){
+    async function uploadProfilePicture(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
+        let data = "";
+        await Axios.post(process.env.REACT_APP_CLOUDINARY_API_URL + "/image/upload", formData)
+        .then((response) => {
+            data = response.data["secure_url"];
+        });
+        return data;
+    }
+
+    function handlChangeProfilePicture(event){
+        if(event.target.files[0]) {
+            setImage({
+                src: URL.createObjectURL(event.target.files[0]),
+                alt: event.target.files[0].name
+            })
+            setLogo(event.target.files[0]);
+        }
+    }
+
+    async function handleCreatePetSubmit(event){
         event.preventDefault();
+        imageUpload.image = logo;
+        console.log(logo);
+        if(logo !== ""){
+            const image_url = await uploadProfilePicture(logo);
+        }
         var pet = {
             namePet: name,
+            birthDate: birthday.toISOString(),
             gender: gender,
             hasNecklace:(hasQr === "true") ? true : false,
             specie: specie
+            //photo: image_url
         }
         post(`users/${userId}/pets`, pet)
         .then(data => {
@@ -56,6 +91,9 @@ function NewPetForm(props) {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es-mx">  
             <FormModal formTitle="Ingresa los datos de tu mascota" submitName="Crear Mascota" handleSubmit={handleCreatePetSubmit} buttonType={buttonNewPet}>
+                <div className='row justify-content-center'>
+                    <ProfilePictureInput image={imageUpload.image} imageUpload={handlChangeProfilePicture}/>
+                </div>
                 <div className='row justify-content-start'>
                     <div className='col'>
                         <TextField id="form-pet-name" label="Nombre" variant="outlined" margin='normal' onChange={(e) => {setName(e.target.value)}} required />
@@ -114,6 +152,7 @@ function EditPetForm(props) {
         event.preventDefault();
         var pet = {
             namePet: name,
+            birthDate: birthday.toISOString(),
             gender: gender,
             hasNecklace:(hasQr === "true") ? true : false,
             specie: specie,

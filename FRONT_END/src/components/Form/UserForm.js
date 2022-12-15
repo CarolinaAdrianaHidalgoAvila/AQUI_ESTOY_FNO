@@ -8,6 +8,7 @@ import FormModal from './FormModal';
 import { ButtonCheck } from '../Button/ButtonComp';
 import ProfilePictureInput from './ProfilePictureInput';
 import Axios from 'axios';
+import AlertSnackbar from '../AlertMessage/AlertSnackbar';
 
 function NewUserForm(props) {
     const { post } = useFetch(process.env.REACT_APP_BACKEND_URL);
@@ -27,7 +28,6 @@ function NewUserForm(props) {
     const [eMailValidation, setEMailValidation] = useState(false);
     const [passwordValidation, setPasswordValidation] = useState(false);
 
-    const inputFile = useRef();
 
 
     function validateEmail(email) {
@@ -39,7 +39,7 @@ function NewUserForm(props) {
     async function uploadProfilePicture(file) {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
+        formData.append("upload_preset", "ProfilePictures");
         let data = "";
         await Axios.post(process.env.REACT_APP_CLOUDINARY_API_URL + "/image/upload", formData)
         .then((response) => {
@@ -77,7 +77,10 @@ function NewUserForm(props) {
         }
 
         imageUpload.image = logo;
-        const image_url = await uploadProfilePicture(logo);
+        var image_url = null
+        if(logo !== "") {
+            image_url = await uploadProfilePicture(logo);
+        }
         console.log(image_url);
 
         var user = {
