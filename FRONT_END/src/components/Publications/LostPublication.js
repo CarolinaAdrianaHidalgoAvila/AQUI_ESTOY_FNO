@@ -7,7 +7,6 @@ import { Publication, NewPublication } from "./Publication.js";
 import { IconButtonMoreVert, IconButtonLocation } from "../Button/IconButton.js";
 import DeployalbeMenu from '../Menu/Menu';
 import { DragMap } from '../Map/Map';
-import DragAndDropZone from '../DragAndDrop/DragAndDropZone';
 import CarouselImages from '../ImageCarousel/ImageCarousel';
 
 function LostPublication(props) {

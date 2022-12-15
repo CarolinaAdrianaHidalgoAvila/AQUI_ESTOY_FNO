@@ -6,6 +6,18 @@ function ShowOnePet(props) {
     const {Key,Image,Data,Pet, handleCancel, ...rest} = props
     
     const [open, setOpen] = useState(false);
+
+    function getLocalDate(dateString) {
+        const date = new Date(dateString);
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return date.toLocaleDateString("es-mx", options);
+      }
+
     function handleCancelClose(){
         handleCancel();
         setOpen(false);
@@ -28,7 +40,7 @@ function ShowOnePet(props) {
                             <Typography><b>Nombre: </b> {Pet.namePet}</Typography>
                             <Typography><b>Especie: </b> {Pet.specie}</Typography>
                             <Typography><b>Género: </b> {Pet.gender}</Typography>
-                            <Typography><b>Fecha de nacimiento: </b> {Pet.birthDate}</Typography>
+                            <Typography><b>Fecha de nacimiento: </b> {getLocalDate(Pet.birthDate)}</Typography>
                             <Typography><b>Collar: </b> {Pet.hasNecklace? ('Tiene'): ('No tiene')}</Typography>
 
                         </CardContent>
