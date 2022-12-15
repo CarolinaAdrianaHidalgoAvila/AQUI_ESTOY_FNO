@@ -17,7 +17,7 @@ namespace AquiEstoy_MongoDB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUserAsync([FromForm] UserModel user)
+        public async Task<ActionResult<UserModel>> PostUserAsync([FromBody] UserModel user)
         {
             try
             {
