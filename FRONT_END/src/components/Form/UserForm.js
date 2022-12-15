@@ -88,7 +88,6 @@ function NewUserForm(props) {
             address: address,
             photo: image_url,
         }
-        inputFile.current.click();
         post("users", user)
         .then(data => {
             console.log(data);

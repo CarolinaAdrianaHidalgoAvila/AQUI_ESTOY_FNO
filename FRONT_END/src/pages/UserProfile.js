@@ -23,11 +23,11 @@ function UserProfile(props) {
     const [fpublications, setfPublications] = useState([]);
     const [value, setValue] = useState(0);
 
-    const {get, post, delete_, loading} = useFetch(process.env.REACT_APP_BACKEND_URL);
+    const {get, delete_, loading} = useFetch(process.env.REACT_APP_BACKEND_URL);
 
     const [openConfirm, setOpenConfirm] = useState(false);
 
-    const userId = "6386836d402204f69c087655";
+    const userId = "639a7dee5a77ffcaa76c942e";
 
     useEffect(() => {
         //Get user information
